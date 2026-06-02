@@ -1,0 +1,1086 @@
+[
+  {
+    "file": "airbnb.md",
+    "domain_keywords": [
+      "travel"
+    ],
+    "tone_keywords": [
+      "bold",
+      "warm",
+      "cold",
+      "premium",
+      "approachable",
+      "clean"
+    ],
+    "color_summary": "key: Rausch Red/Deep Rausch/Error Red",
+    "typography_summary": "Airbnb Cereal VF",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "airtable.md",
+    "domain_keywords": [
+      "enterprise"
+    ],
+    "tone_keywords": [
+      "friendly",
+      "clean",
+      "sophisticated"
+    ],
+    "color_summary": "key: Deep Navy/Airtable Blue/White",
+    "typography_summary": "Haas, Haas Groot Disp",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "apple.md",
+    "domain_keywords": [
+      "media"
+    ],
+    "tone_keywords": [
+      "precise",
+      "premium",
+      "approachable",
+      "confident"
+    ],
+    "color_summary": "single accent; key: Pure Black/Light Gray/Near Black",
+    "typography_summary": "SF Pro Display, SF Pro Text",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "binance.md",
+    "domain_keywords": [
+      "data",
+      "finance",
+      "fintech",
+      "crypto"
+    ],
+    "tone_keywords": [
+      "playful",
+      "warm",
+      "cold",
+      "confident"
+    ],
+    "color_summary": "key: Binance Yellow/Binance Gold/Light Gold",
+    "typography_summary": "see source",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "bmw.md",
+    "domain_keywords": [
+      "automotive",
+      "luxury"
+    ],
+    "tone_keywords": [
+      "clean",
+      "geometric"
+    ],
+    "color_summary": "key: Pure White/BMW Blue/BMW Focus Blue",
+    "typography_summary": "BMWTypeNextLatin Light, BMWTypeNextLatin",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "bugatti.md",
+    "domain_keywords": [
+      "media",
+      "luxury"
+    ],
+    "tone_keywords": [
+      "editorial",
+      "monochromatic"
+    ],
+    "color_summary": "single accent; key: Velvet Black/Showroom White/Silver Mist",
+    "typography_summary": "see source",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "cal.md",
+    "domain_keywords": [
+      "scheduling"
+    ],
+    "tone_keywords": [
+      "minimal",
+      "clean",
+      "modern",
+      "monochromatic",
+      "geometric",
+      "sophisticated",
+      "confident"
+    ],
+    "color_summary": "monochrome; single accent; key: Charcoal/Midnight/White",
+    "typography_summary": "Cal Sans, Inter, Inter Placeholder",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "claude.md",
+    "domain_keywords": [
+      "media",
+      "ai"
+    ],
+    "tone_keywords": [
+      "warm",
+      "cold",
+      "premium",
+      "editorial",
+      "muted",
+      "trustworthy",
+      "futuristic",
+      "organic"
+    ],
+    "color_summary": "single accent; key: Anthropic Near Black/Terracotta Brand/Coral Accent",
+    "typography_summary": "Anthropic Serif, Georgia, Anthropic Sans",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "clay.md",
+    "domain_keywords": [
+      "data",
+      "enterprise"
+    ],
+    "tone_keywords": [
+      "playful",
+      "warm",
+      "technical",
+      "geometric"
+    ],
+    "color_summary": "key: Clay Black/Pure White/Warm Cream",
+    "typography_summary": "Roobert, Arial, Space Mono",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "clickhouse.md",
+    "domain_keywords": [
+      "data",
+      "ai"
+    ],
+    "tone_keywords": [],
+    "color_summary": "single accent; key: Neon Volt/Forest Green/Dark Forest",
+    "typography_summary": "Inter, Basier, Inconsolata",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "cohere.md",
+    "domain_keywords": [
+      "ai",
+      "enterprise",
+      "consumer"
+    ],
+    "tone_keywords": [
+      "minimal",
+      "professional",
+      "cold",
+      "technical",
+      "clean",
+      "organic",
+      "geometric",
+      "sophisticated",
+      "confident"
+    ],
+    "color_summary": "key: Cohere Black/Near Black/Deep Dark",
+    "typography_summary": "CohereText, Unica77 Cohere Web, CohereMono",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "coinbase.md",
+    "domain_keywords": [
+      "crypto"
+    ],
+    "tone_keywords": [
+      "professional",
+      "clean",
+      "trustworthy"
+    ],
+    "color_summary": "key: Coinbase Blue/Pure White/Near Black",
+    "typography_summary": "CoinbaseDisplay, CoinbaseSans, CoinbaseText",
+    "layout_density": "dense"
+  },
+  {
+    "file": "composio.md",
+    "domain_keywords": [
+      "developer",
+      "marketing",
+      "documentation"
+    ],
+    "tone_keywords": [
+      "technical",
+      "geometric"
+    ],
+    "color_summary": "single accent; key: Composio Cobalt/Electric Cyan/Signal Blue",
+    "typography_summary": "JetBrains Mono, Menlo",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "cursor.md",
+    "domain_keywords": [
+      "developer",
+      "marketing",
+      "documentation"
+    ],
+    "tone_keywords": [
+      "warm",
+      "refined",
+      "premium",
+      "editorial",
+      "technical",
+      "organic"
+    ],
+    "color_summary": "key: Cursor Dark/Cursor Cream/Cursor Light",
+    "typography_summary": "CursorGothic, CursorIcons16",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "elevenlabs.md",
+    "domain_keywords": [
+      "ai"
+    ],
+    "tone_keywords": [
+      "bold",
+      "warm",
+      "precise",
+      "premium",
+      "clean",
+      "confident"
+    ],
+    "color_summary": "key: Pure White/Light Gray/Warm Stone",
+    "typography_summary": "Waldenburg, Waldenburg Fallback, WaldenburgFH",
+    "layout_density": "airy"
+  },
+  {
+    "file": "expo.md",
+    "domain_keywords": [
+      "developer"
+    ],
+    "tone_keywords": [
+      "premium",
+      "friendly",
+      "approachable",
+      "monochromatic",
+      "organic"
+    ],
+    "color_summary": "monochrome; key: Expo Black/Near Black/Link Cobalt",
+    "typography_summary": "Inter, JetBrains Mono",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "ferrari.md",
+    "domain_keywords": [
+      "luxury"
+    ],
+    "tone_keywords": [
+      "bold",
+      "editorial",
+      "clean"
+    ],
+    "color_summary": "key: Ferrari Red/Pure White/Dark Red",
+    "typography_summary": "see source",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "figma.md",
+    "domain_keywords": [
+      "marketing"
+    ],
+    "tone_keywords": [
+      "bold",
+      "technical",
+      "vibrant",
+      "organic"
+    ],
+    "color_summary": "single accent; key: Pure Black/Pure White/Pure White",
+    "typography_summary": "see source",
+    "layout_density": "airy"
+  },
+  {
+    "file": "framer.md",
+    "domain_keywords": [
+      "marketing"
+    ],
+    "tone_keywords": [
+      "warm",
+      "cold",
+      "precise",
+      "refined"
+    ],
+    "color_summary": "key: Pure Black/Pure White/Framer Blue",
+    "typography_summary": "GT Walsheim Framer Medium, GT Walsheim Medium, Inter Variable",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "hashicorp.md",
+    "domain_keywords": [
+      "developer",
+      "portfolio",
+      "enterprise"
+    ],
+    "tone_keywords": [
+      "approachable",
+      "clean"
+    ],
+    "color_summary": "key: Black/Dark Charcoal/Near Black",
+    "typography_summary": "see source",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "ibm.md",
+    "domain_keywords": [
+      "data",
+      "enterprise",
+      "consumer"
+    ],
+    "tone_keywords": [
+      "playful",
+      "technical"
+    ],
+    "color_summary": "single accent; key: IBM Blue 60/White/Gray 100",
+    "typography_summary": "IBM Plex Sans, IBM Plex Mono, IBM Plex Serif",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "intercom.md",
+    "domain_keywords": [
+      "ai"
+    ],
+    "tone_keywords": [
+      "warm",
+      "precise",
+      "editorial",
+      "technical",
+      "clean",
+      "vibrant",
+      "geometric",
+      "sophisticated",
+      "confident"
+    ],
+    "color_summary": "key: Off Black/Pure White/Warm Cream",
+    "typography_summary": "Saans, Serrif, SaansMono",
+    "layout_density": "airy"
+  },
+  {
+    "file": "kraken.md",
+    "domain_keywords": [
+      "crypto"
+    ],
+    "tone_keywords": [
+      "bold",
+      "professional",
+      "clean",
+      "trustworthy"
+    ],
+    "color_summary": "key: Kraken Purple/Purple Dark/Purple Deep",
+    "typography_summary": "Kraken-Brand, Kraken-Product",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "lamborghini.md",
+    "domain_keywords": [
+      "luxury"
+    ],
+    "tone_keywords": [
+      "minimal",
+      "technical",
+      "geometric"
+    ],
+    "color_summary": "single accent; key: Lamborghini Gold/Pure White/Dark Gold",
+    "typography_summary": "LamboType, Open Sans",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "linear.app.md",
+    "domain_keywords": [
+      "marketing"
+    ],
+    "tone_keywords": [
+      "technical",
+      "geometric"
+    ],
+    "color_summary": "key: Marketing Black/Panel Dark/Level 3 Surface",
+    "typography_summary": "Inter Variable, Berkeley Mono",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "lovable.md",
+    "domain_keywords": [
+      "developer"
+    ],
+    "tone_keywords": [
+      "warm",
+      "cold",
+      "approachable",
+      "editorial",
+      "organic",
+      "geometric",
+      "confident"
+    ],
+    "color_summary": "key: Cream/Charcoal/Off-White",
+    "typography_summary": "Camera Plain Variable",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "meta.md",
+    "domain_keywords": [
+      "luxury",
+      "consumer"
+    ],
+    "tone_keywords": [
+      "cold",
+      "editorial",
+      "geometric"
+    ],
+    "color_summary": "key: Meta Blue/Meta Blue Hover/Meta Blue Pressed",
+    "typography_summary": "see source",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "minimax.md",
+    "domain_keywords": [
+      "data",
+      "marketing",
+      "ai",
+      "consumer"
+    ],
+    "tone_keywords": [
+      "bold",
+      "playful",
+      "friendly",
+      "approachable",
+      "technical",
+      "clean",
+      "vibrant",
+      "geometric"
+    ],
+    "color_summary": "key: Brand Blue/Sky Blue/Brand Pink",
+    "typography_summary": "DM Sans, Outfit, Poppins",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "mintlify.md",
+    "domain_keywords": [
+      "developer",
+      "marketing",
+      "documentation"
+    ],
+    "tone_keywords": [
+      "technical",
+      "clean",
+      "calm",
+      "confident"
+    ],
+    "color_summary": "key: Near Black/Pure White/Brand Green",
+    "typography_summary": "Inter, Geist Mono",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "miro.md",
+    "domain_keywords": [
+      "collaboration"
+    ],
+    "tone_keywords": [
+      "clean",
+      "modern",
+      "geometric",
+      "confident"
+    ],
+    "color_summary": "key: Near Black/White/Blue 450",
+    "typography_summary": "Roobert PRO Medium, Roobert PRO SemiBold, Roobert PRO SemiBold Italic",
+    "layout_density": "airy"
+  },
+  {
+    "file": "mistral.ai.md",
+    "domain_keywords": [
+      "luxury",
+      "ai"
+    ],
+    "tone_keywords": [
+      "minimalist",
+      "bold",
+      "warm"
+    ],
+    "color_summary": "key: Mistral Orange/Mistral Flame/Block Orange",
+    "typography_summary": "Arial",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "mongodb.md",
+    "domain_keywords": [],
+    "tone_keywords": [
+      "bold",
+      "cold",
+      "editorial",
+      "technical",
+      "organic",
+      "geometric"
+    ],
+    "color_summary": "key: Forest Black/MongoDB Green/Dark Green",
+    "typography_summary": "MongoDB Value Serif, Euclid Circular A, Source Code Pro",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "nike.md",
+    "domain_keywords": [
+      "luxury"
+    ],
+    "tone_keywords": [
+      "minimal",
+      "editorial",
+      "monochromatic"
+    ],
+    "color_summary": "single accent; key: Nike Black/Nike White/Snow",
+    "typography_summary": "see source",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "notion.md",
+    "domain_keywords": [
+      "dashboard"
+    ],
+    "tone_keywords": [
+      "bold",
+      "warm",
+      "cold",
+      "precise",
+      "approachable",
+      "organic"
+    ],
+    "color_summary": "single accent; key: Notion Black/Pure White/Notion Blue",
+    "typography_summary": "NotionInter",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "nvidia.md",
+    "domain_keywords": [
+      "saas",
+      "luxury",
+      "documentation"
+    ],
+    "tone_keywords": [
+      "minimal",
+      "bold",
+      "clean",
+      "geometric"
+    ],
+    "color_summary": "key: NVIDIA Green/True Black/Pure White",
+    "typography_summary": "NVIDIA-EMEA, Font Awesome 6 Pro, Font Awesome 6 Sharp",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "ollama.md",
+    "domain_keywords": [
+      "developer",
+      "luxury",
+      "ai"
+    ],
+    "tone_keywords": [
+      "cold",
+      "friendly",
+      "approachable"
+    ],
+    "color_summary": "single accent; key: Pure Black/Near Black/Darkest Surface",
+    "typography_summary": "SF Pro Rounded",
+    "layout_density": "airy"
+  },
+  {
+    "file": "opencode.ai.md",
+    "domain_keywords": [
+      "ai"
+    ],
+    "tone_keywords": [
+      "minimal",
+      "bold",
+      "warm",
+      "cold",
+      "trustworthy",
+      "sophisticated"
+    ],
+    "color_summary": "key: OpenCode Dark/OpenCode Light/Mid Gray",
+    "typography_summary": "Berkeley Mono",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "pinterest.md",
+    "domain_keywords": [],
+    "tone_keywords": [
+      "bold",
+      "warm",
+      "cold",
+      "sophisticated",
+      "confident"
+    ],
+    "color_summary": "monochrome; key: Pinterest Red/Green 700/Green 700 Hover",
+    "typography_summary": "Pin Sans",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "playstation.md",
+    "domain_keywords": [
+      "marketing",
+      "media",
+      "luxury",
+      "consumer",
+      "admin"
+    ],
+    "tone_keywords": [
+      "elegant",
+      "premium",
+      "editorial",
+      "calm"
+    ],
+    "color_summary": "single accent; key: PlayStation Blue/Console Black/PlayStation Cyan",
+    "typography_summary": "Arial, Helvetica",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "posthog.md",
+    "domain_keywords": [
+      "saas",
+      "developer",
+      "landing",
+      "analytics"
+    ],
+    "tone_keywords": [
+      "bold",
+      "playful",
+      "warm",
+      "approachable",
+      "editorial",
+      "technical",
+      "modern",
+      "muted"
+    ],
+    "color_summary": "single accent; key: Olive Ink/Deep Olive/PostHog Orange",
+    "typography_summary": "IBM Plex Sans Variable, Source Code Pro",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "raycast.md",
+    "domain_keywords": [
+      "developer",
+      "marketing"
+    ],
+    "tone_keywords": [
+      "minimal",
+      "trustworthy"
+    ],
+    "color_summary": "key: Near-Black Blue/Pure White/Raycast Red",
+    "typography_summary": "Inter, Inter Fallback, SF Pro Text",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "renault.md",
+    "domain_keywords": [
+      "automotive",
+      "luxury"
+    ],
+    "tone_keywords": [
+      "bold",
+      "precise",
+      "editorial",
+      "monochromatic",
+      "vibrant",
+      "geometric"
+    ],
+    "color_summary": "key: Renault Yellow/Absolute Black/Pure White",
+    "typography_summary": "see source",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "replicate.md",
+    "domain_keywords": [
+      "developer",
+      "ai"
+    ],
+    "tone_keywords": [
+      "bold",
+      "playful",
+      "clean",
+      "vibrant",
+      "geometric",
+      "confident"
+    ],
+    "color_summary": "key: Replicate Dark/Replicate Red/Secondary Red",
+    "typography_summary": "see source",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "resend.md",
+    "domain_keywords": [
+      "developer",
+      "luxury"
+    ],
+    "tone_keywords": [
+      "cold",
+      "precise",
+      "premium",
+      "editorial",
+      "technical",
+      "clean",
+      "geometric",
+      "confident"
+    ],
+    "color_summary": "key: Void Black/Near White/Pure White",
+    "typography_summary": "Helvetica",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "revolut.md",
+    "domain_keywords": [
+      "fintech",
+      "marketing"
+    ],
+    "tone_keywords": [
+      "premium",
+      "modern",
+      "geometric",
+      "confident"
+    ],
+    "color_summary": "key: Revolut Dark/Pure White/Light Surface",
+    "typography_summary": "Aeonik Pro, Inter, Arial",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "runwayml.md",
+    "domain_keywords": [
+      "marketing",
+      "ai"
+    ],
+    "tone_keywords": [
+      "minimal",
+      "editorial",
+      "clean",
+      "geometric"
+    ],
+    "color_summary": "key: Runway Black/Deep Black/Dark Surface",
+    "typography_summary": "see source",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "sanity.md",
+    "domain_keywords": [
+      "developer",
+      "marketing"
+    ],
+    "tone_keywords": [
+      "warm",
+      "precise",
+      "friendly",
+      "editorial",
+      "technical",
+      "monochromatic",
+      "geometric"
+    ],
+    "color_summary": "key: Sanity Black/Pure Black/Sanity Red",
+    "typography_summary": "IBM Plex Mono, Helvetica",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "sentry.md",
+    "domain_keywords": [
+      "developer"
+    ],
+    "tone_keywords": [
+      "bold",
+      "warm",
+      "cold",
+      "technical",
+      "vibrant",
+      "muted"
+    ],
+    "color_summary": "key: Deep Purple/Darker Purple/Border Purple",
+    "typography_summary": "Dammit Sans, Rubik, Monaco",
+    "layout_density": "airy"
+  },
+  {
+    "file": "shopify.md",
+    "domain_keywords": [
+      "saas",
+      "marketing",
+      "luxury"
+    ],
+    "tone_keywords": [
+      "warm",
+      "cold",
+      "refined"
+    ],
+    "color_summary": "single accent; key: Shopify White/Shopify Black/Neon Green",
+    "typography_summary": "see source",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "spacex.md",
+    "domain_keywords": [],
+    "tone_keywords": [
+      "bold",
+      "geometric"
+    ],
+    "color_summary": "key: Space Black/Spectral White/Ghost Surface",
+    "typography_summary": "D-DIN-Bold, D-DIN",
+    "layout_density": "airy"
+  },
+  {
+    "file": "spotify.md",
+    "domain_keywords": [
+      "marketing"
+    ],
+    "tone_keywords": [
+      "bold",
+      "premium"
+    ],
+    "color_summary": "single accent; key: Spotify Green/Near Black/Dark Surface",
+    "typography_summary": "SpotifyMixUITitle, SpotifyMixUI",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "stripe.md",
+    "domain_keywords": [
+      "dashboard",
+      "data",
+      "fintech",
+      "enterprise"
+    ],
+    "tone_keywords": [
+      "bold",
+      "warm",
+      "cold",
+      "precise",
+      "luxurious",
+      "premium",
+      "technical",
+      "clean",
+      "modern",
+      "geometric",
+      "confident"
+    ],
+    "color_summary": "key: Stripe Purple/Deep Navy/Pure White",
+    "typography_summary": "SF Pro Display, SourceCodePro, SFMono-Regular",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "supabase.md",
+    "domain_keywords": [
+      "developer",
+      "marketing"
+    ],
+    "tone_keywords": [
+      "minimal",
+      "premium",
+      "technical",
+      "geometric",
+      "sophisticated"
+    ],
+    "color_summary": "key: Supabase Green/Green Link/Green Border",
+    "typography_summary": "Circular, Source Code Pro",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "superhuman.md",
+    "domain_keywords": [
+      "productivity",
+      "marketing",
+      "luxury"
+    ],
+    "tone_keywords": [
+      "minimal",
+      "warm",
+      "refined",
+      "approachable",
+      "clean",
+      "confident"
+    ],
+    "color_summary": "single accent; key: Mysteria Purple/Lavender Glow/Charcoal Ink",
+    "typography_summary": "Super Sans VF, Messina Sans, Messina Serif",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "tesla.md",
+    "domain_keywords": [
+      "luxury"
+    ],
+    "tone_keywords": [
+      "minimal",
+      "geometric"
+    ],
+    "color_summary": "single accent; key: Electric Blue/Pure White/Promo Blue",
+    "typography_summary": "Universal Sans Display, Universal Sans Text",
+    "layout_density": "airy"
+  },
+  {
+    "file": "theverge.md",
+    "domain_keywords": [
+      "developer",
+      "media"
+    ],
+    "tone_keywords": [
+      "editorial"
+    ],
+    "color_summary": "single accent; key: Jelly Mint/Verge Ultraviolet/Console Mint Border",
+    "typography_summary": "see source",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "together.ai.md",
+    "domain_keywords": [
+      "ai",
+      "enterprise"
+    ],
+    "tone_keywords": [
+      "friendly",
+      "approachable",
+      "technical",
+      "clean",
+      "geometric"
+    ],
+    "color_summary": "key: Brand Magenta/Brand Orange/Dark Blue",
+    "typography_summary": "The Future, Arial, PP Neue Montreal Mono",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "uber.md",
+    "domain_keywords": [],
+    "tone_keywords": [
+      "bold",
+      "warm",
+      "cold",
+      "friendly",
+      "geometric",
+      "confident"
+    ],
+    "color_summary": "key: Uber Black/Pure White/Hover Gray",
+    "typography_summary": "UberMove, UberMoveText",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "vercel.md",
+    "domain_keywords": [
+      "dashboard",
+      "developer"
+    ],
+    "tone_keywords": [
+      "technical",
+      "geometric"
+    ],
+    "color_summary": "key: Vercel Black/Pure White/True Black",
+    "typography_summary": "Geist, Geist Mono",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "voltagent.md",
+    "domain_keywords": [
+      "saas",
+      "developer",
+      "landing",
+      "ai"
+    ],
+    "tone_keywords": [
+      "warm",
+      "cold",
+      "precise",
+      "friendly",
+      "technical",
+      "geometric"
+    ],
+    "color_summary": "single accent; key: Emerald Signal Green/VoltAgent Mint/Tailwind Emerald",
+    "typography_summary": "Inter, SFMono-Regular",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "warp.md",
+    "domain_keywords": [
+      "productivity",
+      "developer"
+    ],
+    "tone_keywords": [
+      "minimal",
+      "bold",
+      "warm",
+      "cold",
+      "refined",
+      "approachable",
+      "editorial",
+      "monochromatic",
+      "muted",
+      "calm",
+      "geometric"
+    ],
+    "color_summary": "monochrome; key: Warm Parchment/Earth Gray/Deep Void",
+    "typography_summary": "Matter Regular, Matter Regular Placeholder, Matter Medium",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "webflow.md",
+    "domain_keywords": [],
+    "tone_keywords": [
+      "precise",
+      "clean",
+      "confident"
+    ],
+    "color_summary": "key: Near Black/Webflow Blue/Blue 400",
+    "typography_summary": "WF Visual Sans Variable, Arial",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "wired.md",
+    "domain_keywords": [],
+    "tone_keywords": [
+      "editorial",
+      "technical",
+      "geometric"
+    ],
+    "color_summary": "single accent; key: WIRED Black/Page Ink/Paper White",
+    "typography_summary": "see source",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "wise.md",
+    "domain_keywords": [
+      "fintech"
+    ],
+    "tone_keywords": [
+      "minimal",
+      "bold",
+      "warm",
+      "confident"
+    ],
+    "color_summary": "key: Near Black/Wise Green/Dark Green",
+    "typography_summary": "Wise Sans, Inter",
+    "layout_density": "dense"
+  },
+  {
+    "file": "x.ai.md",
+    "domain_keywords": [
+      "luxury",
+      "consumer"
+    ],
+    "tone_keywords": [
+      "minimal",
+      "technical",
+      "clean",
+      "geometric"
+    ],
+    "color_summary": "key: Pure White/Dark Background/White Default",
+    "typography_summary": "GeistMono",
+    "layout_density": "balanced"
+  },
+  {
+    "file": "zapier.md",
+    "domain_keywords": [
+      "developer",
+      "social"
+    ],
+    "tone_keywords": [
+      "bold",
+      "elegant",
+      "warm",
+      "cold",
+      "refined",
+      "approachable",
+      "editorial",
+      "technical",
+      "clean",
+      "modern",
+      "muted",
+      "energetic",
+      "organic",
+      "geometric"
+    ],
+    "color_summary": "key: Zapier Black/Cream White/Off-White",
+    "typography_summary": "Degular Display, Inter, GT Alpina",
+    "layout_density": "balanced"
+  }
+]

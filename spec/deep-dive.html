@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>딥다이브 — 문서 규칙 + 근육(컴파일러) 아키텍처</title>
+<style>
+  :root{
+    --bg:#fbfbfd;--panel:#fff;--ink:#1d1d2b;--muted:#5e6075;--line:#e6e6ef;
+    --accent:#5b5bd6;--accent-soft:#eef0ff;--accent-line:#a9a9f2;
+    --down:#0f9b8e;--down-soft:#e7f7f4;--warn:#e5484d;--amber:#b7791f;--amber-soft:#fdf3e0;
+    --radius:14px;--shadow:0 1px 2px rgba(20,20,50,.04),0 8px 24px rgba(20,20,50,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.72;
+    font-family:"Pretendard","Apple SD Gothic Neo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+  code,.mono{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;font-size:.88em;
+    background:#f1f1f7;padding:.1em .42em;border-radius:6px;color:#3a3a55}
+  header.hero{padding:60px 0 32px;border-bottom:1px solid var(--line);
+    background:radial-gradient(1100px 280px at 18% -10%,var(--accent-soft),transparent 60%)}
+  .kicker{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--accent);
+    background:var(--accent-soft);padding:5px 12px;border-radius:999px}
+  h1{font-size:34px;line-height:1.22;margin:16px 0 8px;letter-spacing:-.02em}
+  .lead{font-size:17px;color:var(--muted);max-width:760px;margin:0}
+  nav.toc{position:sticky;top:0;z-index:10;background:rgba(251,251,253,.86);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+  nav.toc .wrap{display:flex;gap:6px;flex-wrap:wrap;padding:10px 24px}
+  nav.toc a{font-size:13.5px;font-weight:600;color:var(--muted);text-decoration:none;padding:6px 11px;border-radius:8px}
+  nav.toc a:hover{color:var(--accent);background:var(--accent-soft)}
+  .parttag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;color:#fff;background:var(--accent);padding:4px 10px;border-radius:7px;margin-bottom:8px}
+  section{padding:50px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:25px;letter-spacing:-.01em;margin:2px 0 6px}
+  h3{font-size:18px;margin:30px 0 10px}
+  .sub{color:var(--muted);margin:0 0 22px;max-width:800px}
+  .fig{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin:10px 0 16px;overflow-x:auto}
+  .fig svg{display:block;width:100%;height:auto;min-width:600px}
+  .cap{font-size:13px;color:var(--muted);margin:6px 2px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+  .card .n{font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:13px;color:var(--accent);font-weight:700}
+  .card h4{margin:6px 0 10px;font-size:16px}
+  .card .row{font-size:13.5px;margin:6px 0;color:var(--muted)}
+  .card .row b{color:var(--ink)}
+  .tagk{display:inline-block;font-size:11px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:1px 7px;margin-right:6px}
+  .callout{display:flex;gap:12px;border-radius:12px;padding:15px 17px;margin:18px 0;font-size:14.5px;border:1px solid}
+  .callout.acc{background:var(--accent-soft);border-color:var(--accent-line)}
+  .callout.amb{background:var(--amber-soft);border-color:#ecd9ad}
+  .callout .ic{font-weight:800}
+  .callout.acc .ic{color:var(--accent)} .callout.amb .ic{color:var(--amber)}
+  ol.steps{counter-reset:s;list-style:none;padding:0;margin:14px 0 0}
+  ol.steps li{counter-increment:s;position:relative;padding:12px 0 12px 46px;border-bottom:1px dashed var(--line)}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:30px;height:30px;background:var(--accent);color:#fff;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px}
+  ol.steps li b{color:var(--ink)} ol.steps li .f{font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:12.5px;color:#71748a}
+  .asset{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px dashed var(--line)}
+  .asset .b{flex:0 0 8px;height:8px;border-radius:50%;background:var(--accent);margin-top:9px}
+  .asset .f{font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:12.5px;color:#71748a;display:block;margin-top:2px}
+  /* svg shared */
+  .nd{fill:#fff;stroke:#d9d9e6;stroke-width:1.5}
+  .nd-up{fill:var(--accent-soft);stroke:var(--accent-line);stroke-width:1.5}
+  .nd-dn{fill:var(--down-soft);stroke:#9ad5cd;stroke-width:1.5}
+  .nd-am{fill:var(--amber-soft);stroke:#ecd9ad;stroke-width:1.5}
+  .t{fill:#23243a;font-size:13.5px;font-weight:700;font-family:inherit}
+  .ts{fill:#5e6075;font-size:12px;font-family:inherit}
+  .tm{fill:#3a3a55;font-size:11.5px;font-family:"SF Mono",ui-monospace,Menlo,monospace}
+  .flow{stroke:var(--accent);stroke-width:2;fill:none}
+  .flow-am{stroke:var(--amber);stroke-width:2;fill:none}
+  .flow-warn{stroke:var(--warn);stroke-width:2;stroke-dasharray:6 4;fill:none}
+  .bandlbl{fill:#8385a0;font-size:12px;font-weight:700;letter-spacing:.03em;font-family:inherit}
+  footer{padding:40px 0 80px}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap">
+  <span class="kicker">spec-13-01 · 딥다이브</span>
+  <h1>문서를 "규칙"으로 + 근육(컴파일러) 아키텍처</h1>
+  <p class="lead">두 가지를 다룹니다. <b>(1)</b> "기획 문서 5개"를 추상적 글쓰기가 아니라 <b>검사 가능한 규칙 체계</b>로 만드는 법(추천), <b>(2)</b> 기존 gen-design의 "근육" — <code>chat.md → React</code> <b>컴파일러</b>가 실제로 어떻게 생겼고 왜 studio에 "박혀" 있는지(정말 친절하게).</p>
+</div></header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#p1">Part 1 · 문서를 규칙으로</a>
+  <a href="#model">연결된 모델</a>
+  <a href="#docrules">5종 규칙 추천</a>
+  <a href="#p2">Part 2 · 근육 아키텍처</a>
+  <a href="#embedded">"박혔다"의 뜻</a>
+  <a href="#pipeline">컴파일 파이프라인</a>
+  <a href="#assets">핵심 자산 5</a>
+</div></nav>
+
+<main class="wrap">
+
+<!-- =================== PART 1 =================== -->
+<section id="p1">
+  <span class="parttag">PART 1</span>
+  <h2>"문서 5개 만들기"를 규칙으로 바꾸기</h2>
+  <p class="sub">맞는 직감입니다 — "prd/design/structure/flows/ui-rules를 쓴다"는 말은 <b>너무 추상적</b>입니다. 자유 작문이면 매번 다른 결과가 나오고, 하류(<code>/gd-chat</code>)가 활용하기도 어렵습니다. 핵심은 <b>각 문서를 "무엇을·어떤 규칙으로" 채울지</b> 정하는 것.</p>
+
+  <div class="callout acc"><span class="ic">핵심</span><div>5종 문서를 <b>따로 노는 자유 글 5개</b>가 아니라 — <b>ID로 서로 연결된 하나의 모델</b>로 보세요. 그리고 그 내용은 <b>하류가 실제로 소비할 수 있는 어휘</b>(컴포넌트 레지스트리·토큰)에 묶으세요. 그러면 (a) 검사가 가능해지고 (b) <code>/gd-chat</code> 주입이 정확해집니다.</div></div>
+
+  <h3 id="model">① 5종은 "ID로 연결된 모델"이다</h3>
+  <div class="fig">
+  <svg viewBox="0 0 940 250" role="img" aria-label="연결된 문서 모델">
+    <defs><marker id="m1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b5bd6"/></marker></defs>
+    <text class="bandlbl" x="40" y="32">prd.md · capability</text>
+    <text class="bandlbl" x="290" y="32">structure.md · page</text>
+    <text class="bandlbl" x="545" y="32">flows · step</text>
+    <text class="bandlbl" x="775" y="32">chat.md · scene</text>
+
+    <rect class="nd-up" x="30" y="48" width="180" height="40" rx="9"/><text class="tm" x="46" y="73">[CAP-01] 예약하기</text>
+    <rect class="nd-up" x="30" y="104" width="180" height="40" rx="9"/><text class="tm" x="46" y="129">[CAP-03] 후기쓰기</text>
+
+    <rect class="nd" x="285" y="48" width="180" height="40" rx="9"/><text class="tm" x="301" y="73">[PAGE-booking]</text>
+    <rect class="nd" x="285" y="120" width="180" height="40" rx="9"/><text class="tm" x="301" y="145">[PAGE-review]</text>
+
+    <rect class="nd" x="540" y="84" width="170" height="40" rx="9"/><text class="tm" x="556" y="109">[FLOW-booking]</text>
+
+    <rect class="nd-dn" x="770" y="84" width="150" height="40" rx="9"/><text class="tm" x="786" y="109">booking.chat.md</text>
+
+    <path class="flow" d="M212,68 L283,68" marker-end="url(#m1)"/>
+    <path class="flow" d="M212,124 C250,124 250,140 283,140" marker-end="url(#m1)"/>
+    <path class="flow" d="M467,70 C505,70 505,100 538,102" marker-end="url(#m1)"/>
+    <path class="flow" d="M712,104 L768,104" marker-end="url(#m1)"/>
+    <text class="ts" x="222" y="60" fill="#5b5bd6">covers</text>
+    <text class="ts" x="478" y="62" fill="#5b5bd6">page 참조</text>
+    <text class="ts" x="716" y="96" fill="#0f9b8e">= scene</text>
+  </svg>
+  <p class="cap">각 항목에 <b>안정적인 ID</b>를 달면 "예약하기(CAP-01)는 어느 page가 담당? 그 page는 어느 flow에 나옴? 그게 어느 chat.md scene이 됨?"이 <b>기계적으로 추적</b>됩니다. 끊긴 고리(예: 후기쓰기를 담당할 page 없음)는 자동으로 잡힙니다. → 이게 <code>/gd-plan-review</code>의 BLOCK이고, v2의 "결정적 판정"의 토대.</p>
+  </div>
+
+  <h3 id="docrules">② 문서별 추천 — 구조 / 핵심 규칙 / 하류 연결</h3>
+  <div class="grid">
+    <div class="card"><div class="n">prd.md</div><h4>무엇을 만드나</h4>
+      <div class="row"><span class="tagk">구조</span>한 줄 요약 · 페르소나(1–3) · <b>capability 목록 [CAP-NN]</b> · 성공기준 · 비범위 · 톤 키워드</div>
+      <div class="row"><span class="tagk">규칙</span>capability는 <b>ID + 동사로 시작</b>("예약하기"). 톤 키워드는 통제된 어휘에서.</div>
+      <div class="row"><span class="tagk">하류</span>모든 CAP은 structure의 page로 매핑돼야(BLOCK). 톤 → narrative.</div>
+    </div>
+    <div class="card"><div class="n">design.md</div><h4>어떤 톤·비주얼인가</h4>
+      <div class="row"><span class="tagk">구조</span>collection 픽 + frontmatter(<code>pickedFrom</code>/<code>reason</code>) + 톤·색·타이포 요약</div>
+      <div class="row"><span class="tagk">규칙</span>0부터 안 만들고 <b>collection에서 픽</b>. 톤 키워드 = 통제 어휘.</div>
+      <div class="row"><span class="tagk">하류</span>톤 → narrative · 색/radius → <b>tokens</b> · 컴포넌트 스타일 → 레지스트리.</div>
+    </div>
+    <div class="card"><div class="n">structure.md</div><h4>어떤 페이지·구조인가</h4>
+      <div class="row"><span class="tagk">구조</span>sitemap <b>[PAGE-slug]</b> · 페이지별 섹션 목록 · 레이아웃(LNB/Sticky/Modal) · 반응형 · 상태(empty/loading/error) · <code>covers:[CAP..]</code></div>
+      <div class="row"><span class="tagk">규칙</span>page에 ID. 섹션은 <b>통제된 섹션 어휘</b>. 각 page가 담당하는 capability 명시.</div>
+      <div class="row"><span class="tagk">하류</span>page ↔ scene(chat.md) 매핑 · 섹션 순서 → chat.md Structure 트리 순서.</div>
+    </div>
+    <div class="card"><div class="n">flows/*.md</div><h4>사용자 여정은</h4>
+      <div class="row"><span class="tagk">구조</span>이름·목적·actor·trigger · <b>steps[→PAGE-id]</b> · edge cases · success</div>
+      <div class="row"><span class="tagk">규칙</span>step이 참조하는 page는 <b>sitemap에 반드시 존재</b>. step마다 페이지·컴포넌트·데이터 명시.</div>
+      <div class="row"><span class="tagk">하류</span>scene 진입/이탈 컨텍스트 → chat.md narrative/history.</div>
+    </div>
+    <div class="card"><div class="n">ui-rules.md</div><h4>수치 규칙은</h4>
+      <div class="row"><span class="tagk">구조</span>spacing · radius · motion · header · CTA 위계 · form · mobile · a11y — <b>전부 수치</b></div>
+      <div class="row"><span class="tagk">규칙</span>수치는 가능하면 <b>token으로 표현</b>(또는 token과 일치). design.md와 충돌 금지.</div>
+      <div class="row"><span class="tagk">하류</span>수치 → <code>tokens.json</code> → 컴파일러가 적용. ui-rules ↔ tokens 1:1이 이상적.</div>
+    </div>
+  </div>
+
+  <div class="callout amb"><span class="ic">정리</span><div>추천 한 줄: <b>"자유 서술"을 버리고 "통제된 어휘 + 안정 ID + 하류(token·레지스트리) 매핑"을 가진 구조화된 템플릿</b>으로. 이러면 "문서 5개"가 추상에서 벗어나 <b>채우면 곧 검사·주입 가능한 모델</b>이 됩니다. (단, ID 체계의 "결정적 검사"까지는 v2 — v1은 템플릿 구조 + LLM 판정으로 시작 가능)</div></div>
+</section>
+
+<!-- =================== PART 2 =================== -->
+<section id="p2">
+  <span class="parttag">PART 2</span>
+  <h2>근육 = <code>chat.md → React</code> 컴파일러</h2>
+  <p class="sub">"근육"은 <code>chat.md</code>(화면 묘사 텍스트)를 <b>실제 React 코드</b>로 바꾸는 결정적 변환기입니다. 두뇌(대화 스킬)와 달리, 이건 <b>코드</b>예요. 그리고 이 코드가 <b>studio 안에 "박혀"</b> 있습니다.</p>
+
+  <h3 id="embedded">① "studio에 박혔다"가 무슨 뜻?</h3>
+  <p class="sub">컴파일러가 <b>독립된 패키지가 아니라</b>, studio라는 앱의 소스 폴더(<code>studio/src/lib/…</code>) <b>안에</b> 파일로 들어 있다는 뜻입니다. 그래서 컴파일러만 따로 <code>npm install</code> 할 수 없고, studio 소스가 옆에 있어야만 돕니다. <code>gd-cli</code>는 긴 상대경로로 studio 안으로 "손을 뻗어" 끌어다 씁니다.</p>
+  <div class="fig">
+  <svg viewBox="0 0 940 290" role="img" aria-label="studio 결합 다이어그램">
+    <defs><marker id="m2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b7791f"/></marker></defs>
+
+    <!-- studio container -->
+    <rect x="330" y="40" width="580" height="220" rx="16" fill="#f7f7fc" stroke="#dcdce8" stroke-width="1.5"/>
+    <text class="t" x="354" y="68" fill="#8385a0">studio/  (Vite 앱)</text>
+
+    <rect class="nd" x="360" y="86" width="240" height="64" rx="10"/>
+    <text class="tm" x="376" y="110">src/lib/chat-md/</text>
+    <text class="ts" x="376" y="132">peggy 문법 + AST</text>
+
+    <rect class="nd" x="360" y="170" width="240" height="64" rx="10"/>
+    <text class="tm" x="376" y="194">src/lib/chat-md-compiler/react/</text>
+    <text class="ts" x="376" y="216">codegen (TSX 생성)</text>
+
+    <rect class="nd-am" x="640" y="120" width="240" height="64" rx="10"/>
+    <text class="tm" x="656" y="144">.../chat-md-compiler/paper/</text>
+    <text class="ts" x="656" y="166">컴포넌트 레지스트리 (react도 의존)</text>
+
+    <!-- gd-cli outside -->
+    <rect class="nd-up" x="40" y="120" width="190" height="70" rx="12"/>
+    <text class="t" x="58" y="150">gd-cli</text>
+    <text class="ts" x="58" y="170">(packages/gd-cli)</text>
+
+    <!-- reaching-in arrow -->
+    <path class="flow-am" d="M232,150 C290,150 300,118 358,118" marker-end="url(#m2)"/>
+    <text class="ts" x="240" y="112" fill="#b7791f">../../../../studio/src/lib/… 직접 import</text>
+
+    <text class="ts" x="40" y="232" fill="#b7791f" font-weight="700">→ studio 소스가 옆에 있어야만 동작 · 단독 npm 배포 불가</text>
+  </svg>
+  <p class="cap">비유: 컴파일러가 <b>특정 차(studio)에 용접된 엔진</b> 같은 상태. 성능은 검증됐지만 다른 차(gd-plan 기반 새 토대)로 옮기려면 먼저 <b>용접을 떼어 독립 엔진 블록(<code>@gd/chat-md-core</code>)</b>으로 만들어야 합니다. 그 떼어내기 설계가 바로 <b>spec-12-07(pluginarch)</b>인데 아직 <b>미구현</b>입니다.</p>
+  </div>
+
+  <h3 id="pipeline">② 컴파일 파이프라인 — chat.md가 React가 되기까지</h3>
+  <div class="fig">
+  <svg viewBox="0 0 940 210" role="img" aria-label="컴파일 파이프라인">
+    <defs><marker id="m3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b5bd6"/></marker></defs>
+    <!-- row of nodes -->
+    <rect class="nd-dn" x="20" y="60" width="120" height="56" rx="10"/><text class="tm" x="36" y="84">chat.md</text><text class="ts" x="36" y="103">(텍스트)</text>
+    <rect class="nd" x="180" y="60" width="120" height="56" rx="10"/><text class="t" x="196" y="84">파싱</text><text class="ts" x="196" y="103">peggy 문법</text>
+    <rect class="nd" x="340" y="60" width="120" height="56" rx="10"/><text class="t" x="356" y="84">AST</text><text class="ts" x="356" y="103">컴포넌트 트리</text>
+    <rect class="nd" x="500" y="60" width="130" height="56" rx="10"/><text class="t" x="516" y="84">shell 합성</text><text class="ts" x="516" y="103">전역 외각 +섹션</text>
+    <rect class="nd" x="670" y="60" width="120" height="56" rx="10"/><text class="t" x="686" y="84">JSX emit</text><text class="ts" x="686" y="103">+import 연결</text>
+    <rect class="nd-dn" x="828" y="60" width="96" height="56" rx="10"/><text class="t" x="844" y="84">TSX</text><text class="ts" x="844" y="103">React</text>
+
+    <path class="flow" d="M142,88 L178,88" marker-end="url(#m3)"/>
+    <path class="flow" d="M302,88 L338,88" marker-end="url(#m3)"/>
+    <path class="flow" d="M462,88 L498,88" marker-end="url(#m3)"/>
+    <path class="flow" d="M632,88 L668,88" marker-end="url(#m3)"/>
+    <path class="flow" d="M792,88 L826,88" marker-end="url(#m3)"/>
+
+    <!-- order.md branch -->
+    <rect class="nd-am" x="600" y="150" width="190" height="44" rx="10"/><text class="tm" x="616" y="170">&lt;slug&gt;.order.md</text><text class="ts" x="616" y="187">validation·fetch 의도</text>
+    <path class="flow-am" d="M730,150 C740,135 760,124 770,118" marker-end="url(#m3)" stroke="#b7791f"/>
+    <text class="ts" x="616" y="140" fill="#b7791f">있으면 zod/useForm/useQuery 주입</text>
+  </svg>
+  </div>
+  <ol class="steps">
+    <li><b>chat.md 읽기</b> — 디자이너가 만든 화면 묘사 텍스트(3-layer). <span class="f">studio/src/lib/chat-md-compiler/react/compile-scene.ts</span></li>
+    <li><b>파싱(peggy 문법)</b> — 텍스트를 문법 규칙으로 해석. <span class="f">studio/src/lib/chat-md/grammar/chat-md.ts (peggy, 488줄)</span></li>
+    <li><b>AST 생성</b> — <code>&lt;Card&gt;&lt;Button&gt;…</code> 같은 트리(컴포넌트·placeholder·토큰)로 변환. <span class="f">chat-md/parser/ast-types.ts</span></li>
+    <li><b>shell 합성</b> — 전역 외각(<code>_shell.chat.md</code>)의 <code>{{scene.content}}</code> 자리에 이 화면을 끼움. <span class="f">react/shell-merge.ts</span></li>
+    <li><b>섹션 분리 + JSX emit</b> — Behavior(useState)·Variants 분리 후 AST를 JSX 문자열로. placeholder는 <code>{t("…")}</code>/<code>{tokens["…"]}</code>로. <span class="f">react/jsx-emitter.ts · compile.ts</span></li>
+    <li><b>import 연결</b> — 쓴 컴포넌트 이름을 <b>레지스트리</b>에서 찾아 <code>@/components/…</code> import 구문 생성. <span class="f">react/imports-builder.ts</span></li>
+    <li><b>(선택) order.md 주입</b> — <code>&lt;slug&gt;.order.md</code>가 있으면 zod 스키마·useForm·useQuery(TanStack)·Skeleton을 TSX에 끼움. <span class="f">packages/gd-cli/src/commands/order.ts</span></li>
+    <li><b>단일 React TSX 출력</b> — <code>export function &lt;Name&gt;(){ return (…) }</code>. 맨 앞에 <code>// @gd: …</code> 주석(drift 추적용).</li>
+  </ol>
+
+  <h3 id="assets">③ 새로 짜든 떼어내든, 반드시 이해해야 할 핵심 자산 5</h3>
+  <div class="box card">
+    <div class="asset"><span class="b"></span><div><b>peggy 문법</b> — chat.md의 전체 규칙(frontmatter + 3-layer + 컴포넌트 태그 + placeholder)이 한 파일에 집약. 재현 비용이 가장 큼.<span class="f">studio/src/lib/chat-md/grammar/chat-md.ts</span></div></div>
+    <div class="asset"><span class="b"></span><div><b>AST 타입</b> — 문법과 모든 emitter의 "계약". 4-layer 어휘(props/theme/tokens).<span class="f">studio/src/lib/chat-md/parser/ast-types.ts</span></div></div>
+    <div class="asset"><span class="b"></span><div><b>react codegen</b> — shell 합성 + 결정적 JSX emit 로직.<span class="f">studio/src/lib/chat-md-compiler/react/ (compile-scene·compile·jsx-emitter·shell-merge·imports-builder)</span></div></div>
+    <div class="asset"><span class="b"></span><div><b>컴포넌트 레지스트리</b> — 어휘 SSOT(이름→import 경로). 현재 <code>paper/</code> 안에 있어 "react가 paper에 의존"하는 결합의 원인.<span class="f">studio/src/lib/chat-md-compiler/paper/component-registry-metadata.ts</span></div></div>
+    <div class="asset"><span class="b"></span><div><b>order.md → 동작 코드</b> — 정적 UI 너머(폼 검증·데이터 fetch)를 코드로. chat.md(구조)와 order.md(동작)의 2-파일 분리.<span class="f">packages/gd-cli/src/commands/order.ts</span></div></div>
+  </div>
+  <div class="callout amb"><span class="ic">결합 요약</span><div><b>gd-cli</b>가 react/lint/diff/paper-import 전부 <code>../../../../studio/src/lib/…</code>로 studio를 직접 참조 + 빌드 없이 <code>tsx</code>로 실행 → 단독 배포 불가. 떼어내기 설계(=<code>@gd/chat-md-core</code> 추출, 레지스트리 DI)는 <b>spec-12-07에 있지만 미구현(보류)</b>. "벗어나기"의 실제 난이도는 전부 여기에 있습니다.</div></div>
+</section>
+
+<footer class="wrap">
+  <p class="cap">파일: <code>specs/spec-13-01-gd-plan-package/deep-dive.html</code> · 함께 보기: <code>architecture.html</code>(gd-plan 제품 흐름) · 결정(A/B/C 벗어나기)은 아직 보류 — 맥락 이해용 문서입니다.</p>
+</footer>
+
+</main>
+</body>
+</html>

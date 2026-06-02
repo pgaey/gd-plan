@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>섹션 어휘 시각 사전 — structure.md</title>
+<style>
+  :root{--bg:#fbfbfd;--panel:#fff;--ink:#1d1d2b;--muted:#5e6075;--line:#e6e6ef;
+    --accent:#5b5bd6;--accent-soft:#eef0ff;--accent-line:#a9a9f2;--app:#0f9b8e;--app-soft:#e7f7f4;--app-line:#9ad5cd;
+    --amber:#b7791f;--amber-soft:#fdf3e0;--radius:14px;--shadow:0 1px 2px rgba(20,20,50,.04),0 8px 24px rgba(20,20,50,.06)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.7;
+    font-family:"Pretendard","Apple SD Gothic Neo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
+  code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;font-size:.88em;background:#f1f1f7;padding:.1em .42em;border-radius:6px;color:#3a3a55}
+  header{padding:54px 0 30px;border-bottom:1px solid var(--line);background:radial-gradient(1100px 280px at 18% -10%,var(--accent-soft),transparent 60%)}
+  .kicker{display:inline-block;font-size:13px;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:5px 12px;border-radius:999px}
+  h1{font-size:30px;margin:16px 0 8px;letter-spacing:-.02em}
+  .lead{font-size:16px;color:var(--muted);max-width:740px;margin:0}
+  .disc{display:flex;gap:12px;background:var(--amber-soft);border:1px solid #ecd9ad;border-radius:12px;padding:14px 16px;margin:22px 0;font-size:14.5px}
+  .disc .ic{font-weight:800;color:var(--amber)}
+  section{padding:40px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 20px;font-size:14.5px}
+  .legendbar{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:7px;margin-bottom:14px}
+  .lb-mk{background:var(--accent-soft);color:var(--accent)} .lb-app{background:var(--app-soft);color:var(--app)}
+
+  .frame{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+  .browser{display:flex;gap:7px;padding:0 4px 12px;border-bottom:1px solid var(--line);margin-bottom:14px}
+  .dot{width:11px;height:11px;border-radius:50%;background:#e2e2ee}
+
+  .srow{display:grid;grid-template-columns:1fr 26px 230px;align-items:center;gap:8px;margin:7px 0}
+  .mock{border:1.6px dashed var(--accent-line);background:var(--accent-soft);border-radius:9px;padding:10px 14px;display:flex;flex-direction:column;justify-content:center;gap:7px}
+  .app .mock{border-color:var(--app-line);background:var(--app-soft)}
+  .mock .bar{height:7px;border-radius:4px;background:#c9caf2;opacity:.8}
+  .app .mock .bar{background:#9fd9d0}
+  .mock .bar.s{width:38%} .mock .bar.m{width:62%} .mock .bar.l{width:84%}
+  .mock .rowbars{display:flex;gap:8px} .mock .rowbars .bar{flex:1}
+  .mock .mt{font-size:11.5px;color:#6a6ba8;font-weight:700} .app .mock .mt{color:#2f7d74}
+  .ar{color:var(--accent);font-weight:800;text-align:center;font-size:15px} .app .ar{color:var(--app)}
+  .lab b{display:block;font-size:14px} .lab span{font-size:12.5px;color:var(--muted)}
+  .lab .nm{font-family:"SF Mono",ui-monospace,Menlo,monospace;color:var(--ink)}
+  @media(max-width:680px){.srow{grid-template-columns:1fr 20px 150px}}
+  footer{padding:34px 0 70px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <span class="kicker">structure.md · 섹션 어휘</span>
+  <h1>섹션 어휘 시각 사전</h1>
+  <p class="lead">structure.md 가 페이지를 조립할 때 쓰는 <b>고정된 섹션 어휘</b>를 눈으로 익히는 사전입니다. 각 박스가 어떤 섹션인지 화살표로 표시했습니다.</p>
+</div></header>
+
+<main class="wrap">
+  <div class="disc"><span class="ic">!</span><div>이건 <b>"모든 프로젝트가 이렇게 생겼다"가 아닙니다.</b> 배치(순서·유무)는 프로젝트마다 다릅니다. <b>공통인 것은 "섹션의 종류(어휘)"뿐</b>이고, 이 사전은 그 어휘를 시각적으로 익히기 위한 <b>대표 예시 2개</b>입니다. 실제 페이지는 structure.md 에서 이 어휘로 매번 새로 조립합니다.</div></div>
+
+  <!-- ============ MARKETING ============ -->
+  <section>
+    <span class="legendbar lb-mk">A · 마케팅 페이지 예시</span>
+    <h2>랜딩 페이지 = 마케팅 섹션 스택</h2>
+    <p class="sub">상단 -> 하단으로 쌓인 각 박스가 하나의 섹션입니다.</p>
+    <div class="frame">
+      <div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+
+      <div class="srow">
+        <div class="mock" style="min-height:42px"><div class="rowbars"><span class="mt">LOGO</span><span class="bar s" style="margin-left:auto"></span><span class="bar s"></span><span class="bar s"></span></div></div>
+        <div class="ar">-&gt;</div>
+        <div class="lab"><b class="nm">Navbar</b><span>로고 · 링크[] · CTA · 상단 고정</span></div>
+      </div>
+
+      <div class="srow">
+        <div class="mock" style="min-height:120px"><div class="bar l"></div><div class="bar m"></div><div class="rowbars" style="margin-top:6px;max-width:200px"><span class="bar"></span><span class="bar"></span></div></div>
+        <div class="ar">-&gt;</div>
+        <div class="lab"><b class="nm">Hero</b><span>heading · subhead · primaryCTA · 첫인상</span></div>
+      </div>
+
+      <div class="srow">
+        <div class="mock" style="min-height:80px"><div class="rowbars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><span class="mt">3 features</span></div>
+        <div class="ar">-&gt;</div>
+        <div class="lab"><b class="nm">Feature</b><span>items[]{title, desc} · 가치 나열</span></div>
+      </div>
+
+      <div class="srow">
+        <div class="mock" style="min-height:64px"><div class="bar m"></div><span class="mt">"후기 인용"</span></div>
+        <div class="ar">-&gt;</div>
+        <div class="lab"><b class="nm">Testimonial</b><span>quotes[]{quote, author} · 신뢰</span></div>
+      </div>
+
+      <div class="srow">
+        <div class="mock" style="min-height:54px;align-items:center"><div class="bar m" style="margin:0 auto"></div><span class="mt" style="text-align:center">[ 지금 예약하기 ]</span></div>
+        <div class="ar">-&gt;</div>
+        <div class="lab"><b class="nm">CTA</b><span>heading · button · 행동 유도</span></div>
+      </div>
+
+      <div class="srow">
+        <div class="mock" style="min-height:60px"><div class="rowbars"><span class="bar s"></span><span class="bar s"></span><span class="bar s"></span></div><span class="mt">(c) legal</span></div>
+        <div class="ar">-&gt;</div>
+        <div class="lab"><b class="nm">Footer</b><span>columns[] · legal · 최하단</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ APP ============ -->
+  <section class="app">
+    <span class="legendbar lb-app">B · 앱 화면 예시</span>
+    <h2>대시보드/관리 화면 = 앱 섹션 스택</h2>
+    <p class="sub">왼쪽에 <b class="nm" style="font-family:'SF Mono',monospace">Sidebar</b>(좌측 고정 네비)가 있고, 오른쪽 본문이 아래처럼 쌓입니다.</p>
+    <div class="frame">
+      <div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+
+      <div class="srow">
+        <div class="mock" style="min-height:40px"><div class="rowbars"><span class="bar m"></span><span class="bar s" style="margin-left:auto"></span></div></div>
+        <div class="ar">-&gt;</div>
+        <div class="lab"><b class="nm">PageHeader</b><span>title · breadcrumb · actions[]</span></div>
+      </div>
+
+      <div class="srow">
+        <div class="mock" style="min-height:38px"><div class="rowbars"><span class="bar s"></span><span class="bar s"></span><span class="mt" style="margin-left:auto">검색 · 필터</span></div></div>
+        <div class="ar">-&gt;</div>
+        <div class="lab"><b class="nm">Toolbar</b><span>search · filters[] · actions[]</span></div>
+      </div>
+
+      <div class="srow">
+        <div class="mock" style="min-height:56px"><div class="rowbars"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><span class="mt">지표 카드 4</span></div>
+        <div class="ar">-&gt;</div>
+        <div class="lab"><b class="nm">StatGrid</b><span>cards[]{label, value, delta}</span></div>
+      </div>
+
+      <div class="srow">
+        <div class="mock" style="min-height:92px"><div class="bar l"></div><div class="bar l"></div><div class="bar m"></div><span class="mt">표 (행·열)</span></div>
+        <div class="ar">-&gt;</div>
+        <div class="lab"><b class="nm">DataTable</b><span>columns[] · rowActions · pagination</span></div>
+      </div>
+
+      <div class="srow">
+        <div class="mock" style="min-height:50px;align-items:center"><span class="mt" style="text-align:center">데이터 없음 + [ 만들기 ]</span></div>
+        <div class="ar">-&gt;</div>
+        <div class="lab"><b class="nm">EmptyState</b><span>message · action · 데이터 0 일 때</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap" style="padding-left:0;padding-right:0">
+    전체 어휘 목록: <code>drafts/section-taxonomy.md</code> · 템플릿: <code>drafts/structure.template.md</code><br>
+    이 사전은 <b>어휘 학습용</b>이며, 실제 페이지 배치는 프로젝트마다 structure.md 에서 새로 정의합니다.
+  </footer>
+</main>
+</body>
+</html>

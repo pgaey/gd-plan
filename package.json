@@ -1,0 +1,41 @@
+{
+  "name": "gd-plan",
+  "version": "0.1.0",
+  "private": true,
+  "description": "상류 기획 레이어 — 검증된 디자인 시스템 위에서 PRD·구조·플로우·UI규칙을 인터뷰로 생성하는 Claude Code 스킬 패키지",
+  "type": "module",
+  "bin": {
+    "gd-plan": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "plans",
+    "templates",
+    "design-md-collection",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsup src/cli.ts src/build-index.ts --format esm --target node20 --clean --shims",
+    "build-index": "node dist/build-index.js design-md-collection",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.2",
+    "tsup": "^8.3.5",
+    "typescript": "~5.9.3",
+    "vitest": "^4.0.0"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "planning",
+    "prd",
+    "design-system",
+    "ai"
+  ],
+  "license": "MIT"
+}
