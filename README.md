@@ -27,7 +27,7 @@ templates/                 prd/structure/ui-rules + flows/_name + section-taxono
                            (design.md 은 collection 픽킹이라 템플릿 없음)
 design-md-collection/      66개 검증 디자인 시스템 + _index.json (후보 캐시)
 docs/decisions/            ADR-001~005 (설계 결정)
-spec/                      원본 설계 기록 (spec/plan/task/critique/drafts)
+specs/spec-13-01-gd-plan-package/  원본 설계 기록 (gen-design 분리 전, 참고용)
 ```
 
 ## 설치 / 사용
