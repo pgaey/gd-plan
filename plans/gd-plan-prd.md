@@ -57,6 +57,7 @@ description: PRD 인터뷰. 구조화 15문항으로 docs/prd.md(상류 SSOT)를
 
 1. `docs/prd.md` 작성/갱신 (템플릿 구조 따름).
 2. `.gd/memory/project.md` 의 프로젝트 요약을 prd 핵심(한줄/페르소나/capabilities/톤)으로 **자동 갱신** (멱등). prd 가 SSOT, project.md 는 파생 요약.
+3. **결정 기록 (자동 + 수동)**: 인터뷰 fork(Out-of-scope·톤·access 등)에서 하나를 고르면 `docs/decisions.md` 에 typed 1행 append (연결=`[CAP-..]`). 형식·ID·supersede 는 `docs/decisions.md` 헤더 / `ADR-011` 정본 참조. fork 밖 중요한 일회성 결정은 "이건 남길까요?" 제안 후 기록(수동 보강).
 
 ## §6 (선택) prd-extractor 서브에이전트
 

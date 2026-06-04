@@ -35,6 +35,8 @@ description: 사이트 골격/지도. prd capabilities를 페이지 로스터로
 
 > **진실 방향 (→ ADR-010)**: 로스터의 `covers`/`상태` 칸은 페이지 frontmatter 를 따라가는 **파생/표시**다. 페이지가 진실. sitemap 은 한눈 지도일 뿐.
 
+> **결정 기록**: 페이지 묶기 fork 선택 시 `docs/decisions.md` 에 typed 1행 (연결=`[CAP-..]`). 형식·ID·supersede 는 헤더 / `ADR-011` 정본 참조.
+
 ## §4 점검 (경고 — 차단은 review 소관)
 
 1. **커버리지**: prd 의 모든 capability 가 ≥1 page 에 covers 되는가? 미배정 CAP → 경고 (해소 안 하면 `/gd-plan-review` BLOCK 예고).
