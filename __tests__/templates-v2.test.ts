@@ -5,6 +5,8 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const TEMPLATES = join(__dirname, "..", "templates");
+const DECISIONS = join(__dirname, "..", "docs", "decisions");
+const ADR_TYPES = new Set(["decision", "invariant", "convention", "tradeoff"]);
 
 function readTpl(rel: string): string {
   return readFileSync(join(TEMPLATES, rel), "utf-8");
@@ -38,6 +40,29 @@ describe("세로 슬라이스 v2 템플릿 (spec-01-01)", () => {
       const body = readTpl(t);
       expect(body, `${t}: 결정 열 없음`).toContain("결정");
       expect(body, `${t}: 이유 열 없음`).toContain("이유");
+    }
+  });
+});
+
+describe("세로 슬라이스 v2 ADR (spec-01-01)", () => {
+  const ADRS = [
+    "ADR-006-vertical-slice-page-unit.md",
+    "ADR-007-sitemap-as-map.md",
+    "ADR-008-decision-log-two-tier.md",
+  ];
+
+  it("ADR-006~008 이 존재한다", () => {
+    for (const a of ADRS) {
+      expect(existsSync(join(DECISIONS, a)), `docs/decisions/${a} 누락`).toBe(true);
+    }
+  });
+
+  it("각 ADR frontmatter type 이 closure(decision/invariant/convention/tradeoff) 안이다", () => {
+    for (const a of ADRS) {
+      const body = readFileSync(join(DECISIONS, a), "utf-8");
+      const m = body.match(/^type:\s*(\S+)/m);
+      expect(m, `${a}: type 슬롯 없음`).not.toBeNull();
+      expect(ADR_TYPES.has(m![1]), `${a}: type '${m?.[1]}' 가 closure 밖`).toBe(true);
     }
   });
 });

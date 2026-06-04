@@ -10,39 +10,39 @@
 - [x] plan.md 작성
 - [x] task.md 작성 (이 파일)
 - [x] 백로그 업데이트 (phase-01.md SPEC 표 sdd 자동 갱신)
-- [ ] 사용자 Plan Accept
+- [x] 사용자 Plan Accept
 
 ---
 
 ## Task 1: 신규 템플릿 4종 (sitemap / pages/structure / pages/decisions / decisions)
 
 ### 1-1. 브랜치 생성
-- [ ] `git checkout -b spec-01-01-dir-model-templates` (base: `phase-1-gd-plan-vertical-slice`)
-- [ ] Commit: 없음 (브랜치 생성만)
+- [x] `git checkout -b spec-01-01-dir-model-templates` (base: `phase-01-gd-plan-vertical-slice`)
+- [x] Commit: 없음 (브랜치 생성만)
 
 ### 1-2. 테스트 작성 (TDD Red)
-- [ ] `__tests__/templates-v2.test.ts` 작성 — 신규 템플릿 4종 존재 + 필수 마커(`gd:pages:start/end`) + frontmatter 키(`page/covers/roles/flows/parent`) 포함 검증
-- [ ] `pnpm test` → 신규 테스트 Fail 확인 (파일 부재)
-- [ ] Commit: `test(spec-01-01): 신규 템플릿 v2 스키마 검증 테스트 추가 (Red)`
+- [x] `__tests__/templates-v2.test.ts` 작성 — 신규 템플릿 4종 존재 + 필수 마커(`gd:pages:start/end`) + frontmatter 키(`page/covers/roles/flows/parent`) 포함 검증
+- [x] `pnpm test` → 신규 테스트 Fail 확인 (4 fail / 22 pass)
+- [x] Commit: `test(spec-01-01): 신규 템플릿 v2 스키마 검증 테스트 추가 (Red)`
 
 ### 1-3. 구현 (TDD Green)
-- [ ] `templates/sitemap.md` 생성 (마커 로스터 + 목표 + 커버리지 점검)
-- [ ] `templates/pages/structure.md` 생성 (frontmatter + 섹션스택 + layout + states)
-- [ ] `templates/pages/decisions.md` 생성 (typed 결정 표)
-- [ ] `templates/decisions.md` 생성 (전역 typed 결정 표)
-- [ ] `pnpm test` → 신규 + 기존 회귀 모두 Pass 확인
-- [ ] Commit: `feat(spec-01-01): sitemap/page/decisions 템플릿 추가 (Green)`
+- [x] `templates/sitemap.md` 생성 (마커 로스터 + 목표 + 커버리지 점검)
+- [x] `templates/pages/structure.md` 생성 (frontmatter + 섹션스택 + layout + states)
+- [x] `templates/pages/decisions.md` 생성 (typed 결정 표)
+- [x] `templates/decisions.md` 생성 (전역 typed 결정 표)
+- [x] `pnpm test` → 신규 + 기존 회귀 모두 Pass 확인 (26 pass)
+- [x] Commit: `feat(spec-01-01): sitemap/page/decisions 템플릿 추가 (Green)`
 
 ---
 
 ## Task 2: ADR 3종 (006 세로축 단위 / 007 sitemap=map / 008 결정로그 2층)
 
 ### 2-1. ADR 작성
-- [ ] `docs/decisions/ADR-006-vertical-slice-page-unit.md` (type: convention, ADR-004 확장 명시)
-- [ ] `docs/decisions/ADR-007-sitemap-as-map.md` (type: convention)
-- [ ] `docs/decisions/ADR-008-decision-log-two-tier.md` (type: convention)
-- [ ] `__tests__/templates-v2.test.ts` 에 ADR-006~008 존재 + frontmatter `type` closure 검증 추가, `pnpm test` Pass
-- [ ] Commit: `docs(spec-01-01): ADR-006~008 (세로축 단위·sitemap 지도·결정로그 2층)`
+- [x] `docs/decisions/ADR-006-vertical-slice-page-unit.md` (type: convention, ADR-004 확장 명시)
+- [x] `docs/decisions/ADR-007-sitemap-as-map.md` (type: convention)
+- [x] `docs/decisions/ADR-008-decision-log-two-tier.md` (type: convention)
+- [x] `__tests__/templates-v2.test.ts` 에 ADR-006~008 존재 + frontmatter `type` closure 검증 추가, `pnpm test` Pass (28 pass)
+- [x] Commit: `docs(spec-01-01): ADR-006~008 (세로축 단위·sitemap 지도·결정로그 2층)`
 
 ---
 
