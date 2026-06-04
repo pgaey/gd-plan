@@ -72,4 +72,4 @@ Test Files  5 passed (5)
 |---|---|
 | **작성자** | Agent + evan |
 | **작성 기간** | 2026-06-04 |
-| **최종 commit** | (ship 직후 기입) |
+| **최종 commit** | `78fcccb` |
