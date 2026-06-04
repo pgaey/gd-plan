@@ -8,7 +8,7 @@
 ## 📦 진행 중 Phase
 
 <!-- sdd:active:start -->
-- **phase-01** — gd-plan-vertical-slice — 1 spec — 다음: (spec 없음)
+- **phase-01** — gd-plan-vertical-slice — 2 spec — 다음: spec-01-02-vertical-slice-commands
 <!-- sdd:active:end -->
 
 ## 📥 spec-x 대기
