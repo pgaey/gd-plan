@@ -52,6 +52,8 @@ reason: <사용자가 이 시스템을 고른 이유 — 유일하게 사람이 
 
 > `reason` 만 사용자 편집 대상. 본문(9섹션)은 collection 원본 그대로 — 임의 수정 금지 (수정하려면 ui-rules.md 에서 오버라이드).
 
+> **결정 기록**: 픽 확정 시 `docs/decisions.md` 에 typed 1행 — 예: `design = X 픽 / 탈락 Y,Z / 이유`. 형식·ID·supersede 는 헤더 / `ADR-011` 정본 참조.
+
 ## §4 collection-scanner 서브에이전트 (권장)
 
 후보 점수화를 Sonnet 서브에이전트로 위임 가능 — `_index.json` + prd 를 주고 후보 3 + 사유를 받는다.

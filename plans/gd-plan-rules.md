@@ -42,6 +42,8 @@ collection 파일은 시각 스타일만 주고 아래는 거의 안 준다 — 
 
 > ui-rules 가 이들을 바꿔야 하면 "오버라이드" 섹션에 *델타만* 명시 (전체 재서술 금지).
 
+> **결정 기록**: 수치·인터랙션 fork 선택 시 `docs/decisions.md` 에 typed 1행. 형식·ID·supersede 는 헤더 / `ADR-011` 정본 참조.
+
 ## §4 idempotent
 
 - 기존 ui-rules.md 가 있으면 채워진 값 보존, 빈 항목만 인터뷰.

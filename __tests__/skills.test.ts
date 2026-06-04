@@ -79,6 +79,21 @@ describe("gd-plan skills", () => {
     expect(existsSync(join(TEMPLATES, "design.md"))).toBe(false);
   });
 
+  it("인터뷰 스킬 5종은 결정 기록 참조(decisions.md + ADR-011 정본)를 가진다", () => {
+    // B: 규칙 본문은 ADR-011/템플릿 정본, 스킬은 짧은 참조만 (spec-01-03)
+    for (const s of ["gd-plan-prd", "gd-plan-design", "gd-plan-sitemap", "gd-plan-page", "gd-plan-rules"]) {
+      const body = read(s);
+      expect(body, `${s}: decisions.md 참조 없음`).toContain("decisions.md");
+      expect(body, `${s}: ADR-011 정본 참조 없음`).toContain("ADR-011");
+    }
+  });
+
+  it("page·prd 는 수동 보강 안내를 가진다 (fork 밖 결정)", () => {
+    for (const s of ["gd-plan-prd", "gd-plan-page"]) {
+      expect(read(s), `${s}: 수동 보강 안내 없음`).toContain("수동 보강");
+    }
+  });
+
   it("gd-plan-start 대시보드가 새 구조(sitemap + pages)를 인식한다", () => {
     const body = read("gd-plan-start");
     expect(body).toContain("/gd-plan-sitemap");
