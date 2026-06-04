@@ -67,9 +67,9 @@
 - [ ] Ship Commit: `docs(spec-01-02): ship walkthrough and pr description`
 
 ### 🚀 Push & PR
-- [ ] Push: `git push -u origin spec-01-02-vertical-slice-commands`
-- [ ] PR 생성: base = `phase-01-gd-plan-vertical-slice` (사용자 승인 후)
-- [ ] 사용자 알림: PR URL 보고
+- [x] Push: `spec-01-02-vertical-slice-commands` push 완료
+- [x] PR 생성: https://github.com/pgaey/gd-plan/pull/2 (base = `phase-01-gd-plan-vertical-slice`)
+- [x] 사용자 알림: PR URL 보고
 
 ---
 
@@ -79,5 +79,5 @@
 |---|---|
 | **총 Task 수** | 4 (작업 3 + Ship) |
 | **예상 commit 수** | 6 (test, feat, feat-start, docs-ADR, docs-ship, +task 마킹) |
-| **현재 단계** | Planning |
+| **현재 단계** | Ship (PR #2 open) |
 | **마지막 업데이트** | 2026-06-04 |
