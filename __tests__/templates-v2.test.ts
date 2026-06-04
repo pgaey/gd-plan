@@ -61,8 +61,9 @@ describe("세로 슬라이스 v2 ADR (spec-01-01)", () => {
     for (const a of ADRS) {
       const body = readFileSync(join(DECISIONS, a), "utf-8");
       const m = body.match(/^type:\s*(\S+)/m);
-      expect(m, `${a}: type 슬롯 없음`).not.toBeNull();
-      expect(ADR_TYPES.has(m![1]), `${a}: type '${m?.[1]}' 가 closure 밖`).toBe(true);
+      const type = m?.[1];
+      expect(type, `${a}: type 슬롯 없음`).toBeTruthy();
+      expect(Boolean(type && ADR_TYPES.has(type)), `${a}: type '${type}' 가 closure 밖`).toBe(true);
     }
   });
 });
