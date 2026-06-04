@@ -78,4 +78,11 @@ describe("gd-plan skills", () => {
     // design.md 템플릿은 없어야 한다 (collection 픽킹)
     expect(existsSync(join(TEMPLATES, "design.md"))).toBe(false);
   });
+
+  it("gd-plan-start 대시보드가 새 구조(sitemap + pages)를 인식한다", () => {
+    const body = read("gd-plan-start");
+    expect(body).toContain("/gd-plan-sitemap");
+    expect(body).toContain("pages/");
+    expect(body, "구 structure 참조 잔존").not.toContain("docs/structure.md");
+  });
 });

@@ -38,9 +38,9 @@
 ## Task 2: start 대시보드 새 구조 인식
 
 ### 2-1. start 갱신
-- [ ] `plans/gd-plan-start.md` 수정 — `sitemap.md` 존재 + `pages/[PAGE-*]/` 상태 집계 진행률, 다음 단계 sitemap→page 흐름
-- [ ] `__tests__/skills.test.ts` 에 start 가 sitemap/page 안내를 포함하는지 검증 추가, `pnpm test` Pass
-- [ ] Commit: `feat(spec-01-02): gd-plan-start 대시보드 새 구조(sitemap+pages) 인식`
+- [x] `plans/gd-plan-start.md` 수정 — 3번 슬롯 sitemap+pages 집계 판정, 다음 단계 sitemap→page
+- [x] `__tests__/skills.test.ts` 에 start 새 구조 인식 검증 추가, `pnpm test` Pass (29)
+- [x] Commit: `feat(spec-01-02): gd-plan-start 대시보드 새 구조(sitemap+pages) 인식`
 
 ---
 
