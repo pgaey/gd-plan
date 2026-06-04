@@ -11,16 +11,17 @@ const EXPECTED_SKILLS = [
   "gd-plan-start",
   "gd-plan-prd",
   "gd-plan-design",
-  "gd-plan-structure",
+  "gd-plan-sitemap",
+  "gd-plan-page",
   "gd-plan-flows",
   "gd-plan-rules",
   "gd-plan-review",
 ];
 
-// 길이 cap: 기본 400, structure/review 예외 600 (spec NFR5)
+// 길이 cap: 기본 400, review 예외 600 (spec NFR)
 const CAP_DEFAULT = 400;
 const CAP_EXCEPTION = 600;
-const EXCEPTION_SKILLS = new Set(["gd-plan-structure", "gd-plan-review"]);
+const EXCEPTION_SKILLS = new Set(["gd-plan-review"]);
 
 function read(skill: string): string {
   return readFileSync(join(PLANS, `${skill}.md`), "utf-8");
@@ -33,7 +34,7 @@ describe("gd-plan skills", () => {
     }
   });
 
-  it("plans/ 에 gd-plan-*.md 가 정확히 7개다 (군더더기 없음)", () => {
+  it("plans/ 에 gd-plan-*.md 가 정확히 8개다 (군더더기 없음)", () => {
     const files = readdirSync(PLANS).filter((f) => f.startsWith("gd-plan-") && f.endsWith(".md"));
     expect(files.sort()).toEqual(EXPECTED_SKILLS.map((s) => `${s}.md`).sort());
   });
@@ -56,7 +57,7 @@ describe("gd-plan skills", () => {
 
   it("산출 스킬은 '다음 단계: /gd-plan-' 안내를 가진다", () => {
     // review 는 마지막이라 다음 단계가 /gd-chat — 별도. 나머지는 /gd-plan-<next>
-    for (const s of ["gd-plan-start", "gd-plan-prd", "gd-plan-design", "gd-plan-structure", "gd-plan-flows", "gd-plan-rules"]) {
+    for (const s of ["gd-plan-start", "gd-plan-prd", "gd-plan-design", "gd-plan-sitemap", "gd-plan-page", "gd-plan-flows", "gd-plan-rules"]) {
       expect(read(s), `${s}: 다음 단계 안내 없음`).toMatch(/다음 단계:/);
     }
   });
