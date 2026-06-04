@@ -72,9 +72,9 @@
 - [x] Ship Commit: `docs(spec-01-03): ship walkthrough and pr description`
 
 ### 🚀 Push & PR
-- [ ] Push: `git push -u origin spec-01-03-decision-log-auto`
-- [ ] PR 생성: base = `phase-01-gd-plan-vertical-slice` (사용자 승인 후)
-- [ ] 사용자 알림: PR URL 보고
+- [x] Push: `git push -u origin spec-01-03-decision-log-auto`
+- [x] PR 생성: base = `phase-01-gd-plan-vertical-slice` → PR #3
+- [x] 사용자 알림: PR URL 보고
 
 ---
 
