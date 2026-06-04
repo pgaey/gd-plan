@@ -49,18 +49,18 @@
 ## Task 3: Ship (필수)
 
 ### 🚦 Pre-Push Quality Gate (push 전 필수)
-- [ ] `pnpm typecheck` PASS
-- [ ] `pnpm test` 전체 PASS
-- [ ] (Integration Test Required = no → 통합 테스트 생략)
+- [x] `pnpm typecheck` PASS (오류 1건 수정 후 clean)
+- [x] `pnpm test` 전체 PASS (28)
+- [x] (Integration Test Required = no → 통합 테스트 생략)
 
 ### 📝 산출물 작성
-- [ ] `walkthrough.md` 작성 (증거 로그)
-- [ ] `pr_description.md` 작성 (템플릿 준수)
+- [x] `walkthrough.md` 작성 (증거 로그)
+- [x] `pr_description.md` 작성 (템플릿 준수)
 - [ ] Ship Commit: `docs(spec-01-01): ship walkthrough and pr description`
 
 ### 🚀 Push & PR
 - [ ] Push: `git push -u origin spec-01-01-dir-model-templates`
-- [ ] PR 생성: `gh pr create` 또는 `/hk-pr-gh` (base = `phase-1-gd-plan-vertical-slice`, 사용자 승인 후)
+- [ ] PR 생성: `gh pr create` 또는 `/hk-pr-gh` (base = `phase-01-gd-plan-vertical-slice`, 사용자 승인 후)
 - [ ] 사용자 알림: 푸시 완료 + PR URL 보고
 
 ---
