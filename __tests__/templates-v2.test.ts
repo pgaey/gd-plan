@@ -49,9 +49,11 @@ describe("세로 슬라이스 v2 ADR (spec-01-01)", () => {
     "ADR-006-vertical-slice-page-unit.md",
     "ADR-007-sitemap-as-map.md",
     "ADR-008-decision-log-two-tier.md",
+    "ADR-009-slug-page-id-normalization.md",
+    "ADR-010-sitemap-pages-single-source.md",
   ];
 
-  it("ADR-006~008 이 존재한다", () => {
+  it("ADR-006~010 이 존재한다", () => {
     for (const a of ADRS) {
       expect(existsSync(join(DECISIONS, a)), `docs/decisions/${a} 누락`).toBe(true);
     }

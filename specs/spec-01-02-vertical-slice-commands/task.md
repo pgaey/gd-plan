@@ -47,10 +47,10 @@
 ## Task 3: ADR 2종 (009 slug 정규화 / 010 단일 진실)
 
 ### 3-1. ADR 작성
-- [ ] `docs/decisions/ADR-009-slug-page-id-normalization.md` (type: convention)
-- [ ] `docs/decisions/ADR-010-sitemap-pages-single-source.md` (type: invariant)
-- [ ] `__tests__/templates-v2.test.ts` ADR 목록에 009/010 추가(존재+type closure), `pnpm test` Pass
-- [ ] Commit: `docs(spec-01-02): ADR-009 slug 정규화 + ADR-010 단일 진실`
+- [x] `docs/decisions/ADR-009-slug-page-id-normalization.md` (type: convention)
+- [x] `docs/decisions/ADR-010-sitemap-pages-single-source.md` (type: invariant)
+- [x] `__tests__/templates-v2.test.ts` ADR 목록에 009/010 추가, `pnpm test` Pass (29)
+- [x] Commit: `docs(spec-01-02): ADR-009 slug 정규화 + ADR-010 단일 진실`
 
 ---
 
