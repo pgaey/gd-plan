@@ -35,11 +35,23 @@ describe("세로 슬라이스 v2 템플릿 (spec-01-01)", () => {
     }
   });
 
-  it("결정 로그 2종은 typed 표 헤더를 가진다 (트랜스크립트 아님)", () => {
+  it("결정 로그 2종은 typed 6열 헤더를 가진다 (ID·연결 포함, set-diff 키)", () => {
+    // ADR-011: | ID | 결정 | 선택지 | 탈락 | 이유 | 연결 |
     for (const t of ["pages/decisions.md", "decisions.md"]) {
       const body = readTpl(t);
-      expect(body, `${t}: 결정 열 없음`).toContain("결정");
-      expect(body, `${t}: 이유 열 없음`).toContain("이유");
+      const header = body.split("\n").find((l) => l.includes("| 결정 ") || l.includes("|결정"));
+      expect(header, `${t}: 표 헤더 행 없음`).toBeTruthy();
+      for (const col of ["ID", "결정", "선택지", "탈락", "이유", "연결"]) {
+        expect(header, `${t}: '${col}' 열 없음`).toContain(col);
+      }
+    }
+  });
+
+  it("결정 로그 정본 규칙 블록이 ADR-011 과 순차 ID 패턴을 참조한다", () => {
+    for (const t of ["pages/decisions.md", "decisions.md"]) {
+      const body = readTpl(t);
+      expect(body, `${t}: ADR-011 참조 없음`).toContain("ADR-011");
+      expect(body, `${t}: 순차 ID(D-01) 규칙 없음`).toMatch(/D-\d{1,2}/);
     }
   });
 });
