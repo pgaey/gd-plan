@@ -8,7 +8,7 @@
 ## 📦 진행 중 Phase
 
 <!-- sdd:active:start -->
-- **phase-01** — gd-plan-vertical-slice — 0/0 spec — (다음: 첫 spec 생성 대기)
+- **phase-01** — gd-plan-vertical-slice — 1 spec — 다음: spec-01-01-dir-model-templates
 <!-- sdd:active:end -->
 
 ## 📥 spec-x 대기
