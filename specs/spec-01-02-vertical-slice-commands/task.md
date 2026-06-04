@@ -57,13 +57,13 @@
 ## Task 4: Ship (필수)
 
 ### 🚦 Pre-Push Quality Gate
-- [ ] `pnpm typecheck` PASS
-- [ ] `pnpm test` 전체 PASS
-- [ ] (Integration Test Required = no → 생략)
+- [x] `pnpm typecheck` PASS
+- [x] `pnpm test` 전체 PASS (29)
+- [x] (Integration Test Required = no → 생략)
 
 ### 📝 산출물 작성
-- [ ] `walkthrough.md` 작성
-- [ ] `pr_description.md` 작성
+- [x] `walkthrough.md` 작성
+- [x] `pr_description.md` 작성
 - [ ] Ship Commit: `docs(spec-01-02): ship walkthrough and pr description`
 
 ### 🚀 Push & PR
