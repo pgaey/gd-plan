@@ -132,3 +132,28 @@ describe("spec-01-04: flows full re-derive + 신모델 참조", () => {
     expect(body, "ADR-012 참조 없음").toContain("ADR-012");
   });
 });
+
+describe("spec-01-04: review 신모델 + ID 체인 소비", () => {
+  it("gd-plan-review 는 구 평면 docs/structure.md 를 참조하지 않는다", () => {
+    expect(read("gd-plan-review"), "구 structure 참조 잔존").not.toContain("docs/structure.md");
+  });
+
+  it("gd-plan-review 는 신모델(sitemap + pages)을 로딩한다", () => {
+    const body = read("gd-plan-review");
+    expect(body).toContain("sitemap.md");
+    expect(body, "pages/ 참조 없음").toContain("pages/");
+  });
+
+  it("gd-plan-review 는 frontmatter ID 체인(covers/flows/parent)을 소비한다", () => {
+    const body = read("gd-plan-review");
+    expect(body).toContain("covers");
+    expect(body).toContain("flows");
+    expect(body, "parent 체인 없음").toContain("parent");
+  });
+
+  it("gd-plan-review 는 결정 로그(decisions.md) '연결' 열 무결성 점검을 한다", () => {
+    const body = read("gd-plan-review");
+    expect(body, "결정 로그 decisions.md 로딩 없음").toContain("decisions.md");
+    expect(body, "결정 연결 열 소비 없음").toContain("연결");
+  });
+});
