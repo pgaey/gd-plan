@@ -17,8 +17,8 @@
 ## Task 1: 브랜치 생성
 
 ### 1-1. 브랜치 생성
-- [ ] `git checkout -b spec-01-04-flows-autoref-review` (phase base 에서 분기)
-- [ ] Commit: 없음 (브랜치 생성만)
+- [x] `git checkout -b spec-01-04-flows-autoref-review` (phase base 에서 분기)
+- [x] Commit: 없음 (브랜치 생성만) — 계획 산출물은 `d82f502` 로 커밋
 
 ---
 
