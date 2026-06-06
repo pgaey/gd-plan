@@ -70,9 +70,9 @@
 ## Task 5: ADR-012 flows-reverse-derivation 작성
 
 ### 5-1. ADR 작성 (docs)
-- [ ] `.harness-kit/agent/templates/adr.md` 읽고 따라 `docs/decisions/ADR-012-flows-reverse-derivation.md` 작성 (type: invariant). 본문에 **ADR-010 관계 명문화**(두 번째 인스턴스 + `flows` 필드 SoT 예외, critique #2). 백틱 경로는 실제 존재 파일만 — 개념/플레이스홀더 경로는 백틱-확장자 표기 회피(drift 휴리스틱 오탐 방지).
-- [ ] `pnpm test` → 회귀 PASS 확인
-- [ ] Commit: `docs(spec-01-04): ADR-012 flows-reverse-derivation (invariant)`
+- [x] `.harness-kit/agent/templates/adr.md` 읽고 따라 `docs/decisions/ADR-012-flows-reverse-derivation.md` 작성 (type: invariant). 본문에 **ADR-010 관계 명문화**(두 번째 인스턴스 + `flows` 필드 SoT 예외, critique #2). 백틱 경로는 실제 존재 파일만(ADR-008/009/010, flows/review) — 개념/플레이스홀더 경로는 fence/문구로 회피.
+- [x] `pnpm test` → 회귀 PASS 확인 (43/43)
+- [x] Commit: `docs(spec-01-04): ADR-012 flows-reverse-derivation (invariant)`
 
 ---
 
