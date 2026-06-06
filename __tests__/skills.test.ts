@@ -157,3 +157,17 @@ describe("spec-01-04: review 신모델 + ID 체인 소비", () => {
     expect(body, "결정 연결 열 소비 없음").toContain("연결");
   });
 });
+
+describe("spec-01-04: design/rules stale 참조 정상화", () => {
+  it("gd-plan-design 의 다음 단계가 /gd-plan-sitemap 이다 (없어진 /gd-plan-structure 아님)", () => {
+    const body = read("gd-plan-design");
+    expect(body, "/gd-plan-sitemap 안내 없음").toContain("/gd-plan-sitemap");
+    expect(body, "없어진 /gd-plan-structure 참조 잔존").not.toContain("/gd-plan-structure");
+  });
+
+  it("gd-plan-rules 는 구 평면 docs/structure.md 대신 신모델(pages)을 참조한다", () => {
+    const body = read("gd-plan-rules");
+    expect(body, "구 structure 참조 잔존").not.toContain("docs/structure.md");
+    expect(body, "pages/ 참조 없음").toContain("pages/");
+  });
+});
