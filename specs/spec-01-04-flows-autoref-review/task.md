@@ -89,9 +89,9 @@
 - [x] **Ship Commit**: `docs(spec-01-04): ship walkthrough and pr description`
 
 ### 🚀 Push & PR
-- [ ] **Push**: `git push -u origin spec-01-04-flows-autoref-review`
-- [ ] **PR 생성**: `gh pr create` (base = `phase-01-gd-plan-vertical-slice`)
-- [ ] **사용자 알림**: 푸시 완료 + PR URL 보고
+- [x] **Push**: `git push -u origin spec-01-04-flows-autoref-review`
+- [x] **PR 생성**: PR #4 (base = `phase-01-gd-plan-vertical-slice`) — https://github.com/pgaey/gd-plan/pull/4
+- [x] **사용자 알림**: 푸시 완료 + PR URL 보고
 
 ---
 
@@ -101,5 +101,5 @@
 |---|---|
 | **총 Task 수** | 6 (작업 5 + Ship) |
 | **예상 commit 수** | 9 (Task2~4 각 Red+Green=6, Task5 1, Ship 2) |
-| **현재 단계** | Planning |
+| **현재 단계** | Ship (PR #4 — merge 대기) |
 | **마지막 업데이트** | 2026-06-06 |
