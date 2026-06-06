@@ -41,14 +41,14 @@
 ## Task 3: review frontmatter ID 체인 + 연결 열 set-diff (FR2, FR4, FR5)
 
 ### 3-1. 테스트 작성 (TDD Red)
-- [ ] `skills.test.ts` 에 assert 추가: `gd-plan-review` 가 `docs/structure.md` 미포함 + `sitemap.md`/`pages/` 포함 + frontmatter ID(`covers`/`flows`/`parent`) + 결정 `연결` 소비 지시문 포함.
-- [ ] `pnpm test` → Fail 확인
-- [ ] Commit: `test(spec-01-04): add failing tests for review 신모델 + ID 체인 소비`
+- [x] `skills.test.ts` 에 assert 추가: `gd-plan-review` 가 `docs/structure.md` 미포함 + `sitemap.md`/`pages/` 포함 + frontmatter ID(`covers`/`flows`/`parent`) + 결정 로그 `decisions.md`+`연결` 소비 지시문 포함.
+- [x] `pnpm test` → Fail 확인 (4 fail)
+- [x] Commit: `test(spec-01-04): add failing tests for review 신모델 + ID 체인 소비` (`6062913`)
 
 ### 3-2. 구현 (TDD Green)
-- [ ] `plans/gd-plan-review.md` §1 로딩 신모델화 + §2 ID 체인 추적 + structural 체크 2건(flows drift / 결정 연결 누수) 추가. 누수 점검 출력=정렬 ID 리스트+근거 인용, "무결성 점검"(결정적 set-diff 아님) 표기 + "structure.md sitemap"→"sitemap.md". 600줄 cap 준수.
-- [ ] `pnpm test` → Pass 확인
-- [ ] Commit: `feat(spec-01-04): review 신모델 로딩 + frontmatter ID 체인·연결 열 무결성 점검 (Green)`
+- [x] `plans/gd-plan-review.md` §1 로딩 신모델화(sitemap+pages frontmatter+decisions) + §2 ID 체인 추적 + structural 체크 2건(flows drift / 결정 연결 누수) 추가 + §3 예시 정합. 누수 점검 출력=정렬 ID 리스트+근거 인용, "무결성 점검"(결정적 set-diff 아님) 표기. 89줄 < 600 cap.
+- [x] `pnpm test` → Pass 확인 (41/41)
+- [x] Commit: `feat(spec-01-04): review 신모델 로딩 + frontmatter ID 체인·연결 열 무결성 점검 (Green)`
 
 ---
 
