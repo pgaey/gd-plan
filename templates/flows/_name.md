@@ -13,7 +13,7 @@
 
 ## Steps
 > 규칙: 각 step = 행동 + `[PAGE-id]` + 섹션/컴포넌트 + 데이터 (+ modal?).
-> 규칙: 참조하는 `[PAGE-id]` 는 structure.md sitemap 에 존재해야 한다 (없으면 review BLOCK).
+> 규칙: 참조하는 `[PAGE-id]` 는 sitemap.md 로스터에 존재해야 한다 (없으면 review BLOCK).
 1. <행동> @ `[PAGE-..]` — 섹션=<..>, 데이터=<..>
 2. <행동> @ `[PAGE-..]` — <...>
 

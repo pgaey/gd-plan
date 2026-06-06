@@ -25,16 +25,16 @@
 ## Task 2: flows 자동 역참조 + 신모델 참조 (FR1, FR2)
 
 ### 2-1. 테스트 작성 (TDD Red)
-- [ ] `__tests__/skills.test.ts` 에 assert 추가: `gd-plan-flows` 가 `docs/structure.md` 미포함 + `sitemap.md`/`pages/` 포함 + **full re-derive** 지시문(`flows:` + 재계산/덮어쓰기/정렬 + `ADR-012`) 포함. `templates/flows/_name.md` 의 "structure.md sitemap" 미포함. `templates/pages/structure.md` 가 "ADR-009" 미포함 + "ADR-012" 포함(주석 정정).
-- [ ] `pnpm test` → Fail 확인
-- [ ] Commit: `test(spec-01-04): add failing tests for flows full re-derive + 신모델 참조`
+- [x] `__tests__/skills.test.ts` 에 assert 추가: `gd-plan-flows` 가 `docs/structure.md` 미포함 + `sitemap.md`/`pages/` 포함 + **full re-derive** 지시문(`flows:` + 재계산/덮어쓰기/정렬 + `ADR-012`) 포함. `templates/flows/_name.md` 의 "structure.md sitemap" 미포함. `templates/pages/structure.md` 가 "ADR-009" 미포함 + "ADR-012" 포함(주석 정정).
+- [x] `pnpm test` → Fail 확인 (5 fail / 32 pass)
+- [x] Commit: `test(spec-01-04): add failing tests for flows full re-derive + 신모델 참조` (`fe8b1ea`)
 
 ### 2-2. 구현 (TDD Green)
-- [ ] `plans/gd-plan-flows.md` §1 로딩 신모델화 + **full re-derive 단계** 추가(전수 스캔 재계산 덮어쓰기, ID 사전순 정렬, FLOW slug ADR-009 정규화, SoT=flow steps, ADR-012 참조) + "structure.md sitemap"→"sitemap.md".
-- [ ] `templates/flows/_name.md` Steps 규칙 "structure.md sitemap"→"sitemap.md 로스터".
-- [ ] `templates/pages/structure.md` line 5 주석 "(→ ADR-009 예정)"→"(→ ADR-012)".
-- [ ] `pnpm test` → Pass 확인
-- [ ] Commit: `feat(spec-01-04): flows full re-derive 역참조 + 신모델 참조 + 주석 정정 (Green)`
+- [x] `plans/gd-plan-flows.md` §1 로딩 신모델화 + **full re-derive 단계(§5)** 추가(전수 스캔 재계산 덮어쓰기, ID 사전순 정렬, FLOW slug ADR-009 정규화, SoT=flow steps, ADR-012 참조) + "structure.md sitemap"→"sitemap.md".
+- [x] `templates/flows/_name.md` Steps 규칙 "structure.md sitemap"→"sitemap.md 로스터".
+- [x] `templates/pages/structure.md` line 5 주석 "(→ ADR-009 예정)"→"(→ ADR-012)".
+- [x] `pnpm test` → Pass 확인 (37/37)
+- [x] Commit: `feat(spec-01-04): flows full re-derive 역참조 + 신모델 참조 + 주석 정정 (Green)`
 
 ---
 

@@ -2,7 +2,7 @@
 page: "[PAGE-<slug>]"
 covers: [CAP-..]
 roles: [User]
-flows: []        # /gd-plan-flows 가 flow step @[PAGE-id] 에서 자동 도출 — 손편집 금지 (→ ADR-009 예정)
+flows: []        # /gd-plan-flows 가 flow step @[PAGE-id] 에서 자동 도출(full re-derive) — 손편집 금지 (→ ADR-012)
 parent: ""        # 상위 페이지 [PAGE-..] (최상위면 빈값)
 ---
 
