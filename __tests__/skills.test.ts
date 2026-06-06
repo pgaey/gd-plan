@@ -101,3 +101,73 @@ describe("gd-plan skills", () => {
     expect(body, "구 structure 참조 잔존").not.toContain("docs/structure.md");
   });
 });
+
+describe("spec-01-04: flows full re-derive + 신모델 참조", () => {
+  it("gd-plan-flows 는 구 평면 docs/structure.md 를 참조하지 않는다", () => {
+    expect(read("gd-plan-flows"), "구 structure 참조 잔존").not.toContain("docs/structure.md");
+  });
+
+  it("gd-plan-flows 는 신모델(sitemap + pages)을 참조한다", () => {
+    const body = read("gd-plan-flows");
+    expect(body).toContain("sitemap.md");
+    expect(body, "pages/ 참조 없음").toContain("pages/");
+  });
+
+  it("gd-plan-flows 는 full re-derive 자동 역참조 지시문을 가진다", () => {
+    const body = read("gd-plan-flows");
+    expect(body, "flows: 필드 언급 없음").toContain("flows:");
+    expect(body, "재계산/덮어쓰기 지시 없음").toMatch(/재계산|덮어/);
+    expect(body, "정렬 규칙 없음").toContain("정렬");
+    expect(body, "ADR-012 참조 없음").toContain("ADR-012");
+  });
+
+  it("templates/flows/_name.md 는 'structure.md sitemap' 잔재가 없다", () => {
+    const body = readFileSync(join(TEMPLATES, "flows", "_name.md"), "utf-8");
+    expect(body, "구 structure.md sitemap 표현 잔존").not.toContain("structure.md sitemap");
+  });
+
+  it("templates/pages/structure.md flows 주석이 ADR-012 로 정정됐다", () => {
+    const body = readFileSync(join(TEMPLATES, "pages", "structure.md"), "utf-8");
+    expect(body, "ADR-009 오참조 잔존").not.toContain("ADR-009");
+    expect(body, "ADR-012 참조 없음").toContain("ADR-012");
+  });
+});
+
+describe("spec-01-04: review 신모델 + ID 체인 소비", () => {
+  it("gd-plan-review 는 구 평면 docs/structure.md 를 참조하지 않는다", () => {
+    expect(read("gd-plan-review"), "구 structure 참조 잔존").not.toContain("docs/structure.md");
+  });
+
+  it("gd-plan-review 는 신모델(sitemap + pages)을 로딩한다", () => {
+    const body = read("gd-plan-review");
+    expect(body).toContain("sitemap.md");
+    expect(body, "pages/ 참조 없음").toContain("pages/");
+  });
+
+  it("gd-plan-review 는 frontmatter ID 체인(covers/flows/parent)을 소비한다", () => {
+    const body = read("gd-plan-review");
+    expect(body).toContain("covers");
+    expect(body).toContain("flows");
+    expect(body, "parent 체인 없음").toContain("parent");
+  });
+
+  it("gd-plan-review 는 결정 로그(decisions.md) '연결' 열 무결성 점검을 한다", () => {
+    const body = read("gd-plan-review");
+    expect(body, "결정 로그 decisions.md 로딩 없음").toContain("decisions.md");
+    expect(body, "결정 연결 열 소비 없음").toContain("연결");
+  });
+});
+
+describe("spec-01-04: design/rules stale 참조 정상화", () => {
+  it("gd-plan-design 의 다음 단계가 /gd-plan-sitemap 이다 (없어진 /gd-plan-structure 아님)", () => {
+    const body = read("gd-plan-design");
+    expect(body, "/gd-plan-sitemap 안내 없음").toContain("/gd-plan-sitemap");
+    expect(body, "없어진 /gd-plan-structure 참조 잔존").not.toContain("/gd-plan-structure");
+  });
+
+  it("gd-plan-rules 는 구 평면 docs/structure.md 대신 신모델(pages)을 참조한다", () => {
+    const body = read("gd-plan-rules");
+    expect(body, "구 structure 참조 잔존").not.toContain("docs/structure.md");
+    expect(body, "pages/ 참조 없음").toContain("pages/");
+  });
+});
