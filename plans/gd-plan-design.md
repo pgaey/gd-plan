@@ -67,4 +67,4 @@ reason: <사용자가 이 시스템을 고른 이유 — 유일하게 사람이 
 ## §6 종료
 
 - `docs/design.md` 생성 확인 (frontmatter + 9섹션 본문).
-- 출력: `docs/design.md 작성 완료 (<file> 픽). 다음 단계: /gd-plan-structure. 전체 진행률: 2/5`
+- 출력: `docs/design.md 작성 완료 (<file> 픽). 다음 단계: /gd-plan-sitemap. 전체 진행률: 2/5`

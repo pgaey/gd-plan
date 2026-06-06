@@ -55,15 +55,15 @@
 ## Task 4: design·rules stale 참조 정상화 (FR2, FR3)
 
 ### 4-1. 테스트 작성 (TDD Red)
-- [ ] `skills.test.ts` 에 assert 추가: `gd-plan-design` 이 "다음 단계: /gd-plan-sitemap" 포함 + "/gd-plan-structure" 미포함. `gd-plan-rules` 가 `docs/structure.md` 미포함 + `pages/` 포함.
-- [ ] `pnpm test` → Fail 확인
-- [ ] Commit: `test(spec-01-04): add failing tests for design/rules stale 참조`
+- [x] `skills.test.ts` 에 assert 추가: `gd-plan-design` 이 "다음 단계: /gd-plan-sitemap" 포함 + "/gd-plan-structure" 미포함. `gd-plan-rules` 가 `docs/structure.md` 미포함 + `pages/` 포함.
+- [x] `pnpm test` → Fail 확인 (2 fail)
+- [x] Commit: `test(spec-01-04): add failing tests for design/rules stale 참조` (`7cefb25`)
 
 ### 4-2. 구현 (TDD Green)
-- [ ] `plans/gd-plan-design.md` 종료 출력 "/gd-plan-structure"→"/gd-plan-sitemap".
-- [ ] `plans/gd-plan-rules.md` §1 `docs/structure.md`→`docs/pages/*/structure.md`.
-- [ ] `pnpm test` → Pass 확인
-- [ ] Commit: `fix(spec-01-04): design 다음단계 복구 + rules 신모델 참조 (Green)`
+- [x] `plans/gd-plan-design.md` 종료 출력 "/gd-plan-structure"→"/gd-plan-sitemap".
+- [x] `plans/gd-plan-rules.md` §1 `docs/structure.md`→`docs/pages/[PAGE]/structure.md`.
+- [x] `pnpm test` → Pass 확인 (43/43)
+- [x] Commit: `fix(spec-01-04): design 다음단계 복구 + rules 신모델 참조 (Green)`
 
 ---
 
