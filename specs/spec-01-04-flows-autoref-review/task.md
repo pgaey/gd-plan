@@ -79,14 +79,14 @@
 ## Task 6: Ship (필수)
 
 ### 🚦 Pre-Push Quality Gate (push 전 필수)
-- [ ] `pnpm typecheck` → 0 error
-- [ ] `pnpm test` → 모두 PASS
-- [ ] `grep -rn "docs/structure.md\|/gd-plan-structure" plans/ templates/` → 0건 확인
+- [x] `pnpm typecheck` → 0 error
+- [x] `pnpm test` → 모두 PASS (43/43)
+- [x] `grep ... plans/ templates/` → 마이그레이션 대상 0건 (잔여 1건은 out-of-scope 죽은 `templates/structure.md`)
 
 ### 📝 산출물 작성
-- [ ] **walkthrough.md 작성** (증거 로그)
-- [ ] **pr_description.md 작성** (템플릿 준수)
-- [ ] **Ship Commit**: `docs(spec-01-04): ship walkthrough and pr description`
+- [x] **walkthrough.md 작성** (증거 로그)
+- [x] **pr_description.md 작성** (템플릿 준수)
+- [x] **Ship Commit**: `docs(spec-01-04): ship walkthrough and pr description`
 
 ### 🚀 Push & PR
 - [ ] **Push**: `git push -u origin spec-01-04-flows-autoref-review`
