@@ -10,6 +10,7 @@ const TEMPLATES = join(__dirname, "..", "templates");
 const EXPECTED_SKILLS = [
   "gd-plan-start",
   "gd-plan-prd",
+  "gd-plan-critique",
   "gd-plan-design",
   "gd-plan-sitemap",
   "gd-plan-page",
@@ -18,10 +19,10 @@ const EXPECTED_SKILLS = [
   "gd-plan-review",
 ];
 
-// 길이 cap: 기본 400, review 예외 600 (spec NFR)
+// 길이 cap: 기본 400, review/critique 예외 600 (spec NFR — 복잡 스킬)
 const CAP_DEFAULT = 400;
 const CAP_EXCEPTION = 600;
-const EXCEPTION_SKILLS = new Set(["gd-plan-review"]);
+const EXCEPTION_SKILLS = new Set(["gd-plan-review", "gd-plan-critique"]);
 
 function read(skill: string): string {
   return readFileSync(join(PLANS, `${skill}.md`), "utf-8");
@@ -34,7 +35,7 @@ describe("gd-plan skills", () => {
     }
   });
 
-  it("plans/ 에 gd-plan-*.md 가 정확히 8개다 (군더더기 없음)", () => {
+  it("plans/ 에 gd-plan-*.md 가 정확히 9개다 (군더더기 없음)", () => {
     const files = readdirSync(PLANS).filter((f) => f.startsWith("gd-plan-") && f.endsWith(".md"));
     expect(files.sort()).toEqual(EXPECTED_SKILLS.map((s) => `${s}.md`).sort());
   });
@@ -117,6 +118,47 @@ describe("spec-01-05: gd-plan-prd 제약/규제 슬롯 + version bump", () => {
   it("gd-plan-prd 종료가 prd frontmatter version bump 를 지시한다", () => {
     const body = read("gd-plan-prd");
     expect(body, "version bump 지시 없음").toMatch(/version[\s\S]{0,40}(bump|\+\s*1|증가|올린)/i);
+  });
+});
+
+describe("spec-01-05: gd-plan-critique 스킬", () => {
+  const body = () => read("gd-plan-critique");
+
+  it("독립 서브에이전트(Opus, general-purpose)를 강제하고 침묵 self-review 를 금지한다 (FR1·§F)", () => {
+    const b = body();
+    expect(b, "서브에이전트 지시 없음").toMatch(/서브에이전트|subagent/i);
+    expect(b, "Opus 지정 없음").toMatch(/opus/i);
+    expect(b, "general-purpose 타입 없음").toMatch(/general-purpose/);
+    expect(b, "침묵 self-review 금지 불변식 없음").toMatch(/self-review|자가\s*점검|self review/i);
+    expect(b, "정직성 배너/폴백 없음").toMatch(/배너|폴백|fallback/i);
+  });
+
+  it("3렌즈(L1·L2·L3)와 tie-break 규칙을 가진다 (§C)", () => {
+    const b = body();
+    for (const lens of ["L1", "L2", "L3"]) {
+      expect(b, `${lens} 렌즈 없음`).toContain(lens);
+    }
+    expect(b, "tie-break 우선순위 없음").toMatch(/tie-break|우선순위|L2.*L1.*L3/i);
+  });
+
+  it("severity 루브릭(4단)과 _critique.md 보고서 스키마(prdVersion)를 정의한다 (§B)", () => {
+    const b = body();
+    expect(b, "severity 단계 없음").toMatch(/치명/);
+    expect(b, "_critique.md 산출 없음").toContain("_critique.md");
+    expect(b, "prdVersion frontmatter 없음").toContain("prdVersion");
+  });
+
+  it("입력 범위(prd.md)·보고서 only·사람 반영(decisions.md)을 명시한다 (§A·FR3·4)", () => {
+    const b = body();
+    expect(b, "prd.md 입력 없음").toContain("prd.md");
+    expect(b, "보고서 only(직접 수정 금지) 없음").toMatch(/직접\s*수정|보고서만|보고서 only/);
+    expect(b, "decisions.md 반영 기록 없음").toContain("decisions.md");
+  });
+
+  it("L2 grounding 이 선언된 제약슬롯을 1차 소스로 쓴다 (§D)", () => {
+    const b = body();
+    expect(b, "제약/규제 grounding 없음").toMatch(/제약/);
+    expect(b, "grounding 개념 없음").toMatch(/grounding|근거|1차/i);
   });
 });
 
