@@ -26,10 +26,10 @@ describe("통합 시나리오 (자동화 가능 부분)", () => {
     rmSync(dir, { recursive: true, force: true });
   });
 
-  it("시나리오 1 지원: gd-plan 스킬 8개가 프로젝트에 설치된다", () => {
+  it("시나리오 1 지원: gd-plan 스킬 9개가 프로젝트에 설치된다", () => {
     const result = installPlans({ plansSrc: join(PKG_ROOT, "plans"), dest: join(dir, ".claude", "commands") });
     expect(result.code).toBe(0);
-    expect(result.installed.length).toBe(8);
+    expect(result.installed.length).toBe(9);
   });
 
   it("시나리오 2 지원: 실제 66개 collection 인덱스가 후보 점수화에 쓸 필드를 갖는다", () => {
