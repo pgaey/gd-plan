@@ -42,7 +42,7 @@ version: 1
 
 ## Capabilities (사용자가 할 수 있는 것)
 > 규칙: 각 항목 `[CAP-NN]` ID + **동사로 시작** + `(주체: 역할)`.
-> 규칙: 모든 CAP 은 structure.md 의 page 로 `covers` 돼야 한다 (안 되면 review BLOCK).
+> 규칙: 모든 CAP 은 `sitemap.md` 로스터의 page(+ `pages/[PAGE]/structure.md` frontmatter `covers`)로 덮여야 한다 (안 되면 review BLOCK).
 - `[CAP-01]` <동사 ...> (주체: User)
 - `[CAP-02]` <...> (주체: Admin)
 

@@ -1,6 +1,6 @@
 ---
 name: gd-plan-start
-description: 상류 기획 진입점. docs/ 폴더를 스캔해 5종 기획 문서(prd/design/structure/flows/ui-rules)의 진행률을 보고하고 다음 명령을 안내한다. idempotent — 언제 호출해도 안전.
+description: 상류 기획 진입점. docs/ 폴더를 스캔해 5종 기획 문서(prd/design/구조[sitemap+pages]/flows/ui-rules)의 진행률을 보고하고 다음 명령을 안내한다. idempotent — 언제 호출해도 안전.
 ---
 
 # gd-plan-start — 상류 기획 진입점

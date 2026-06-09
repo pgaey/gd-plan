@@ -1,7 +1,7 @@
 # flows/<flow-slug>.md
 
 > 화면을 가로지르는 사용자 여정 1개 = 파일 1개. flow 마다 이 템플릿을 복사해서 따른다.
-> 규칙은 `> 규칙:`. step 은 structure.md 의 page 를 참조하고, Actor 는 prd 의 role 이다.
+> 규칙은 `> 규칙:`. step 은 sitemap.md 로스터의 page 를 참조하고, Actor 는 prd 의 role 이다.
 > 이 파일은 `/gd-plan-flows` 인터뷰로 채워진다 (`_name.md` 는 복사용 골격 — 실제 flow 는 `<slug>.md`).
 
 ## `[FLOW-<slug>]` <플로우 이름>

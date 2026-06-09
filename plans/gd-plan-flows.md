@@ -1,12 +1,12 @@
 ---
 name: gd-plan-flows
-description: 화면을 가로지르는 사용자 여정을 flow별로 정의한다. flow 1개 = docs/flows/<slug>.md 1개. Actor(role) + Steps(@[PAGE-id]) + mermaid 흐름도. step의 PAGE-id는 structure.md에 존재해야 함. idempotent.
+description: 화면을 가로지르는 사용자 여정을 flow별로 정의한다. flow 1개 = docs/flows/<slug>.md 1개. Actor(role) + Steps(@[PAGE-id]) + mermaid 흐름도. step의 PAGE-id는 sitemap.md 로스터에 존재해야 함. idempotent.
 ---
 
 # gd-plan-flows — 사용자 여정
 
 > 본 스킬은 *여정 설계자*입니다. 화면을 가로지르는 사용자 여정 1개 = 파일 1개로 정의합니다.
-> step 은 structure.md 의 page 를 참조하고, Actor 는 prd 의 role 입니다.
+> step 은 sitemap.md 로스터의 page 를 참조하고, Actor 는 prd 의 role 입니다.
 
 ---
 

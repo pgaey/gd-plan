@@ -71,10 +71,12 @@ describe("gd-plan skills", () => {
     }
   });
 
-  it("템플릿 4종 + section-taxonomy 가 존재한다 (design.md 은 collection 픽)", () => {
-    for (const t of ["prd.md", "structure.md", "ui-rules.md", "section-taxonomy.md"]) {
+  it("루트 템플릿 4종 + section-taxonomy 가 존재한다 (design.md 은 collection 픽, 구조는 sitemap+pages)", () => {
+    // 평면 structure.md 는 세로슬라이스 재편(ADR-006)으로 제거됨 — 구조는 sitemap.md + pages/structure.md
+    for (const t of ["prd.md", "sitemap.md", "ui-rules.md", "section-taxonomy.md"]) {
       expect(existsSync(join(TEMPLATES, t)), `templates/${t} 누락`).toBe(true);
     }
+    expect(existsSync(join(TEMPLATES, "structure.md")), "죽은 평면 structure.md 가 되살아남").toBe(false);
     expect(existsSync(join(TEMPLATES, "flows", "_name.md")), "flows/_name.md 누락").toBe(true);
     // design.md 템플릿은 없어야 한다 (collection 픽킹)
     expect(existsSync(join(TEMPLATES, "design.md"))).toBe(false);
