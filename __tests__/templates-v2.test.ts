@@ -56,6 +56,29 @@ describe("세로 슬라이스 v2 템플릿 (spec-01-01)", () => {
   });
 });
 
+describe("spec-01-05: prd version frontmatter + 제약/규제 섹션", () => {
+  it("prd.md 템플릿이 version frontmatter 를 가진다 (critique 참조 토대)", () => {
+    const body = readTpl("prd.md");
+    expect(body.startsWith("---\n"), "frontmatter 시작 없음").toBe(true);
+    expect(body, "version 키 없음").toMatch(/^version:\s*\d+/m);
+  });
+
+  it("prd.md 템플릿이 '제약 / 규제' 섹션을 Capabilities 앞에 가진다 (제약이 기능을 gate)", () => {
+    const body = readTpl("prd.md");
+    const idxConstraint = body.indexOf("## 제약");
+    const idxCap = body.indexOf("## Capabilities");
+    expect(idxConstraint, "제약 섹션 없음").toBeGreaterThan(-1);
+    expect(idxCap, "Capabilities 섹션 없음").toBeGreaterThan(-1);
+    expect(idxConstraint, "제약이 Capabilities 뒤에 있음 (앞이어야 함)").toBeLessThan(idxCap);
+  });
+
+  it("제약/규제 섹션은 리스크와 구분을 명시하고 grounding 용도를 밝힌다", () => {
+    const body = readTpl("prd.md");
+    expect(body, "리스크와 구분 명시 없음").toMatch(/리스크/);
+    expect(body, "제약 섹션이 규제/법 어휘를 포함하지 않음").toMatch(/규제|법/);
+  });
+});
+
 describe("세로 슬라이스 v2 ADR (spec-01-01)", () => {
   const ADRS = [
     "ADR-006-vertical-slice-page-unit.md",

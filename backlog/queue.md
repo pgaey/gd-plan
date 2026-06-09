@@ -8,7 +8,7 @@
 ## 📦 진행 중 Phase
 
 <!-- sdd:active:start -->
-- **phase-01** — gd-plan-vertical-slice — 4 spec — 다음: (spec 없음)
+- **phase-01** — gd-plan-vertical-slice — 5 spec — 다음: spec-01-05-prd-critique
 <!-- sdd:active:end -->
 
 ## 📥 spec-x 대기

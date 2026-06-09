@@ -18,6 +18,7 @@
 | `Testimonial` | 후기 / 추천 | quotes[]{quote, author, role?} | Card | 중하단 |
 | `Pricing` | 요금제 | tiers[]{name, price, features[], cta} | Card | 하단부 |
 | `FAQ` | 자주 묻는 질문 | items[]{q, a} | Accordion | 하단 |
+| `Map` | 위치 / 오시는길 | address, embed?(지도), transit[]?, parking? | (조합) | 하단 / 정보 페이지 본문 |
 | `CTA` | 행동 유도 | heading, button | (조합) | Footer 직전 |
 | `Footer` | 하단 정보 | columns[], legal | (조합) | 최하단 |
 

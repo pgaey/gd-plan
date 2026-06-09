@@ -10,6 +10,7 @@ const TEMPLATES = join(__dirname, "..", "templates");
 const EXPECTED_SKILLS = [
   "gd-plan-start",
   "gd-plan-prd",
+  "gd-plan-critique",
   "gd-plan-design",
   "gd-plan-sitemap",
   "gd-plan-page",
@@ -18,10 +19,10 @@ const EXPECTED_SKILLS = [
   "gd-plan-review",
 ];
 
-// 길이 cap: 기본 400, review 예외 600 (spec NFR)
+// 길이 cap: 기본 400, review/critique 예외 600 (spec NFR — 복잡 스킬)
 const CAP_DEFAULT = 400;
 const CAP_EXCEPTION = 600;
-const EXCEPTION_SKILLS = new Set(["gd-plan-review"]);
+const EXCEPTION_SKILLS = new Set(["gd-plan-review", "gd-plan-critique"]);
 
 function read(skill: string): string {
   return readFileSync(join(PLANS, `${skill}.md`), "utf-8");
@@ -34,7 +35,7 @@ describe("gd-plan skills", () => {
     }
   });
 
-  it("plans/ 에 gd-plan-*.md 가 정확히 8개다 (군더더기 없음)", () => {
+  it("plans/ 에 gd-plan-*.md 가 정확히 9개다 (군더더기 없음)", () => {
     const files = readdirSync(PLANS).filter((f) => f.startsWith("gd-plan-") && f.endsWith(".md"));
     expect(files.sort()).toEqual(EXPECTED_SKILLS.map((s) => `${s}.md`).sort());
   });
@@ -99,6 +100,116 @@ describe("gd-plan skills", () => {
     expect(body).toContain("/gd-plan-sitemap");
     expect(body).toContain("pages/");
     expect(body, "구 structure 참조 잔존").not.toContain("docs/structure.md");
+  });
+});
+
+describe("spec-01-05: gd-plan-prd 제약/규제 슬롯 + version bump", () => {
+  it("gd-plan-prd 가 제약/규제 질문을 capability ID 규칙(§4) 앞에 가진다", () => {
+    const body = read("gd-plan-prd");
+    expect(body, "제약 질문 없음").toMatch(/제약/);
+    expect(body, "규제 어휘 없음").toMatch(/규제/);
+    const idxConstraint = body.indexOf("제약");
+    const idxCapRule = body.indexOf("## §4");
+    expect(idxConstraint, "제약 질문 없음").toBeGreaterThan(-1);
+    expect(idxCapRule, "§4 capability 규칙 없음").toBeGreaterThan(-1);
+    expect(idxConstraint, "제약 질문이 capability 정의보다 뒤 (앞이어야 함)").toBeLessThan(idxCapRule);
+  });
+
+  it("gd-plan-prd 종료가 prd frontmatter version bump 를 지시한다", () => {
+    const body = read("gd-plan-prd");
+    expect(body, "version bump 지시 없음").toMatch(/version[\s\S]{0,40}(bump|\+\s*1|증가|올린)/i);
+  });
+});
+
+describe("spec-01-05: gd-plan-critique 스킬", () => {
+  const body = () => read("gd-plan-critique");
+
+  it("독립 서브에이전트(Opus, general-purpose)를 강제하고 침묵 self-review 를 금지한다 (FR1·§F)", () => {
+    const b = body();
+    expect(b, "서브에이전트 지시 없음").toMatch(/서브에이전트|subagent/i);
+    expect(b, "Opus 지정 없음").toMatch(/opus/i);
+    expect(b, "general-purpose 타입 없음").toMatch(/general-purpose/);
+    expect(b, "침묵 self-review 금지 불변식 없음").toMatch(/self-review|자가\s*점검|self review/i);
+    expect(b, "정직성 배너/폴백 없음").toMatch(/배너|폴백|fallback/i);
+  });
+
+  it("3렌즈(L1·L2·L3)와 tie-break 규칙을 가진다 (§C)", () => {
+    const b = body();
+    for (const lens of ["L1", "L2", "L3"]) {
+      expect(b, `${lens} 렌즈 없음`).toContain(lens);
+    }
+    expect(b, "tie-break 우선순위 없음").toMatch(/tie-break|우선순위|L2.*L1.*L3/i);
+  });
+
+  it("severity 루브릭(4단)과 _critique.md 보고서 스키마(prdVersion)를 정의한다 (§B)", () => {
+    const b = body();
+    expect(b, "severity 단계 없음").toMatch(/치명/);
+    expect(b, "_critique.md 산출 없음").toContain("_critique.md");
+    expect(b, "prdVersion frontmatter 없음").toContain("prdVersion");
+  });
+
+  it("입력 범위(prd.md)·보고서 only·사람 반영(decisions.md)을 명시한다 (§A·FR3·4)", () => {
+    const b = body();
+    expect(b, "prd.md 입력 없음").toContain("prd.md");
+    expect(b, "보고서 only(직접 수정 금지) 없음").toMatch(/직접\s*수정|보고서만|보고서 only/);
+    expect(b, "decisions.md 반영 기록 없음").toContain("decisions.md");
+  });
+
+  it("L2 grounding 이 선언된 제약슬롯을 1차 소스로 쓴다 (§D)", () => {
+    const b = body();
+    expect(b, "제약/규제 grounding 없음").toMatch(/제약/);
+    expect(b, "L2 1차 grounding=선언 제약 명시 없음").toMatch(/1차 ground|선언분|선언된 제약/i);
+  });
+});
+
+describe("spec-01-05: 통합 표면 (design soft-gate · start 상태 · _critique 위생)", () => {
+  it("gd-plan-design 진입이 critique 미실행/stale 을 경고한다 (soft-gate, BLOCK 아님)", () => {
+    const b = read("gd-plan-design");
+    expect(b, "critique 참조 없음").toMatch(/critique/i);
+    expect(b, "version 비교 없음").toMatch(/version|prdVersion/);
+    expect(b, "경고/권장(비차단) 명시 없음").toMatch(/경고|권장/);
+  });
+
+  it("gd-plan-start 가 critique 상태(미실행/stale/완료)를 표시한다", () => {
+    const b = read("gd-plan-start");
+    expect(b, "critique 상태 표시 없음").toMatch(/critique/i);
+  });
+
+  it("gd-plan-start·gd-plan-review 가 _critique.md 를 auto-load 모델에서 무시한다 (위생)", () => {
+    for (const s of ["gd-plan-start", "gd-plan-review"]) {
+      const b = read(s);
+      expect(b, `${s}: _critique 무시 명시 없음`).toMatch(/_critique[\s\S]{0,60}(무시|제외|본문은 안)/);
+    }
+  });
+});
+
+// §G — 이 블록은 fixture '자산'의 형식만 고정한다. critique 가 실제로 결함을 잡는가(recall)는
+// LLM 비결정성상 CI 로 못 잰다 → 수동/오프라인 eval 입력(golden-prd-dental.md 헤더 참조).
+describe("spec-01-05: golden fixture 자산 고정 (§G — CI 는 형식만, recall 은 수동 eval)", () => {
+  const FIX = join(__dirname, "fixtures");
+  const LENSES = new Set(["L1", "L2", "L3"]);
+  const SEV = new Set(["치명", "높음", "중간", "낮음"]);
+
+  it("결함 박힌 golden PRD fixture 가 존재한다", () => {
+    expect(existsSync(join(FIX, "golden-prd-dental.md")), "fixture 누락").toBe(true);
+  });
+
+  it("기대 must-catch 목록이 lens·severity·summary 형식을 갖춘다", () => {
+    const raw = readFileSync(join(FIX, "golden-prd-dental.expected.json"), "utf-8");
+    const list = JSON.parse(raw);
+    expect(Array.isArray(list), "배열 아님").toBe(true);
+    expect(list.length, "must-catch 3건 미만").toBeGreaterThanOrEqual(3);
+    for (const f of list) {
+      expect(LENSES.has(f.lens), `lens '${f.lens}' 가 L1/L2/L3 밖`).toBe(true);
+      expect(SEV.has(f.severity), `severity '${f.severity}' 가 4단 밖`).toBe(true);
+      expect(typeof f.summary === "string" && f.summary.length > 0, "summary 없음").toBe(true);
+    }
+  });
+
+  it("fixture 가 알려진 PRD-층 결함(루프미완결·약한 인증)을 실제로 담는다", () => {
+    const body = readFileSync(join(FIX, "golden-prd-dental.md"), "utf-8");
+    expect(body, "알림 Later(루프 미완결 씨앗) 없음").toMatch(/Later/);
+    expect(body, "이름+연락처 약한 인증 없음").toMatch(/이름.{0,6}연락처|연락처.{0,6}이름/);
   });
 });
 
