@@ -215,6 +215,29 @@ describe("spec-01-05: golden fixture 자산 고정 (§G — CI 는 형식만, re
   });
 });
 
+describe("phase-FF: 비가역 결정 확신표기 + MVP→Later 댕글링 (회고 RC5·#5 갭)", () => {
+  it("gd-plan-page·gd-plan-prd 가 비가역 결정 확신표기 규칙을 가진다 (prevention)", () => {
+    for (const s of ["gd-plan-page", "gd-plan-prd"]) {
+      const b = read(s);
+      expect(b, `${s}: 비가역 결정 언급 없음`).toMatch(/비가역/);
+      expect(b, `${s}: 확신표기/마커 규칙 없음`).toMatch(/사용자 확인 권장|확신 표기/);
+    }
+  });
+
+  it("gd-plan-critique 가 비가역 결정 단정(확신표기 누락) 점검을 가진다 (detection)", () => {
+    const b = read("gd-plan-critique");
+    expect(b, "비가역 결정 점검 없음").toMatch(/비가역/);
+    expect(b, "단정/확신표기 점검 없음").toMatch(/단정|확신 표기|사용자 확인/);
+  });
+
+  it("gd-plan-review 가 MVP→Later 댕글링(우선순위 빈 링크) 점검을 가진다", () => {
+    const b = read("gd-plan-review");
+    expect(b, "MVP 언급 없음").toMatch(/MVP/);
+    expect(b, "Later 언급 없음").toMatch(/Later/);
+    expect(b, "댕글링/빈 링크 개념 없음").toMatch(/댕글|dangl|빈 링크|미출시/i);
+  });
+});
+
 describe("spec-01-04: flows full re-derive + 신모델 참조", () => {
   it("gd-plan-flows 는 구 평면 docs/structure.md 를 참조하지 않는다", () => {
     expect(read("gd-plan-flows"), "구 structure 참조 잔존").not.toContain("docs/structure.md");
