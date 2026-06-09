@@ -26,10 +26,11 @@
 ```
 src/{cli,build-index}.ts   설치기 + design-md-collection 인덱스 빌더
 plans/                     gd-plan 스킬 9개 (Claude Code /command)
-templates/                 prd/structure/ui-rules + flows/_name + section-taxonomy
-                           (design.md 은 collection 픽킹이라 템플릿 없음)
+templates/                 prd/sitemap/ui-rules + pages/{structure,decisions} + decisions
+                           + flows/_name + section-taxonomy
+                           (design.md 은 collection 픽킹이라 템플릿 없음 · 구조는 sitemap+pages)
 design-md-collection/      66개 검증 디자인 시스템 + _index.json (후보 캐시)
-docs/decisions/            ADR-001~005 (설계 결정)
+docs/decisions/            ADR-001~015 (설계 결정)
 specs/spec-13-01-gd-plan-package/  원본 설계 기록 (gen-design 분리 전, 참고용)
 ```
 
