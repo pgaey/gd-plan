@@ -92,10 +92,10 @@
 - [x] walkthrough.md / pr_description.md 작성
 - [x] 독립 코드리뷰(`/hk-code-review`) Major 2건 반영 `7dae97f`
 - [ ] (머지 시) ADR 3종 작성 `docs/decisions/ADR-{NNN}-*.md`
-- [ ] Ship Commit: `docs(spec-01-05): ship walkthrough and pr description`
+- [x] Ship Commit `43c7861`: `docs(spec-01-05): ship walkthrough and pr description`
 ### 🚀 Push & PR
-- [ ] `git push -u origin spec-01-05-prd-critique`
-- [ ] `/hk-pr-gh` (사용자 승인 후, base=phase-01) → PR URL 보고
+- [x] `git push -u origin spec-01-05-prd-critique`
+- [x] PR 생성 (base=phase-01) → **https://github.com/pgaey/gd-plan/pull/5**
 
 ---
 
