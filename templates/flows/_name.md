@@ -36,4 +36,4 @@ flowchart TD
 <이 여정이 성공적으로 끝났을 때의 상태>
 
 > (선택) 사이트 전체 흐름(여러 flow 합본)은 `flows/_overview.md` 에 manyfast 식 — `subgraph` = 영역(페이지 그룹). gd-plan-flows 가 개별 flow 들에서 자동 합성 가능.
-> 작성 예시는 drafts/flow.template.md 참조 (flows/booking.md).
+> 작성은 /gd-plan-flows 인터뷰가 채운다 (예: flows/booking.md).

@@ -73,4 +73,4 @@ version: 1
 ## Out of Scope
 - <이번에 안 하는 것>
 
-<!-- 작성 예시는 @gen-design/plan 의 drafts/prd.template.md 참조 (동네 미용실 예약) -->
+<!-- 작성은 /gd-plan-prd 인터뷰가 채운다 (예: 동네 미용실 예약 시나리오) -->
