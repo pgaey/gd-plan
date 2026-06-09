@@ -142,11 +142,22 @@ pnpm test
 
 ## 🏁 Phase Done 조건
 
-- [ ] 모든 SPEC 이 merge (base 모드: `phase-1-gd-plan-vertical-slice` → main)
-- [ ] 통합 테스트 3 시나리오 PASS
-- [ ] 성공 기준 1~5 정량 측정 결과 기록
+- [x] 모든 SPEC 이 merge (base 모드: `phase-1-gd-plan-vertical-slice` → main) — 5/5 Merged
+- [x] 통합 테스트 3 시나리오 PASS (`__tests__/integration.test.ts`, 신모델 sitemap 기준)
+- [~] 성공 기준 1~5 정량 측정 — **2·5 측정 완료 / 1·3·4 의 end-to-end 실행 측정은 사용자가 별도 세션에서 수행 예정** (아래)
 - [ ] 사용자 최종 승인
 
 ## 📊 검증 결과 (phase 완료 시 작성)
 
-<!-- 통합 테스트 로그, 성공 기준 측정값, 회귀 점검 결과 등을 여기 첨부 -->
+> phase-01 회고(`backlog/phase-01-review.md`) 반영: Critical 4(C2~C5) + Warning 6 정리 완료(커밋 704d38b·0817639·7971573·83a3939·3b3ea98). 잔여 = C1(e2e 측정), W7(진행률 — 비이슈로 미수정).
+
+### 성공 기준 측정
+| # | 기준 | 결과 | 증거 |
+|---|---|:---:|---|
+| 1 | 미용실 파이프라인 → sitemap+pages + review BLOCK 0 | ⏳ 사용자 측정 예정 | 스킬·템플릿 *구조* 완비, **end-to-end 실행은 별도 세션**(C1) |
+| 2 | 페이지 추가 1명령 멱등 | ✅ 구조 | `gd-plan-page` §3·§6·§7 멱등 규약, 설치 검증 |
+| 3 | 결정 로그 2층 자동 기록 | ⏳ 사용자 측정 예정 | 템플릿 6열·ADR-011·훅 문자열 완비, 실제 1행 생성은 e2e |
+| 4 | frontmatter flows ↔ flow step 1:1 | ⏳ 사용자 측정 예정 | full re-derive 지시·ADR-012 완비, 실제 도출은 e2e |
+| 5 | 회귀 PASS + 설치 검증 | ✅ | `pnpm test` 59 PASS · typecheck · build · 설치 9개 |
+
+> **결정(2026-06-09)**: 사용자가 1·3·4 의 미용실 end-to-end 측정을 별도 세션에서 직접 수행하기로 함. 그 전까지 phase-ship 은 "구조 검증 완료 / e2e 미측정" 상태임을 명시(회고 No-go 의 C1 을 사용자가 의식적으로 우회).

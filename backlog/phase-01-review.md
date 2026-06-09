@@ -1,5 +1,9 @@
 # Phase-01 비판적 회고
 
+> **✅ 해소 현황 (2026-06-09)** — Critical 4 + Warning 6 정리 완료:
+> C2·C3·C5·W5 → `704d38b` / C4·W2·W3 → `0817639` / W1(ADR 3종) → `7971573` / W4 → `83a3939` / W6 → `3b3ea98`.
+> **잔여**: **C1(e2e 측정)** = 사용자가 별도 세션에서 미용실 end-to-end 직접 수행 예정(의식적 우회). **W7(진행률 N/5)** = 비이슈로 미수정(구조 슬롯 = sitemap+pages 집계, `gd-plan-start §2` 에 이미 문서화).
+
 > 감사 범위: `backlog/phase-01.md`, spec-01-01~05 (spec.md·walkthrough.md), 9개 스킬, 템플릿 전체, `src/{cli,build-index}.ts`, `__tests__/*` (전건 59 PASS / typecheck clean / 66 collection 확인), ADR-001~012. 근거는 `파일:라인`.
 > 독립 Opus 서브에이전트(/hk-phase-review) 수행. 2026-06-09.
 
