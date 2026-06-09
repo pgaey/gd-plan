@@ -102,6 +102,24 @@ describe("gd-plan skills", () => {
   });
 });
 
+describe("spec-01-05: gd-plan-prd 제약/규제 슬롯 + version bump", () => {
+  it("gd-plan-prd 가 제약/규제 질문을 capability ID 규칙(§4) 앞에 가진다", () => {
+    const body = read("gd-plan-prd");
+    expect(body, "제약 질문 없음").toMatch(/제약/);
+    expect(body, "규제 어휘 없음").toMatch(/규제/);
+    const idxConstraint = body.indexOf("제약");
+    const idxCapRule = body.indexOf("## §4");
+    expect(idxConstraint, "제약 질문 없음").toBeGreaterThan(-1);
+    expect(idxCapRule, "§4 capability 규칙 없음").toBeGreaterThan(-1);
+    expect(idxConstraint, "제약 질문이 capability 정의보다 뒤 (앞이어야 함)").toBeLessThan(idxCapRule);
+  });
+
+  it("gd-plan-prd 종료가 prd frontmatter version bump 를 지시한다", () => {
+    const body = read("gd-plan-prd");
+    expect(body, "version bump 지시 없음").toMatch(/version[\s\S]{0,40}(bump|\+\s*1|증가|올린)/i);
+  });
+});
+
 describe("spec-01-04: flows full re-derive + 신모델 참조", () => {
   it("gd-plan-flows 는 구 평면 docs/structure.md 를 참조하지 않는다", () => {
     expect(read("gd-plan-flows"), "구 structure 참조 잔존").not.toContain("docs/structure.md");
