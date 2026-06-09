@@ -1,11 +1,11 @@
 ---
 name: gd-plan-prd
-description: PRD 인터뷰. 구조화 15문항으로 docs/prd.md(상류 SSOT)를 채우고 .gd/memory/project.md 요약을 동기화한다. capability에 [CAP-NN] ID + 주체 역할 부여. idempotent.
+description: PRD 인터뷰. 구조화 16문항으로 docs/prd.md(상류 SSOT)를 채우고 .gd/memory/project.md 요약을 동기화한다. capability에 [CAP-NN] ID + 주체 역할 부여. idempotent.
 ---
 
 # gd-plan-prd — PRD 인터뷰
 
-> 본 스킬은 *인터뷰어*입니다. 무작위 대화가 아니라 **구조화 15문항**으로 prd.md 의 모든 필드를 빠짐없이 채웁니다.
+> 본 스킬은 *인터뷰어*입니다. 무작위 대화가 아니라 **구조화 16문항**으로 prd.md 의 모든 필드를 빠짐없이 채웁니다.
 > **핵심 규칙 — 질문 ↔ prd 필드 완전 커버**: prd 템플릿의 모든 필드는 최소 1개 질문으로 커버된다. 템플릿에 필드를 추가하면 여기 질문도 추가.
 
 ---
@@ -22,10 +22,11 @@ description: PRD 인터뷰. 구조화 15문항으로 docs/prd.md(상류 SSOT)를
 
 - **한 번에 1~2문항.** 답을 prd.md 초안에 즉시 반영하며 진행 (멱등 — 재실행 시 기존 답 보존, 빈 필드만 질문).
 - 답이 추상적이면 **후보를 복수 선택형으로 제시** (manyfast 식 구조화). 예: 톤 → "친근 / 전문 / 미니멀 / 대담 / 신뢰".
-- capability(Q10)마다 **주체 역할을 Q8 roles 에서 고르게** 한다 — `role -> capability` 연결을 인터뷰가 강제.
+- capability(Q11)마다 **주체 역할을 Q8 roles 에서 고르게** 한다 — `role -> capability` 연결을 인터뷰가 강제.
+- **제약(Q10)은 capability(Q11) 앞** — 제약이 기능의 모양을 가둔다(규제·보안이 기능보다 먼저 들어와야 함). 제약("must")과 리스크(Q16, "might")를 혼동 금지.
 - (선택) 표시 질문은 사용자가 "없음" 하면 건너뛴다.
 
-## §3 질문 세트 (15문항)
+## §3 질문 세트 (16문항)
 
 | # | 질문 | 형식 | → prd 필드 |
 |---|---|---|---|
@@ -38,14 +39,15 @@ description: PRD 인터뷰. 구조화 15문항으로 docs/prd.md(상류 SSOT)를
 | Q7 | 톤·보이스는? | 복수 | 톤 키워드 (+ design 픽 힌트) |
 | Q8 | 역할이 나뉘나? 각 역할이 뭘 하나? | 복수 | roles |
 | Q9 | 접근 모델 + 디자인 함의? | 단일 | access model (RBAC/ABAC/ReBAC) |
-| Q10 | 할 수 있어야 하는 것? (주체 역할 + **우선순위 MVP/Later** 지정) | 복수 | capabilities `[CAP-NN]` (+주체) + 범위/우선순위 |
-| Q11 | 성공을 어떻게 측정? (**목표값까지** — 모르면 가정치/baseline-미정 명시) | 복수 | 성공 기준 (정량 + 목표값) |
-| Q12 | 어떤 환경/기기? | 복수 | 기기/플랫폼 |
-| Q13 | (선택) 비기능 요구? | 복수 | 비기능 (성능/접근성/다국어) |
-| Q14 | 안 하는 것? | 복수 | Out of Scope |
-| Q15 | (선택) 주요 리스크? | 복수 | 리스크 |
+| Q10 | (도메인) 법·규제·보안·도메인 제약이 있나? capability 를 제한·강제하는? (없으면 "없음") | 복수 | 제약/규제 (+관할·도메인) |
+| Q11 | 할 수 있어야 하는 것? (주체 역할 + **우선순위 MVP/Later** 지정) | 복수 | capabilities `[CAP-NN]` (+주체) + 범위/우선순위 |
+| Q12 | 성공을 어떻게 측정? (**목표값까지** — 모르면 가정치/baseline-미정 명시) | 복수 | 성공 기준 (정량 + 목표값) |
+| Q13 | 어떤 환경/기기? | 복수 | 기기/플랫폼 |
+| Q14 | (선택) 비기능 요구? | 복수 | 비기능 (성능/접근성/다국어) |
+| Q15 | 안 하는 것? | 복수 | Out of Scope |
+| Q16 | (선택) 주요 리스크? | 복수 | 리스크 |
 
-> 커버리지 체크 — prd 필드 전부 매핑: 한줄/배경/페르소나/핵심가치/차별점/톤/roles/access/capabilities(+주체)/범위·우선순위/기기/비기능/성공기준(+목표값)/리스크/Out of Scope (빠진 필드 0).
+> 커버리지 체크 — prd 필드 전부 매핑: 한줄/배경/페르소나/핵심가치/차별점/톤/roles/access/**제약·규제**/capabilities(+주체)/범위·우선순위/기기/비기능/성공기준(+목표값)/리스크/Out of Scope (빠진 필드 0).
 
 ## §4 capability ID 규칙
 
@@ -62,7 +64,7 @@ description: PRD 인터뷰. 구조화 15문항으로 docs/prd.md(상류 SSOT)를
 
 ## §6 (선택) prd-extractor 서브에이전트
 
-자유 발언이 길면 Sonnet 서브에이전트로 capability 후보를 추출해 Q10 을 돕는다.
+자유 발언이 길면 Sonnet 서브에이전트로 capability 후보를 추출해 Q11 을 돕는다.
 > **non-normative**: 서브에이전트 없이도 동작해야 한다 (권장 힌트, DoD 강제 아님).
 
 ## §7 종료
@@ -70,4 +72,5 @@ description: PRD 인터뷰. 구조화 15문항으로 docs/prd.md(상류 SSOT)를
 - prd.md 의 필수 필드(한줄/페르소나/핵심가치/roles/capabilities/범위·우선순위/톤/성공기준/Out of Scope)가 모두 채워졌는지 확인.
 - 성공기준은 방향(↑/↓)만 두지 말 것 — 목표값 또는 명시적 가정치/baseline-미정 포함. 범위·우선순위는 모든 CAP 이 MVP/Later 중 하나로 분류됐는지 확인.
 - 미완 필드가 있으면 `<!-- TODO: 필드명 -->` 마커를 남기고 보고 (재개 가능).
-- 출력: `docs/prd.md 작성 완료. 다음 단계: /gd-plan-design. 전체 진행률: 1/5`
+- **version bump**: 인터뷰로 prd 필드가 갱신됐으면 frontmatter `version` 을 +1 (없으면 `version: 1` 신설). `/gd-plan-critique` 가 "어느 prd 버전을 비평했나" 대조에 쓴다.
+- 출력: `docs/prd.md 작성 완료. 다음 단계: /gd-plan-critique (전제 검증, 권장) → /gd-plan-design. 전체 진행률: 1/5`
