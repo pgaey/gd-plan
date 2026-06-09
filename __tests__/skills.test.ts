@@ -162,6 +162,27 @@ describe("spec-01-05: gd-plan-critique 스킬", () => {
   });
 });
 
+describe("spec-01-05: 통합 표면 (design soft-gate · start 상태 · _critique 위생)", () => {
+  it("gd-plan-design 진입이 critique 미실행/stale 을 경고한다 (soft-gate, BLOCK 아님)", () => {
+    const b = read("gd-plan-design");
+    expect(b, "critique 참조 없음").toMatch(/critique/i);
+    expect(b, "version 비교 없음").toMatch(/version|prdVersion/);
+    expect(b, "경고/권장(비차단) 명시 없음").toMatch(/경고|권장/);
+  });
+
+  it("gd-plan-start 가 critique 상태(미실행/stale/완료)를 표시한다", () => {
+    const b = read("gd-plan-start");
+    expect(b, "critique 상태 표시 없음").toMatch(/critique/i);
+  });
+
+  it("gd-plan-start·gd-plan-review 가 _critique.md 를 auto-load 모델에서 무시한다 (위생)", () => {
+    for (const s of ["gd-plan-start", "gd-plan-review"]) {
+      const b = read(s);
+      expect(b, `${s}: _critique 무시 명시 없음`).toMatch(/_critique[\s\S]{0,60}(무시|제외|본문은 안)/);
+    }
+  });
+});
+
 describe("spec-01-04: flows full re-derive + 신모델 참조", () => {
   it("gd-plan-flows 는 구 평면 docs/structure.md 를 참조하지 않는다", () => {
     expect(read("gd-plan-flows"), "구 structure 참조 잔존").not.toContain("docs/structure.md");
