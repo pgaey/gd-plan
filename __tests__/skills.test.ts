@@ -183,6 +183,34 @@ describe("spec-01-05: 통합 표면 (design soft-gate · start 상태 · _critiq
   });
 });
 
+describe("spec-01-05: 가치-recall golden fixture (§G)", () => {
+  const FIX = join(__dirname, "fixtures");
+  const LENSES = new Set(["L1", "L2", "L3"]);
+  const SEV = new Set(["치명", "높음", "중간", "낮음"]);
+
+  it("결함 박힌 golden PRD fixture 가 존재한다", () => {
+    expect(existsSync(join(FIX, "golden-prd-dental.md")), "fixture 누락").toBe(true);
+  });
+
+  it("기대 must-catch 목록이 lens·severity·summary 형식을 갖춘다", () => {
+    const raw = readFileSync(join(FIX, "golden-prd-dental.expected.json"), "utf-8");
+    const list = JSON.parse(raw);
+    expect(Array.isArray(list), "배열 아님").toBe(true);
+    expect(list.length, "must-catch 3건 미만").toBeGreaterThanOrEqual(3);
+    for (const f of list) {
+      expect(LENSES.has(f.lens), `lens '${f.lens}' 가 L1/L2/L3 밖`).toBe(true);
+      expect(SEV.has(f.severity), `severity '${f.severity}' 가 4단 밖`).toBe(true);
+      expect(typeof f.summary === "string" && f.summary.length > 0, "summary 없음").toBe(true);
+    }
+  });
+
+  it("fixture 가 알려진 PRD-층 결함(루프미완결·약한 인증)을 실제로 담는다", () => {
+    const body = readFileSync(join(FIX, "golden-prd-dental.md"), "utf-8");
+    expect(body, "알림 Later(루프 미완결 씨앗) 없음").toMatch(/Later/);
+    expect(body, "이름+연락처 약한 인증 없음").toMatch(/이름.{0,6}연락처|연락처.{0,6}이름/);
+  });
+});
+
 describe("spec-01-04: flows full re-derive + 신모델 참조", () => {
   it("gd-plan-flows 는 구 평면 docs/structure.md 를 참조하지 않는다", () => {
     expect(read("gd-plan-flows"), "구 structure 참조 잔존").not.toContain("docs/structure.md");
