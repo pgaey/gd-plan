@@ -61,6 +61,7 @@ description: PRD 인터뷰. 구조화 16문항으로 docs/prd.md(상류 SSOT)를
 1. `docs/prd.md` 작성/갱신 (템플릿 구조 따름).
 2. `.gd/memory/project.md` 의 프로젝트 요약을 prd 핵심(한줄/페르소나/capabilities/톤)으로 **자동 갱신** (멱등). prd 가 SSOT, project.md 는 파생 요약.
 3. **결정 기록 (자동 + 수동)**: 인터뷰 fork(Out-of-scope·톤·access 등)에서 하나를 고르면 `docs/decisions.md` 에 typed 1행 append (연결=`[CAP-..]`). 형식·ID·supersede 는 `docs/decisions.md` 헤더 / `ADR-011` 정본 참조. fork 밖 중요한 일회성 결정은 "이건 남길까요?" 제안 후 기록(수동 보강).
+4. **비가역 결정 표기 (필수)**: 보안·법·규제·데이터모델·제품행동 등 *되돌리기 어려운(비가역)* 결정은 단정 금지 — `(사용자 확인 권장)` 마커를 붙여 드러낸다(가역 결정은 단정 가능). "틀리면 못 돌리는 결정은 빨리 가도 티 나게 표시한다."
 
 ## §6 (선택) prd-extractor 서브에이전트
 
