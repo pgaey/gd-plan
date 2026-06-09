@@ -29,7 +29,7 @@ function read(skill: string): string {
 }
 
 describe("gd-plan skills", () => {
-  it("7개 스킬이 모두 존재한다", () => {
+  it("9개 스킬이 모두 존재한다", () => {
     for (const s of EXPECTED_SKILLS) {
       expect(existsSync(join(PLANS, `${s}.md`)), `${s}.md 누락`).toBe(true);
     }

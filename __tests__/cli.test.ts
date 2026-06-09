@@ -6,7 +6,7 @@ import { installPlans } from "../src/cli";
 
 /**
  * Task 1 smoke test — 설치 *메커니즘* 만 검증한다 (fixture plansSrc 사용).
- * 실제 gd-plan 스킬 7개의 존재·포맷 검증은 Task 11 (skills.test.ts) 소관.
+ * 실제 gd-plan 스킬 9개의 존재·포맷 검증은 skills.test.ts 소관.
  */
 describe("gd-plan installPlans (mechanism)", () => {
   let tempDir: string;
