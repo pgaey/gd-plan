@@ -3,9 +3,13 @@ version: 1
 ---
 # 햇살치과 예약 — prd.md
 
-> ⚠️ 이 파일은 **테스트 fixture** 다. `/gd-plan-critique` 의 가치-recall 검증용으로
-> **의도적으로 PRD-층 결함을 박아 둔** 결함 PRD다. 실제 기획 문서가 아니다.
+> ⚠️ 이 파일은 **테스트 fixture** 다. `/gd-plan-critique` 가 잡아야 할 PRD-층 결함을
+> **의도적으로 박아 둔** 결함 PRD다. 실제 기획 문서가 아니다.
 > 기대 must-catch 목록: `golden-prd-dental.expected.json`.
+>
+> **검증 경계(NFR3 정직성)**: CI 는 이 자산의 *형식*만 고정한다(파일 존재 + expected 스키마).
+> critique 가 실제로 이 결함들을 잡는지(**recall**)는 LLM 비결정성상 CI 로 못 잰다 →
+> 이 자산을 입력으로 한 **수동/오프라인 eval** 로 측정한다. "테스트 통과 = recall 보장" 아님.
 
 ## 한 줄 요약
 전화 없이 웹에서 치과 예약을 신청·확인할 수 있는 사이트.

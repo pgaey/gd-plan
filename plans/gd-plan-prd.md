@@ -72,5 +72,5 @@ description: PRD 인터뷰. 구조화 16문항으로 docs/prd.md(상류 SSOT)를
 - prd.md 의 필수 필드(한줄/페르소나/핵심가치/roles/capabilities/범위·우선순위/톤/성공기준/Out of Scope)가 모두 채워졌는지 확인.
 - 성공기준은 방향(↑/↓)만 두지 말 것 — 목표값 또는 명시적 가정치/baseline-미정 포함. 범위·우선순위는 모든 CAP 이 MVP/Later 중 하나로 분류됐는지 확인.
 - 미완 필드가 있으면 `<!-- TODO: 필드명 -->` 마커를 남기고 보고 (재개 가능).
-- **version bump**: 인터뷰로 prd 필드가 갱신됐으면 frontmatter `version` 을 +1 (없으면 `version: 1` 신설). `/gd-plan-critique` 가 "어느 prd 버전을 비평했나" 대조에 쓴다.
+- **version bump** (규칙 정본 = `templates/prd.md`): 신규 prd 는 `version: 1`(신설 — bump 아님). *기존* prd 를 인터뷰로 갱신했으면 +1. `/gd-plan-critique` 가 "어느 prd 버전을 비평했나" 대조에 쓴다.
 - 출력: `docs/prd.md 작성 완료. 다음 단계: /gd-plan-critique (전제 검증, 권장) → /gd-plan-design. 전체 진행률: 1/5`

@@ -27,7 +27,7 @@ description: PRD 전제를 독립 서브에이전트로 적대적 비판한다. 
 `Agent` tool (`subagent_type: general-purpose`, `model: "opus"`)로 **별도 컨텍스트**에서 비평을 수행한다. 같은 컨텍스트에서 자기가 쓴 PRD 를 자기가 보면 confirmation bias 에 빠지므로, **분리가 곧 산출물**이다.
 
 - **전달**: `docs/prd.md`(+`decisions.md`) 경로 + §3 렌즈 + §4 출력 스키마.
-- **폴백(§F) — 서브에이전트를 띄울 수 없을 때만**:
+- **폴백(§F) — `Agent` tool 디스패치가 *실제로 실패*할 때만** (임의 판단으로 독립 검증을 건너뛰지 않는다):
   - **침묵 self-review 절대 금지**(불변식). 자가점검이 독립 검증인 척하면 안 된다.
   - 대신 **큰 배너** 표지: `⚠️ 독립 검증 불가 — 인컨텍스트 자가점검(self-review)이라 편향이 남는다. 결과를 덜 신뢰하고, 이 결과만으로 중대한(법적·보안·핵심가치) 결정을 확정하지 말 것.`
   - 그 아래 §3 렌즈를 **체크리스트로 메인이 항목별 강제 답변**(명시적 폴백 티어). 폴백을 *기본*으로 오용 금지 — Claude Code 에선 서브에이전트가 거의 항상 가능하다.
@@ -73,7 +73,7 @@ prdVersion: <비평한 prd.md 의 version>
 ## §5 사람-주도 반영 (저작권 보존)
 
 1. 메인 에이전트가 `_critique.md` 를 읽고 발견 항목을 **severity 내림차순**으로 사용자에게 제시(Y/n triage). critique 는 *판단*이라 자동 적용 금지.
-2. **채택분만** `docs/prd.md` 에 반영한다. 반영했으면 prd frontmatter `version` **+1 bump**(한 세션의 다건 반영 = +1).
+2. **채택분만** `docs/prd.md` 에 반영한다. 반영했으면 prd frontmatter `version` **+1**(한 세션 다건 반영 = +1; 초기값·규칙 정본은 `templates/prd.md`).
 3. prd 가 바뀌는 fork → `docs/decisions.md` 에 typed 1행(연결=`[CAP-..]`). 형식·ID·supersede 는 `ADR-011` / `docs/decisions.md` 헤더 정본 참조.
 
 ```

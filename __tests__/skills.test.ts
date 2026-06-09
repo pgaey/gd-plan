@@ -158,7 +158,7 @@ describe("spec-01-05: gd-plan-critique 스킬", () => {
   it("L2 grounding 이 선언된 제약슬롯을 1차 소스로 쓴다 (§D)", () => {
     const b = body();
     expect(b, "제약/규제 grounding 없음").toMatch(/제약/);
-    expect(b, "grounding 개념 없음").toMatch(/grounding|근거|1차/i);
+    expect(b, "L2 1차 grounding=선언 제약 명시 없음").toMatch(/1차 ground|선언분|선언된 제약/i);
   });
 });
 
@@ -183,7 +183,9 @@ describe("spec-01-05: 통합 표면 (design soft-gate · start 상태 · _critiq
   });
 });
 
-describe("spec-01-05: 가치-recall golden fixture (§G)", () => {
+// §G — 이 블록은 fixture '자산'의 형식만 고정한다. critique 가 실제로 결함을 잡는가(recall)는
+// LLM 비결정성상 CI 로 못 잰다 → 수동/오프라인 eval 입력(golden-prd-dental.md 헤더 참조).
+describe("spec-01-05: golden fixture 자산 고정 (§G — CI 는 형식만, recall 은 수동 eval)", () => {
   const FIX = join(__dirname, "fixtures");
   const LENSES = new Set(["L1", "L2", "L3"]);
   const SEV = new Set(["치명", "높음", "중간", "낮음"]);

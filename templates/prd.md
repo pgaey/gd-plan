@@ -4,7 +4,7 @@ version: 1
 # <프로젝트명> — prd.md
 
 > 무엇을 · 누구를 위해 만드는가. **상류 SSOT** (이게 틀어지면 여기를 고친다).
-> 규칙: `version` 은 정수. `/gd-plan-prd` 완료·critique 반영 시 +1 bump (`/gd-plan-critique` 가 "어느 버전을 봤나" 대조에 사용).
+> 규칙(version 정본): `version` 은 monotonic 정수. **신규 prd = `1`** (이 템플릿 기본값 — 신설은 bump 아님). 이후 prd 본문이 갱신될 때마다(`/gd-plan-prd` 추가 답변 또는 `/gd-plan-critique` 반영) **+1**, 한 세션의 다건 반영도 **+1**. `/gd-plan-critique` 가 "어느 버전을 비평했나"(`_critique.prdVersion`) 대조에 쓴다.
 > 규칙은 `> 규칙:`. capability/role 은 안정 ID/enum 을 갖는다 (하류 추적의 시작점).
 > 이 파일은 `/gd-plan-prd` 인터뷰로 채워진다.
 
