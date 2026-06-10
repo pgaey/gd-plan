@@ -23,6 +23,10 @@ export interface InstallOptions {
 /**
  * plans/ 의 gd-plan-*.md 스킬을 프로젝트의 .claude/commands/ 로 설치한다.
  * idempotent: 이미 존재하면 --force 없이는 스킵.
+ *
+ * @deprecated 소비자 설치는 `get.sh` (curl|bash) 를 사용하세요. 이 함수는 스킬 9개만
+ * 복사하고 templates·design-md-collection·bin/gd 를 빠뜨려 외부 프로젝트에서 스킬이
+ * 동작하지 않습니다. dev/programmatic 보조용으로만 유지됩니다 (ADR-016).
  */
 export function installPlans(opts: InstallOptions = {}): InstallResult {
   const force = opts.force ?? false;
@@ -61,6 +65,10 @@ export function main(argv: string[]): number {
   const force = argv.includes("--force");
 
   console.log(`\n${bold("gd-plan")} — 상류 기획 스킬 설치기\n`);
+
+  console.log(yellow("⚠ 이 설치기(node)는 deprecated — 스킬만 복사하며 templates·컬렉션·CLI 가 빠집니다."));
+  console.log(dim("  소비자 설치는 curl|bash 로:"));
+  console.log(dim("  bash <(curl -fsSL https://raw.githubusercontent.com/pgaey/gd-plan/main/get.sh) --yes <dir>\n"));
 
   const result = installPlans({ force });
 
