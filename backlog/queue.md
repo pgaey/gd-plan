@@ -8,7 +8,7 @@
 ## 📦 진행 중 Phase
 
 <!-- sdd:active:start -->
-- **phase-02** — distribution — 2 spec — 다음: spec-02-02-get-sh-bootstrap
+- **phase-02** — distribution — 2 spec — 다음: (spec 없음)
 <!-- sdd:active:end -->
 
 ## 📥 spec-x 대기
