@@ -58,14 +58,14 @@
 
 ### 🚦 Pre-Push Quality Gate (push 전 필수)
 
-- [ ] **코드 품질 점검**: `pnpm typecheck` → PASS
-- [ ] **전체 테스트 실행**: `pnpm test` + `pnpm test:sh` → 모두 PASS
+- [x] **코드 품질 점검**: `pnpm typecheck` → PASS
+- [x] **전체 테스트 실행**: `pnpm test` 67/67 + `pnpm test:sh` 4 시나리오 → 모두 PASS
 
 ### 📝 산출물 작성
 
-- [ ] **walkthrough.md 작성** (증거 로그)
-- [ ] **pr_description.md 작성** (템플릿 준수)
-- [ ] **Ship Commit**: `docs(spec-02-02): ship walkthrough and pr description`
+- [x] **walkthrough.md 작성** (증거 로그)
+- [x] **pr_description.md 작성** (템플릿 준수)
+- [x] **Ship Commit**: `docs(spec-02-02): ship walkthrough and pr description`
 
 ### 🚀 Push & PR
 
