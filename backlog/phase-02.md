@@ -47,7 +47,7 @@ gd-plan 을 harness-kit 형태(`curl | bash`)로 외부 프로젝트에 **설치
 |---|---|:---:|---|---|
 | `spec-02-01` | dist-artifacts-index | P? | Merged | `specs/spec-02-01-dist-artifacts-index/` |
 | `spec-02-02` | get-sh-bootstrap | P? | Merged | `specs/spec-02-02-get-sh-bootstrap/` |
-| `spec-02-03` | gd-consumer-cli | P? | Active | `specs/spec-02-03-gd-consumer-cli/` |
+| `spec-02-03` | gd-consumer-cli | P? | Merged | `specs/spec-02-03-gd-consumer-cli/` |
 <!-- sdd:specs:end -->
 
 > 상태 허용값: `Backlog` / `In Progress` / `Merged`
