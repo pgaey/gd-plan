@@ -29,9 +29,9 @@
 ## Task 2: 셸 테스트 하네스 + 실패 테스트 (TDD Red)
 
 ### 2-1. 테스트 작성
-- [ ] `test/sh/run.sh` (러너) + `test/sh/test-get.sh` (시나리오 4건: fresh·docs 미접촉·멱등·node 비의존)
-- [ ] `bash test/sh/run.sh` 실행 → Fail 확인 (get.sh 미존재)
-- [ ] Commit: `test(spec-02-02): add failing shell tests for get.sh 설치 시나리오`
+- [x] `test/sh/run.sh` (러너) + `test/sh/test-get.sh` (시나리오 4건: fresh·docs 미접촉·멱등·node 비의존)
+- [x] `bash test/sh/run.sh` 실행 → Fail 확인 (get.sh 미존재, exit=1)
+- [x] Commit: `test(spec-02-02): add failing shell tests for get.sh 설치 시나리오`
 
 ---
 
