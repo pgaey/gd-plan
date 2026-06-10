@@ -69,9 +69,9 @@
 
 ### 🚀 Push & PR
 
-- [ ] **Push**: `git push -u origin spec-02-02-get-sh-bootstrap`
-- [ ] **PR 생성**: base = `phase-02-distribution`
-- [ ] **사용자 알림**: 푸시 완료 + PR URL 보고
+- [x] **Push**: `git push -u origin spec-02-02-get-sh-bootstrap`
+- [x] **PR 생성**: base = `phase-02-distribution` — https://github.com/pgaey/gd-plan/pull/8
+- [x] **사용자 알림**: 푸시 완료 + PR URL 보고
 
 ---
 
@@ -81,5 +81,5 @@
 |---|---|
 | **총 Task 수** | 5 |
 | **예상 commit 수** | 5 |
-| **현재 단계** | Planning |
+| **현재 단계** | Ship (PR #8 — 머지 대기) |
 | **마지막 업데이트** | 2026-06-10 |
