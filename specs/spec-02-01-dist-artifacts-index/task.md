@@ -29,9 +29,9 @@
 ## Task 2: 소비자 모드 규약 테스트 (TDD Red)
 
 ### 2-1. 테스트 작성
-- [ ] `__tests__/design-consumer-mode.test.ts` 작성 — 소비자 경로(`.gd/design-md-collection/`)·dev 경로 유지·사문 명령 교정·확장자 중복 부재·네트워크 지시 부재 (plan.md 테스트 목록 5건)
-- [ ] `pnpm test` 실행 → 신규 테스트 Fail 확인 (기존 스위트는 PASS 유지)
-- [ ] Commit: `test(spec-02-01): add failing tests for design 스킬 소비자 모드 규약`
+- [x] `__tests__/design-consumer-mode.test.ts` 작성 — 소비자 경로(`.gd/design-md-collection/`)·dev 경로 유지·사문 명령 교정·확장자 중복 부재·네트워크 지시 부재 (plan.md 테스트 목록 5건)
+- [x] `pnpm test` 실행 → 신규 3건 Fail 확인 (기존 64건 PASS 유지)
+- [x] Commit: `test(spec-02-01): add failing tests for design 스킬 소비자 모드 규약`
 
 ---
 
