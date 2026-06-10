@@ -1,0 +1,203 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# gd — gd-plan 소비자 CLI (설치본 .gd/bin/gd 로 배포됨)
+#
+#   gd version            설치 버전 출력
+#   gd status             설치 vs 원격 최신 비교 + 사용자 수정 파일 표시
+#   gd upgrade [--src d] [--yes]   최신으로 업그레이드 (충돌 파일 보존)
+#
+# 소비자 의존: bash + curl + tar + (shasum|sha256sum). node 불필요.
+
+# ── 경로 탐지 ────────────────────────────────────────────
+SELF_DIR="$(cd "$(dirname "$0")" && pwd)"          # .gd/bin
+GD_HOME="${GD_HOME:-$(dirname "$SELF_DIR")}"        # .gd
+PROJECT_ROOT="$(dirname "$GD_HOME")"               # 프로젝트 루트 (.gd 의 부모)
+REPO="pgaey/gd-plan"
+RAW_BASE="${GD_RAW_BASE:-https://raw.githubusercontent.com/${REPO}/main}"
+CACHE="$GD_HOME/cache"
+MANIFEST="$GD_HOME/manifest"
+CACHE_TTL=3600   # 1시간
+
+# ── sha 도구 ─────────────────────────────────────────────
+if command -v shasum >/dev/null 2>&1; then
+  sha_hash() { shasum -a 256 "$1" | awk '{print $1}'; }
+elif command -v sha256sum >/dev/null 2>&1; then
+  sha_hash() { sha256sum "$1" | awk '{print $1}'; }
+else
+  printf '✗ shasum/sha256sum 둘 다 없음\n' >&2; exit 1
+fi
+
+die() { printf '✗ %s\n' "$1" >&2; exit 1; }
+
+# package.json 산문에서 version 추출 (node 비사용)
+parse_version() { grep '"version"' | head -1 | sed 's/.*"version"[^"]*"\([^"]*\)".*/\1/'; }
+
+# ── semver 비교 (BSD sort 에 -V 없음 → 자체 구현) ─────────
+# echo: eq / gt(=$1>$2) / lt(=$1<$2). x.y.z 숫자 필드 비교.
+ver_cmp() {
+  local a="$1" b="$2" i av bv
+  i=1
+  while [ "$i" -le 3 ]; do
+    av="$(printf '%s' "$a" | cut -d. -f"$i" | sed 's/[^0-9].*//')"; av="${av:-0}"
+    bv="$(printf '%s' "$b" | cut -d. -f"$i" | sed 's/[^0-9].*//')"; bv="${bv:-0}"
+    [ -z "$av" ] && av=0
+    [ -z "$bv" ] && bv=0
+    if [ "$av" -gt "$bv" ]; then echo gt; return; fi
+    if [ "$av" -lt "$bv" ]; then echo lt; return; fi
+    i=$((i + 1))
+  done
+  echo eq
+}
+
+# ── 현재 설치 버전 ───────────────────────────────────────
+current_version() {
+  if [ -f "$GD_HOME/VERSION" ]; then
+    cat "$GD_HOME/VERSION"
+  else
+    echo ""
+  fi
+}
+
+# ── 원격 최신 버전 (TTL 캐시) ────────────────────────────
+remote_latest() {
+  local now cached_time cached_ver pkg ver
+  now="$(date +%s)"
+  cached_time=""; cached_ver=""
+  if [ -f "$CACHE" ]; then
+    cached_time="$(grep '^lastCheck=' "$CACHE" 2>/dev/null | cut -d= -f2)"
+    cached_ver="$(grep '^latest=' "$CACHE" 2>/dev/null | cut -d= -f2)"
+    if [ -n "$cached_time" ] && [ -n "$cached_ver" ] \
+       && [ "$((now - cached_time))" -lt "$CACHE_TTL" ]; then
+      printf '%s' "$cached_ver"; return 0
+    fi
+  fi
+  if ! pkg="$(curl -fsSL "$RAW_BASE/package.json" 2>/dev/null)"; then
+    if [ -n "$cached_ver" ]; then
+      printf '%s' "$cached_ver"   # 네트워크 실패 → 캐시 폴백
+      return 2
+    fi
+    return 1
+  fi
+  ver="$(printf '%s' "$pkg" | parse_version)"
+  [ -n "$ver" ] || return 1
+  printf 'lastCheck=%s\nlatest=%s\n' "$now" "$ver" > "$CACHE" 2>/dev/null || true
+  printf '%s' "$ver"
+}
+
+# ── 사용자 수정 파일 목록 (manifest 대조) ────────────────
+list_modified() {
+  [ -f "$MANIFEST" ] || return 0
+  local found=0 expected rel actual
+  while read -r expected rel; do
+    [ -n "$rel" ] || continue
+    if [ -f "$PROJECT_ROOT/$rel" ]; then
+      actual="$(sha_hash "$PROJECT_ROOT/$rel")"
+      if [ "$actual" != "$expected" ]; then
+        [ "$found" -eq 0 ] && printf '\n수정된 파일 (업그레이드 시 .new 로 보존):\n'
+        printf '  - %s\n' "$rel"
+        found=1
+      fi
+    else
+      [ "$found" -eq 0 ] && printf '\n수정된 파일 (업그레이드 시 .new 로 보존):\n'
+      printf '  - %s (삭제됨)\n' "$rel"
+      found=1
+    fi
+  done < "$MANIFEST"
+}
+
+# ── install.sh 위치 확보 후 --update 위임 ────────────────
+run_install_update() {
+  local src="$1" yes="$2"
+  bash "$src/install.sh" --update $yes "$PROJECT_ROOT"
+}
+
+# ── 명령 ─────────────────────────────────────────────────
+cmd_version() {
+  local cur; cur="$(current_version)"
+  if [ -z "$cur" ]; then
+    printf 'unknown — .gd/VERSION 없음. gd upgrade 로 복구하세요.\n' >&2
+    exit 1
+  fi
+  printf '%s\n' "$cur"
+}
+
+cmd_status() {
+  local cur latest rc
+  cur="$(current_version)"
+  if [ -z "$cur" ]; then
+    printf '⚠ 설치 버전 불명 (.gd/VERSION 없음) — gd upgrade 로 복구하세요.\n'
+  fi
+
+  set +e
+  latest="$(remote_latest)"; rc=$?
+  set -e
+  if [ "$rc" -eq 1 ] || [ -z "$latest" ]; then
+    printf '⚠ 원격 최신 버전 확인 실패 (네트워크/캐시 없음)\n'
+  else
+    [ "$rc" -eq 2 ] && printf '⚠ 네트워크 실패 — 캐시된 정보로 표시\n'
+    if [ -z "$cur" ]; then
+      printf '원격 최신: %s\n' "$latest"
+    else
+      case "$(ver_cmp "$cur" "$latest")" in
+        eq) printf '✓ 최신 (%s)\n' "$cur" ;;
+        lt) printf '⬆ 업그레이드 가능 (%s → %s) — gd upgrade\n' "$cur" "$latest" ;;
+        gt) printf '✓ 현재(%s) 가 원격(%s) 보다 높음 (개발본)\n' "$cur" "$latest" ;;
+      esac
+    fi
+  fi
+
+  list_modified
+}
+
+cmd_upgrade() {
+  local src="" yes=""
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --src) src="$2"; shift 2 ;;
+      --yes) yes="--yes"; shift ;;
+      -*) die "알 수 없는 옵션: $1" ;;
+      *) shift ;;
+    esac
+  done
+
+  if [ -n "$src" ]; then
+    [ -f "$src/install.sh" ] || die "--src 디렉토리에 install.sh 없음: $src"
+    run_install_update "$src" "$yes"
+    return $?
+  fi
+
+  # 원격 최신 tar.gz (main) 다운로드 → 동봉 install.sh --update 위임
+  local tmp root
+  tmp="$(mktemp -d)"
+  trap 'rm -rf "$tmp"' EXIT
+  local tar_url="https://github.com/${REPO}/archive/refs/heads/main.tar.gz"
+  printf '[gd] 최신 다운로드 중... (%s)\n' "$tar_url"
+  curl -fsSL "$tar_url" -o "$tmp/gd.tar.gz" || die "다운로드 실패: $tar_url"
+  tar -xzf "$tmp/gd.tar.gz" -C "$tmp"
+  root="$(find "$tmp" -maxdepth 1 -type d -name 'gd-plan-*' | head -1)"
+  [ -n "$root" ] && [ -f "$root/install.sh" ] || die "압축 해제 실패"
+  run_install_update "$root" "$yes"
+}
+
+main() {
+  local sub="${1:-}"
+  [ $# -gt 0 ] && shift || true
+  case "$sub" in
+    version) cmd_version "$@" ;;
+    status)  cmd_status "$@" ;;
+    upgrade) cmd_upgrade "$@" ;;
+    ""|--help|-h)
+      cat <<EOF
+gd — gd-plan 소비자 CLI
+
+  gd version                       설치 버전 출력
+  gd status                        설치 vs 원격 최신 비교 + 수정 파일 표시
+  gd upgrade [--src <dir>] [--yes] 최신으로 업그레이드 (수정 파일은 .new 로 보존)
+EOF
+      ;;
+    *) die "알 수 없는 명령: $sub (gd --help)" ;;
+  esac
+}
+
+main "$@"
