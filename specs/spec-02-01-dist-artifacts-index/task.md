@@ -69,9 +69,9 @@
 
 ### 🚀 Push & PR
 
-- [ ] **Push**: `git push -u origin spec-02-01-dist-artifacts-index`
-- [ ] **PR 생성**: base = `phase-02-distribution` (just-in-time 생성), `/hk-pr-gh` 절차
-- [ ] **사용자 알림**: 푸시 완료 + PR URL 보고
+- [x] **Push**: `git push -u origin spec-02-01-dist-artifacts-index`
+- [x] **PR 생성**: base = `phase-02-distribution` (just-in-time 생성 완료) — https://github.com/pgaey/gd-plan/pull/7
+- [x] **사용자 알림**: 푸시 완료 + PR URL 보고
 
 ---
 
@@ -81,5 +81,5 @@
 |---|---|
 | **총 Task 수** | 5 |
 | **예상 commit 수** | 5 |
-| **현재 단계** | Planning |
+| **현재 단계** | Ship (PR #7 — 머지 대기) |
 | **마지막 업데이트** | 2026-06-10 |
