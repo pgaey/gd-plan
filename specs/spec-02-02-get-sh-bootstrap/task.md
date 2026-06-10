@@ -47,8 +47,8 @@
 ## Task 4: test:sh 스크립트 등록
 
 ### 4-1. package.json
-- [ ] `"test:sh": "bash test/sh/run.sh"` 추가, `pnpm test:sh` 동작 확인
-- [ ] Commit: `chore(spec-02-02): test:sh 스크립트 등록`
+- [x] `"test:sh": "bash test/sh/run.sh"` 추가, `pnpm test:sh` 동작 확인
+- [x] Commit: `chore(spec-02-02): test:sh 스크립트 등록`
 
 ---
 
