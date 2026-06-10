@@ -29,9 +29,9 @@
 ## Task 2: gd CLI 실패 테스트 (TDD Red)
 
 ### 2-1. 테스트 작성
-- [ ] `test/sh/test-gd.sh` — 시나리오 5건 (version·status 최신/수정 표시·status 업그레이드 가능·upgrade 충돌 보존·VERSION 부재 복구), 전부 `--src`+`GD_RAW_BASE` 네트워크 0
-- [ ] `pnpm test:sh` 실행 → test-gd Fail 확인 (bin/gd 미존재), test-get 기존 4건 PASS 유지
-- [ ] Commit: `test(spec-02-03): add failing shell tests for gd status·upgrade·version`
+- [x] `test/sh/test-gd.sh` — 시나리오 5건 (version·status 최신/수정 표시·status 업그레이드 가능·upgrade 충돌 보존·VERSION 부재 복구), 전부 `--src`+`GD_RAW_BASE` 네트워크 0
+- [x] `pnpm test:sh` 실행 → test-gd 5건 Fail 확인 (bin/gd 미존재), test-get 기존 4건 PASS 유지
+- [x] Commit: `test(spec-02-03): add failing shell tests for gd status·upgrade·version`
 
 ---
 
