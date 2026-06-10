@@ -38,9 +38,9 @@
 ## Task 3: get.sh + install.sh 구현 (TDD Green)
 
 ### 3-1. 구현
-- [ ] `get.sh` (tar.gz fetch + --src 로컬 모드 + install.sh 위임), `install.sh` (footprint 복사 + VERSION·manifest + docs 미접촉 + 멱등)
-- [ ] `bash test/sh/run.sh` → 전체 PASS / `pnpm test` 회귀 PASS
-- [ ] Commit: `feat(spec-02-02): get.sh 부트스트랩 + install.sh 설치기`
+- [x] `get.sh` (tar.gz fetch + --src 로컬 모드 + install.sh 위임), `install.sh` (footprint 복사 + VERSION·manifest + docs 미접촉 + 멱등)
+- [x] `bash test/sh/run.sh` → 4 시나리오 PASS / `pnpm test` 67/67 회귀 PASS
+- [x] Commit: `feat(spec-02-02): get.sh 부트스트랩 + install.sh 설치기`
 
 ---
 
