@@ -38,9 +38,9 @@
 ## Task 3: gd-plan-design.md 소비자 모드 구현 (TDD Green)
 
 ### 3-1. 스킬 갱신
-- [ ] `plans/gd-plan-design.md` §1·§2 갱신 — 2모드 경로 판별 + 모드별 인덱스 없음 안내 + 버그 2건 교정 (plan.md Proposed Changes 참조)
-- [ ] `pnpm test` 실행 → 전체 PASS 확인 (길이 cap 400 포함)
-- [ ] Commit: `feat(spec-02-01): design 스킬 dev/소비자 2모드 + 픽 fetch·캐시 규약`
+- [x] `plans/gd-plan-design.md` §1·§2 갱신 — 2모드 경로 판별 + 모드별 인덱스 없음 안내 + 버그 2건 교정 (plan.md Proposed Changes 참조)
+- [x] `pnpm test` 실행 → 전체 67/67 PASS 확인 (길이 cap 400 포함)
+- [x] Commit: `feat(spec-02-01): design 스킬 dev/소비자 2모드 + 전체 동봉 규약`
 
 ---
 
