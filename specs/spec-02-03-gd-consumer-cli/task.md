@@ -38,9 +38,10 @@
 ## Task 3: bin/gd + install.sh --update 구현 (TDD Green)
 
 ### 3-1. 구현
-- [ ] `bin/gd` (version·status·upgrade, semver 비교, `.gd/cache` TTL 1h, manifest 대조), `install.sh` `--update` 충돌 정책 (`<file>.new` + 경고, fresh 경로 불변)
-- [ ] `pnpm test:sh` → 9건(4+5) 전체 PASS / `pnpm test` 67 회귀 PASS
-- [ ] Commit: `feat(spec-02-03): gd 소비자 CLI + install.sh --update 충돌 정책`
+- [x] `bin/gd` (version·status·upgrade, semver 비교, `.gd/cache` TTL 1h, manifest 대조), `install.sh` `--update` 충돌 정책 (`<file>.new` + 경고, fresh 경로 불변)
+- [x] `pnpm test:sh` → 9건(4+5) 전체 PASS / `pnpm test` 67 회귀 PASS
+- [x] Commit: `feat(spec-02-03): gd 소비자 CLI + install.sh --update 충돌 정책`
+- [x] (수정) install.sh place_file `local` 한 줄 내 self-참조 → unbound 버그 분리 (bash 3.2)
 
 ---
 
