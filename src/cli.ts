@@ -90,11 +90,13 @@ ${bold("🚀 다음 단계:")} 상류 기획 인터뷰를 시작하세요:
 
    ${green("/gd-plan-start")}      — 진입점, docs/ 진행률 안내
    ${green("/gd-plan-prd")}        — PRD 인터뷰
+   ${green("/gd-plan-critique")}   — PRD 전제 적대 검증 (의미 정합, 독립 서브에이전트)
    ${green("/gd-plan-design")}     — design-md-collection 픽킹
-   ${green("/gd-plan-structure")}  — 사이트맵·섹션 구조
+   ${green("/gd-plan-sitemap")}    — 사이트 골격/지도 (페이지 로스터)
+   ${green("/gd-plan-page")}       — 페이지별 구조 (세로 슬라이스)
    ${green("/gd-plan-flows")}      — 사용자 여정
    ${green("/gd-plan-rules")}      — ui-rules 수치 확정
-   ${green("/gd-plan-review")}     — 일관성 검증
+   ${green("/gd-plan-review")}     — 구조 일관성 검증
 `);
 
   return 0;

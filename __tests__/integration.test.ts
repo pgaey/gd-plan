@@ -26,10 +26,10 @@ describe("통합 시나리오 (자동화 가능 부분)", () => {
     rmSync(dir, { recursive: true, force: true });
   });
 
-  it("시나리오 1 지원: gd-plan 스킬 7개가 프로젝트에 설치된다", () => {
+  it("시나리오 1 지원: gd-plan 스킬 9개가 프로젝트에 설치된다", () => {
     const result = installPlans({ plansSrc: join(PKG_ROOT, "plans"), dest: join(dir, ".claude", "commands") });
     expect(result.code).toBe(0);
-    expect(result.installed.length).toBe(7);
+    expect(result.installed.length).toBe(9);
   });
 
   it("시나리오 2 지원: 실제 66개 collection 인덱스가 후보 점수화에 쓸 필드를 갖는다", () => {
@@ -45,19 +45,19 @@ describe("통합 시나리오 (자동화 가능 부분)", () => {
   });
 
   it("시나리오 3 지원: 미용실 픽스처로 review 차단 입력 구조가 성립한다", () => {
-    // PRD capability 1개를 structure 에서 누락한 상태 = BLOCK 되어야 하는 입력
+    // PRD capability 1개를 sitemap 로스터에서 누락한 상태 = BLOCK 되어야 하는 입력 (신모델)
     const prd = `## Capabilities
 - [CAP-01] 시술 예약하기 (주체: User)
 - [CAP-02] 예약 확인/승인하기 (주체: Admin)`;
-    const structure = `## Sitemap
+    const sitemap = `## Sitemap (로스터)
 - [PAGE-booking] 예약 (covers: CAP-01)`; // CAP-02 의도적 누락
     mkdirSync(join(dir, "docs"), { recursive: true });
     writeFileSync(join(dir, "docs", "prd.md"), prd);
-    writeFileSync(join(dir, "docs", "structure.md"), structure);
+    writeFileSync(join(dir, "docs", "sitemap.md"), sitemap);
 
-    // 결정적으로 확인 가능한 부분: CAP-02 가 structure 의 covers 목록에 없음 (=BLOCK 조건)
+    // 결정적으로 확인 가능한 부분: CAP-02 가 sitemap covers 목록에 없음 (=BLOCK 조건)
     const caps = [...prd.matchAll(/\[CAP-\d+\]/g)].map((m) => m[0]);
-    const covered = [...structure.matchAll(/covers:\s*([^)]+)/g)].flatMap((m) =>
+    const covered = [...sitemap.matchAll(/covers:\s*([^)]+)/g)].flatMap((m) =>
       (m[1] ?? "").split(",").map((s) => `[${s.trim()}]`),
     );
     const uncovered = caps.filter((c) => !covered.includes(c));

@@ -4,3 +4,10 @@ dist/
 .DS_Store
 .vitest/
 coverage/
+
+# harness-kit
+.harness-kit/
+.harness-backup-*/
+.claude/state/
+.env.telegram
+.env.discord

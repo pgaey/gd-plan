@@ -4,30 +4,34 @@
 
 디자이너 없이도 **66개 검증된 디자인 시스템**(`design-md-collection/`) 위에서만 생성해 일관성을 강제한다. v0 / Lovable / Bolt 처럼 매번 들쭉날쭉하지 않다.
 
-## 무엇을 만드나 (5종 기획 문서)
+## 무엇을 만드나 (5종 문서 + 검증 2종)
 
 ```
-/gd-plan-start   → 진행률 안내 (진입점)
-/gd-plan-prd     → docs/prd.md       무엇을·누구를 (15문항 인터뷰)
-/gd-plan-design  → docs/design.md    검증된 시스템 픽 (collection 복사)
-/gd-plan-structure → docs/structure.md  사이트맵·와이어프레임 (섹션 스택)
-/gd-plan-flows   → docs/flows/       사용자 여정 (mermaid)
-/gd-plan-rules   → docs/ui-rules.md  인터랙션·수치 규칙
-/gd-plan-review  → 일관성 검증 (structural BLOCK / style WARN)
+/gd-plan-start    → 진행률 안내 (진입점)
+/gd-plan-prd      → docs/prd.md        무엇을·누구를 (16문항 인터뷰, 제약/규제 포함)
+/gd-plan-critique → docs/_critique.md  PRD 전제 적대 검증 (독립 서브에이전트 · 의미 정합)
+/gd-plan-design   → docs/design.md     검증된 시스템 픽 (collection 복사)
+/gd-plan-sitemap  → docs/sitemap.md    페이지 로스터 (지도)
+/gd-plan-page     → docs/pages/[PAGE]/ 페이지별 구조·결정 (섹션 스택)
+/gd-plan-flows    → docs/flows/        사용자 여정 (mermaid)
+/gd-plan-rules    → docs/ui-rules.md   인터랙션·수치 규칙
+/gd-plan-review   → 구조 일관성 검증 (structural BLOCK / style WARN)
 ```
 
 연결 모델: `role → capability → page → flow`. 끊긴 고리는 `/gd-plan-review` 가 BLOCK.
+**검증 2층**: `/gd-plan-critique`(의미 정합 — "말이 되나", 독립 서브에이전트) / `/gd-plan-review`(구조 정합 — "아귀가 맞나", lint). 구조적 완성 ≠ 의미적 정합.
 
 ## 구조
 
 ```
 src/{cli,build-index}.ts   설치기 + design-md-collection 인덱스 빌더
-plans/                     gd-plan 스킬 7개 (Claude Code /command)
-templates/                 prd/structure/ui-rules + flows/_name + section-taxonomy
-                           (design.md 은 collection 픽킹이라 템플릿 없음)
+plans/                     gd-plan 스킬 9개 (Claude Code /command)
+templates/                 prd/sitemap/ui-rules + pages/{structure,decisions} + decisions
+                           + flows/_name + section-taxonomy
+                           (design.md 은 collection 픽킹이라 템플릿 없음 · 구조는 sitemap+pages)
 design-md-collection/      66개 검증 디자인 시스템 + _index.json (후보 캐시)
-docs/decisions/            ADR-001~005 (설계 결정)
-spec/                      원본 설계 기록 (spec/plan/task/critique/drafts)
+docs/decisions/            ADR-001~015 (설계 결정)
+specs/spec-13-01-gd-plan-package/  원본 설계 기록 (gen-design 분리 전, 참고용)
 ```
 
 ## 설치 / 사용
@@ -36,7 +40,7 @@ spec/                      원본 설계 기록 (spec/plan/task/critique/drafts)
 pnpm install
 pnpm build            # dist/ 생성
 pnpm build-index      # design-md-collection/_index.json 재생성
-pnpm test             # 22 tests
+pnpm test             # 59 tests
 pnpm typecheck
 
 # 프로젝트에 스킬 설치 (.claude/commands/ 로 복사)
