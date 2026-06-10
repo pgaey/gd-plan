@@ -47,8 +47,8 @@
 ## Task 4: ADR-016 배포 모델 작성
 
 ### 4-1. ADR 작성
-- [ ] `.harness-kit/agent/templates/adr.md` 템플릿 확인 후 `docs/decisions/ADR-016-self-contained-distribution.md` 작성 (`type: decision`)
-- [ ] Commit: `docs(spec-02-01): adr-016 self-contained 배포 모델`
+- [x] `.harness-kit/agent/templates/adr.md` 템플릿 확인 후 `docs/decisions/ADR-016-self-contained-distribution.md` 작성 (`type: decision`)
+- [x] Commit: `docs(spec-02-01): adr-016 self-contained 배포 모델`
 
 ---
 
