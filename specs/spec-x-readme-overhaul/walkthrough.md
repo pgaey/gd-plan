@@ -1,91 +1,75 @@
 # Walkthrough: spec-x-readme-overhaul
 
-> 본 문서는 *작업 기록* 입니다. 결정 과정, 사용자 협의, 검증 결과를 미래의 자신과 리뷰어에게 남깁니다.
-> 작업을 진행하는 동안 *지속적으로* 갱신하세요. 마지막에 한 번에 작성하지 마세요.
+> README 재구성+증강 (소비자 온보딩). docs-only spec-x.
 
 ## 📌 결정 기록
 
-> 작업 중 이슈가 발생했을 때, 어떤 선택지가 있었고 왜 이 방향을 결정했는지 기록합니다.
-
 | 이슈 | 선택지 | 결정 | 이유 |
 |---|---|---|---|
-| <이슈 1> | A 또는 B | A | <이유> |
+| 개편 강도 | 전면 재작성 / 외과적 패치 / 재구성+증강 | **재구성+증강** | critique 가 "본문 대부분 정확, 진짜 stale 은 헤더 2건"을 실측 지적 → 전면 재작성은 새 stale 유입 위험. 정확본문 재사용 + 누락 온보딩 절만 신규 |
+| stale 카운트 재발 방지 | ADR 범위 열거 / 미열거 | **미열거** | "ADR-001~0NN" 처럼 카운트를 박으면 다음 ADR 추가 때 또 stale. 카운트 대신 ADR-016 링크만 → 회귀 유입 차단 |
+| 과투자 절(배포·footprint) | 전체 절 / 위임 링크 | **위임 링크** | alpha·progressive disclosure — ADR-016/RELEASE.md 로 위임해 README 비대화 방지 |
+| phase-02 done 마커 | main 직접 커밋 / spec-x 첫 커밋 동봉 | **첫 커밋(chore) 동봉** | §10.1 main 직접 커밋 금지. dangling 마커를 본 PR 로 main 에 정직 반영 |
 
 ### ADR 승격 가이드
-
-> 위 결정 중 *cross-spec / long-lived* 인 것이 있다면 ADR 로 승격합니다 (constitution §6.3).
->
-> 승격 기준:
-> - 다른 spec 의 작업이 본 결정에 의존하는가?
-> - 6 개월 이상 유지될 가능성이 높은가?
-> - frontmatter `type:` 어휘 (`decision` / `invariant` / `convention` / `tradeoff`) 중 하나에 해당하는가?
->
-> 셋 중 둘 이상이면 ADR 후보. 비강제 — 미체크여도 ship 차단 없음.
-
-- [ ] ADR 승격 대상 있음 → 작성됨: `docs/decisions/ADR-<NNN>-<slug>.md`
-- [ ] 없음
+- [ ] ADR 승격 대상 있음
+- [x] 없음 — docs 정리, 새 아키텍처 결정 없음. "적용 대상" 통찰은 README 본문(설명형)에 보존(critique §4 동의).
 
 ## 💬 사용자 협의
 
-> 사용자와 논의한 내용과 합의 사항을 기록합니다.
-
-- **주제**: <논의 주제>
-  - **사용자 의견**: <사용자가 제시한 방향>
-  - **합의**: <최종 합의 내용>
+- **주제**: README 작업 방향 (전면 재작성 vs 외과적 패치)
+  - **사용자 의견**: harness-kit README 수준의 종합 온보딩을 원함. critique 결과를 듣고 "잘 모르겠으니 1번(재구성+증강)으로"
+  - **합의**: 정확본문 재사용 + 누락 온보딩 절 신규 (방향 1)
+- **주제**: gd-plan 적용 대상
+  - **사용자 의견**: "기존 프로젝트엔 안 맞나? PRD 부터 시작을 중간부터 쓰는 건 이상한데"
+  - **합의**: 적합 축 = 기획 앞단 ↔ 구현 뒷단 (신규/기존 repo 아님). gd-plan(콘텐츠)↔harness-kit(프로세스) 대조를 "언제 쓰나" 절 + FAQ 로 보존
+- **주제**: critique 의 stale 3건 주장
+  - **합의**: 검증 결과 진짜 stale 2건(5종 문서·ADR 카운트). spec-13-01 은 디렉토리 실재 → stale 아님(검토자 과다집계 교정)
 
 ## 🧪 검증 결과
 
-### 1. 자동화 테스트
+### 1. 자동화 테스트 (회귀 — 코드 미변경 확인)
 
 #### 단위 테스트
-- **명령**: `<프로젝트의 단위 테스트 명령>`
-- **결과**: ✅ Passed (X tests in Y.Y s) / ❌ Failed (자세한 내용 아래)
+- **명령**: `pnpm test` / `pnpm typecheck` / `pnpm test:sh`
+- **결과**: ✅ Passed
 - **로그 요약**:
 ```text
-(핵심 로그 붙여넣기)
+vitest:    Test Files 6 passed (6) · Tests 67 passed (67)
+typecheck: tsc --noEmit — clean (no errors)
+test:sh:   test-gd.sh (5 시나리오) ✓ · test-get.sh (4 시나리오) ✓ — 2 passed, 0 failed
 ```
 
-#### 통합 테스트 (Integration Test Required = yes 인 경우)
-- **명령**: `<프로젝트의 통합 테스트 명령>`
-- **결과**: ✅ Passed / ❌ Failed
-- **로그 요약**:
-```text
-(핵심 로그 붙여넣기)
-```
+### 2. 수동 검증 (spec.md 수동검증 시나리오 1~4)
 
-### 2. 수동 검증
-
-> 에이전트가 실행한 단계와 결과를 시간순으로 기록.
-
-1. **Action**: `<실행한 명령 또는 행동>`
-   - **Result**: <관찰된 결과>
+1. **Action**: 9 슬래시 커맨드명 README 표 ↔ `plans/gd-plan-*.md` 대조
+   - **Result**: 9/9 ✓ (1:1 일치)
+2. **Action**: 실재 경로 링크 점검 (`package.json`·`ADR-016`·`RELEASE.md`·`spec-13-01`·`design-md-collection`·`get.sh`)
+   - **Result**: 전건 존재 (죽은 링크 0)
+3. **Action**: 카운트 일치 (스킬 9·컬렉션 66·버전 `package.json` 0.1.0) + 옛 stale 문자열 잔존 점검
+   - **Result**: 일치. `5종 문서 + 검증 2종`(헤더)·`ADR-001~015` 소멸. `:91 structure.md`(페이지별 신모델)·`:94 5종 문서`(review 스킬 표현)는 정당한 현행 — stale 아님
+4. **Action**: "언제 쓰나/대상" 절 + "기획 앞단" 프레이밍 존재
+   - **Result**: ✓ 존재
 
 ## 🔍 발견 사항
 
-<!-- 작업 중 발견한 흥미로운 점, 사이드 이슈, 다음 SPEC 후보 -->
+- **"5종 문서"는 stale 이 아니었다**: start 스킬 자신이 "5종 기획 문서(prd/design/구조[sitemap+pages]/flows/ui-rules)"라 부름. 옛 stale 은 그 구조를 `structure.md`(평면)로 셌던 부분. → README 를 "9 스킬 → 5종 문서 + 검증 2층 + start"로 정확히 프레이밍.
+- **소비자 측 스킬 경로 ≠ 소스 경로**: 소스(이 repo)는 `plans/gd-plan-*.md`, 설치 후(소비자)는 `.claude/commands/gd-plan-*.md`. README footprint 는 설치 경로, 명령 검증은 소스 경로 — 둘 다 정확.
+- critique 가 날카로웠으나 spec-13-01 을 과다집계 → 사실 주장은 매번 검증해야 함을 재확인.
 
-- <발견 1>
-- <발견 2>
+## 🚧 이월 항목
 
-## 🚧 이월 항목 (Optional)
-
-> 본 SPEC 범위를 벗어나 다음 작업으로 미룬 항목.
-
-- <항목 1> → `backlog/queue.md` 에 추가됨
+- **산출물 예시/스크린샷**: gd-plan 은 문서 생성 도구라 예시가 이상적이나 e2e 미실행으로 실제 산출물 없음 → e2e phase 후로 연기 (Out of Scope 명시).
 
 ## 🔗 관련 문서 (Related)
 
-<!-- [[wikilinks]] 로 연결. 실제 파일 경로: docs/wiki/, docs/decisions/, docs/rca/ -->
-<!-- 예: [[wiki/decisions]], [[ADR-001]], [[RCA-001]], [[spec-19-01]] -->
-
-- 관련 wiki:
-- 관련 ADR:
-- 관련 RCA:
+- 관련 ADR: [[ADR-016]] (배포 모델 위임 출처)
+- 관련 critique: `specs/spec-x-readme-overhaul/critique.md`
 
 ## 📅 메타
 
 | 항목 | 값 |
 |---|---|
-| **작성자** | Agent + <user> |
-| **작성 기간** | YYYY-MM-DD ~ YYYY-MM-DD |
-| **최종 commit** | `<short hash>` |
+| **작성자** | Agent + evan |
+| **작성 기간** | 2026-06-11 |
+| **최종 commit** | `4ca53bf` (ship 전) |

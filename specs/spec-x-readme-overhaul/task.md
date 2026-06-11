@@ -47,13 +47,13 @@
 
 ### 🚦 Pre-Push Quality Gate (push 전 필수)
 
-- [ ] **회귀 테스트**: `pnpm test` + `pnpm test:sh` + `pnpm typecheck` → 모두 PASS (코드 미변경 확인)
+- [x] **회귀 테스트**: `pnpm test`(67/67) + `pnpm test:sh`(2 passed) + `pnpm typecheck`(clean) → 모두 PASS (코드 미변경 확인)
 - [-] 통합 테스트 — Integration Test Required = no
 
 ### 📝 산출물 작성
 
-- [ ] **walkthrough.md 작성** (증거 로그 — 교차검증 결과, 발견사항)
-- [ ] **pr_description.md 작성** (템플릿 준수)
+- [x] **walkthrough.md 작성** (증거 로그 — 교차검증 결과, 발견사항)
+- [x] **pr_description.md 작성** (템플릿 준수)
 - [ ] **Ship Commit**: `docs(spec-x-readme-overhaul): ship walkthrough and pr description`
 
 ### 🚀 Push & PR
