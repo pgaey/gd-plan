@@ -58,9 +58,9 @@
 
 ### 🚀 Push & PR
 
-- [ ] **Push**: `git push -u origin spec-x-readme-overhaul`
-- [ ] **PR 생성**: `/hk-pr-gh` (사용자 승인 후, base=main)
-- [ ] **사용자 알림**: 푸시 완료 + PR URL 보고
+- [x] **Push**: `git push -u origin spec-x-readme-overhaul`
+- [x] **PR 생성**: PR #11 (base=main) — https://github.com/pgaey/gd-plan/pull/11
+- [x] **사용자 알림**: 푸시 완료 + PR URL 보고
 
 ---
 
