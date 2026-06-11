@@ -8,7 +8,7 @@
 ## 📦 진행 중 Phase
 
 <!-- sdd:active:start -->
-- **phase-01** — gd-plan-vertical-slice — 5 spec — 다음: (spec 없음)
+- **phase-02** — distribution — 3 spec — 다음: (spec 없음)
 <!-- sdd:active:end -->
 
 ## 📥 spec-x 대기
@@ -38,6 +38,7 @@
 
 <!-- sdd:done:start -->
 없음
+- **phase-01** — gd-plan-vertical-slice — completed 2026-06-10
 <!-- sdd:done:end -->
 
 ---
