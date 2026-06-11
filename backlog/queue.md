@@ -8,13 +8,14 @@
 ## 📦 진행 중 Phase
 
 <!-- sdd:active:start -->
-- **phase-02** — distribution — 3 spec — 다음: (spec 없음)
+(active phase 없음. `bin/sdd phase new <slug>` 로 시작)
 <!-- sdd:active:end -->
 
 ## 📥 spec-x 대기
 
 <!-- sdd:specx:start -->
 없음
+- [ ] spec-x-readme-overhaul — readme-overhaul
 <!-- sdd:specx:end -->
 
 ## 🧊 Icebox
@@ -39,6 +40,7 @@
 <!-- sdd:done:start -->
 없음
 - **phase-01** — gd-plan-vertical-slice — completed 2026-06-10
+- **phase-02** — distribution — completed 2026-06-11
 <!-- sdd:done:end -->
 
 ---
