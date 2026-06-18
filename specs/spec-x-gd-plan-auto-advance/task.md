@@ -19,10 +19,10 @@
 ## Task 2: 구조 테스트 작성 (TDD Red)
 
 ### 2-1. 테스트 작성
-- [ ] `test/sh/auto-advance.sh` 작성: 9개 `plans/gd-plan-*.md`가 `<!-- gd:advance next=... -->` 마커를 정확히 1개씩 보유 + 전이표 기대값 일치(review=gate, page=loop, sitemap=page, rules=review, flows=rules, design=sitemap, critique=design, prd=critique, start=안내)
-- [ ] `test/sh/run.sh`에 연결
-- [ ] 테스트 실행 → Fail 확인 (아직 마커 없음)
-- [ ] Commit: `test(spec-x-gd-plan-auto-advance): add auto-advance marker structural test`
+- [x] `test/sh/test-auto-advance.sh` 작성: 9개 `plans/gd-plan-*.md`가 `<!-- gd:advance next=... -->` 마커를 정확히 1개씩 보유 + 전이표 기대값 일치(start=auto, prd=critique, critique=design, design=sitemap, sitemap=page, page=loop, flows=rules, rules=review, review=gate)
+- [x] `test/sh/run.sh`에 연결 (`test-*.sh` glob 자동 수집 — run.sh 수정 불필요)
+- [x] 테스트 실행 → Fail 확인 (9개 모두 마커 0개)
+- [x] Commit: `test(spec-x-gd-plan-auto-advance): add auto-advance marker structural test`
 
 ---
 
