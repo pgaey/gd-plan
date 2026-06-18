@@ -196,6 +196,10 @@
           {
             "type": "command",
             "command": ".harness-kit/hooks/notify-on-input-wait.sh"
+          },
+          {
+            "type": "command",
+            "command": ".harness-kit/hooks/post-commit-verify.sh"
           }
         ]
       }
