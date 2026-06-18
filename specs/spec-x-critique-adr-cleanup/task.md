@@ -37,12 +37,12 @@
 ## Task 4: Ship (필수)
 
 ### 🚦 Pre-Push Quality Gate
-- [ ] `bash test/sh/run.sh` → 전체 PASS (회귀 무영향 확인)
+- [x] `bash test/sh/run.sh` → 4 suites PASS (회귀 무영향)
 
 ### 📝 산출물 작성
-- [ ] **walkthrough.md 작성**
-- [ ] **pr_description.md 작성**
-- [ ] Commit: `docs(spec-x-critique-adr-cleanup): ship walkthrough and pr description`
+- [x] **walkthrough.md 작성**
+- [x] **pr_description.md 작성**
+- [x] Commit: `docs(spec-x-critique-adr-cleanup): ship walkthrough and pr description`
 
 ### 🚀 Push & PR
 - [ ] `git push -u origin spec-x-critique-adr-cleanup`
