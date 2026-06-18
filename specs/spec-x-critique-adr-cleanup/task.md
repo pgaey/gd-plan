@@ -45,5 +45,5 @@
 - [x] Commit: `docs(spec-x-critique-adr-cleanup): ship walkthrough and pr description`
 
 ### 🚀 Push & PR
-- [ ] `git push -u origin spec-x-critique-adr-cleanup`
-- [ ] PR 생성 (`/hk-pr-gh`)
+- [x] `git push -u origin spec-x-critique-adr-cleanup`
+- [x] PR 생성 → https://github.com/pgaey/gd-plan/pull/15
