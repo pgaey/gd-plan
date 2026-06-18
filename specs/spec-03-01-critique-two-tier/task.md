@@ -49,5 +49,5 @@
 - [x] Commit: `docs(spec-03-01): ship walkthrough and pr description`
 
 ### 🚀 Push & PR
-- [ ] `git push -u origin spec-03-01-critique-two-tier`
-- [ ] PR 생성 (`/hk-pr-gh`)
+- [x] `git push -u origin spec-03-01-critique-two-tier`
+- [x] PR 생성 → https://github.com/pgaey/gd-plan/pull/13
