@@ -35,7 +35,8 @@ PRD 는 모든 하류 산출물의 전제다. 전제가 틀리면 그 위의 sit
 <!-- sdd:specs:start -->
 | ID | 슬러그 | 우선순위 | 상태 | 디렉토리 |
 |---|---|:---:|---|---|
-| `spec-03-01` | critique-two-tier | P? | Active | `specs/spec-03-01-critique-two-tier/` |
+| `spec-03-01` | critique-two-tier | P? | Merged | `specs/spec-03-01-critique-two-tier/` |
+| `spec-03-02` | critique-dispatch-test | P? | Active | `specs/spec-03-02-critique-dispatch-test/` |
 <!-- sdd:specs:end -->
 
 > 상태 허용값: `Backlog` / `In Progress` / `Merged`
@@ -47,19 +48,15 @@ PRD 는 모든 하류 산출물의 전제다. 전제가 틀리면 그 위의 sit
 - **참조**: `plans/gd-plan-critique.md` §2·§4·§5, 도입부 self-bias 주석(line 10)
 - **연관 모듈**: `plans/gd-plan-critique.md`
 
-### spec-3-02 — review 에 worker→director 검증 티어 적용
+### ~~review 에 worker→director 검증 티어 적용~~ (DROP → Icebox)
 
-- **요점**: `/gd-plan-review`(구조 정합 lint)에도 독립 검증 티어를 적용할지 결정하고, 가치 있으면 적용.
-- **방향성**: review 는 결정적 ID set-diff 라 의미적 2차 비평 이득이 critique 보다 작을 수 있음. spec-3-01 완료 후 §11.3 재검증으로 **적용/축소/drop** 판단. 적용 시 worker=lint 실행, director=BLOCK 판정 적정성 검증 형태.
-- **참조**: `plans/gd-plan-review.md`, spec-3-01 walkthrough
-- **연관 모듈**: `plans/gd-plan-review.md`
-- **주의**: draft — 가치 불확실. spec-3-01 후 재검증 대상.
+- **상태**: §11.3 재검증(spec-3-01 완료 후)으로 **drop**. review 는 결정적 ID set-diff lint 라 의미적 2차 비평 이득이 낮고, review 의 의미적 WARN(persona↔톤 등)은 아직 v2 백로그 미구현이라 적용 대상 자체가 빈약. → `backlog/queue.md` Icebox 로 이동. review WARN(의미 체크) 구현이 생기면 그때 승격.
 
-### spec-3-03 — 비평 디스패치 규약 구조 테스트
+### spec-3-02 — 비평 디스패치 규약 구조 테스트
 
-- **요점**: critique(+적용 시 review)의 2티어·병합·사람-주도 반영 불변식을 강제하는 `test/sh` 구조 테스트.
-- **방향성**: greppable 규약(예: 디스패치 마커/필수 섹션)을 정의하고, 각 스킬이 worker·director 디스패치 + 병합 규약 + "보고서만, prd 직접수정 금지" 불변식을 갖췄는지 검증. 회귀 방지.
-- **참조**: `test/sh/test-auto-advance.sh`(마커 테스트 선례), spec-3-01/02 산출물
+- **요점**: critique 의 2티어·병합·사람-주도 반영·메인 비평금지 불변식을 강제하는 `test/sh` 구조 테스트.
+- **방향성**: greppable 규약(디스패치 마커/필수 섹션)을 정의하고, `gd-plan-critique.md` 가 worker·director 디스패치 + 2-페이즈 + 병합 규약 + "보고서만, prd 직접수정 금지" + "메인은 비평 안 함" 불변식을 갖췄는지 검증. 회귀 방지.
+- **참조**: `test/sh/test-auto-advance.sh`(마커 테스트 선례), spec-3-01 산출물
 - **연관 모듈**: `test/sh/`
 
 ### phase-FF 예정 항목 (spec 미생성)
@@ -73,6 +70,7 @@ PRD 는 모든 하류 산출물의 전제다. 전제가 틀리면 그 위의 sit
 | director 역할 | audit / 독립 2차 비평 / 다수결 | **독립 2차 비평 + 병합** | director(opus)가 독립 비평하면 깊이 천장이 worker(sonnet)에 갇히지 않음 |
 | 모델 | sonnet+opus / 둘 다 opus | **worker=sonnet, director=opus (전환 가능)** | 독립 2차라 opus 깊이 확보 + 교차 모델로 self-bias 완화 |
 | review 적용(02) | 처음부터 / 재검증 후 | **phase 포함하되 01 후 재검증** | review 는 결정적 lint — 의미적 2차 이득 불확실 |
+| review 적용 §11.3 재검증 | 전체/축소/drop | **drop → Icebox** (01 완료 후) | review 의미 검증 대상(WARN) 미구현, 결정적 lint 에 2티어 이득 낮음 |
 
 ## 🧪 통합 테스트 시나리오 (간결)
 
@@ -80,7 +78,7 @@ PRD 는 모든 하류 산출물의 전제다. 전제가 틀리면 그 위의 sit
 - **Given**: 샌드박스에 phase-03 반영본 gd-plan 설치 + 결함 있는 `docs/prd.md`
 - **When**: `/gd-plan-critique` 실행
 - **Then**: worker·director 두 독립 에이전트가 디스패치되고, 병합된 단일 `_critique.md` 가 산출된다(메인 에이전트가 직접 비평하지 않음). 한쪽만 잡은 발견이 병합에 표면화된다.
-- **연관 SPEC**: spec-3-01, spec-3-03
+- **연관 SPEC**: spec-3-01, spec-3-02
 
 ### 통합 테스트 실행
 ```bash

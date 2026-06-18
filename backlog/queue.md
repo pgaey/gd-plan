@@ -8,7 +8,7 @@
 ## 📦 진행 중 Phase
 
 <!-- sdd:active:start -->
-- **phase-03** — critique-hardening — 비평 레이어 2티어 강화 — 1 spec — 다음: spec-03-01-critique-two-tier
+- **phase-03** — critique-hardening — 비평 레이어 2티어 강화 — 2 spec — 다음: spec-03-02-critique-dispatch-test
 <!-- sdd:active:end -->
 
 ## 📥 spec-x 대기
@@ -27,6 +27,8 @@
 - [ ] 아이디어: sdd stale detection 자동화
 - [ ] 보류: spec-05-02 (dependency 해소 후 재검토)
 -->
+
+- [ ] 보류: `/gd-plan-review` 에 worker→director 검증 티어 적용 (phase-03 §11.3 재검증으로 drop). review 는 결정적 ID set-diff lint 라 의미적 2차 이득 낮음. review 의 의미적 WARN(persona↔톤, completeness 등 v2 백로그)이 구현되면 그때 spec 승격 검토.
 
 ## 📋 대기 Phase
 
