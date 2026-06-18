@@ -16,6 +16,7 @@
 <!-- sdd:specx:start -->
 없음
 - [ ] spec-x-readme-overhaul — readme-overhaul
+- [ ] spec-x-gd-plan-auto-advance — gd-plan-auto-advance
 <!-- sdd:specx:end -->
 
 ## 🧊 Icebox

@@ -51,3 +51,8 @@ description: 사이트 골격/지도. prd capabilities를 페이지 로스터로
 
 - `docs/sitemap.md` 의 로스터가 모든 CAP 을 덮는지 자가 점검.
 - 출력: `docs/sitemap.md 작성 완료 (N pages). 다음 단계: /gd-plan-page <첫 페이지 slug>. 전체 진행률: 3/5`
+- **자동 진행 (confirm-then-advance, enter-loop)**: 위 출력 직후 로스터의 첫 `todo` 페이지 slug 를 가리키며 "첫 페이지 `<slug>` 구조를 바로 시작할까요?"라고 묻는다.
+  - **긍정**(응/네/그래/ㅇㅇ/yes/y/진행 등) → `.claude/commands/gd-plan-page.md` 를 그 `<slug>` 인자로 읽어 같은 대화에서 즉시 이어 실행. 이후 페이지 반복은 page 스킬이 이어받는다(§page loop).
+  - **부정/모호** → 정지. 슬래시 커맨드만 남긴다.
+
+<!-- gd:advance next=page -->
