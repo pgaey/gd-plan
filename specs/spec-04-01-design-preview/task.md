@@ -75,5 +75,5 @@
 - [x] Commit: `docs(spec-04-01): ship walkthrough and pr description`
 
 ### 🚀 Push & PR
-- [ ] `git push -u origin spec-04-01-design-preview`
-- [ ] PR 생성 (`/hk-pr-gh`)
+- [x] `git push -u origin spec-04-01-design-preview`
+- [x] PR 생성 → https://github.com/pgaey/gd-plan/pull/16
