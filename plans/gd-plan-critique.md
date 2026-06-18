@@ -95,3 +95,9 @@ prdVersion: <비평한 prd.md 의 version>
 - `docs/_critique.md` 작성(치명/높음/중간/낮음 카운트 포함). 채택 항목 반영 + version bump.
 - 발견 0 건이면: "전제 검증 통과 — 결함 없음."
 - 출력: `docs/_critique.md 작성 완료 (치명 N · 높음 M). 채택분 반영 후 다음 단계: /gd-plan-design. 전체 진행률: 전제 검증 완료.`
+- **자동 진행 (confirm-then-advance)**: 위 출력 직후 "다음 단계 `/gd-plan-design`(디자인 시스템 픽)으로 바로 진행할까요?"라고 묻는다.
+  - 사용자가 **긍정**(응/네/그래/ㅇㅇ/yes/y/진행 등)하면 → `.claude/commands/gd-plan-design.md` 를 읽어 같은 대화에서 즉시 이어 실행(슬래시 불필요).
+  - **부정/모호**하면 → 정지. 슬래시 커맨드만 남긴다.
+  - 직전 단계가 실제 done 일 때만 제안. `<!-- TODO -->` 등 미완 필드가 있으면 자동 진행 대신 보완을 먼저 안내.
+
+<!-- gd:advance next=design -->

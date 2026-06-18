@@ -29,8 +29,8 @@
 ## Task 3: 선형 단계 §종료 보강 (critique·design·flows)
 
 ### 3-1. 표준 confirm-then-advance 적용
-- [ ] `plans/gd-plan-critique.md` (next=design), `plans/gd-plan-design.md` (next=sitemap), `plans/gd-plan-flows.md` (next=rules) §종료 재작성 + 마커
-- [ ] Commit: `refactor(spec-x-gd-plan-auto-advance): add confirm-then-advance to linear steps`
+- [x] `plans/gd-plan-critique.md` (next=design), `plans/gd-plan-design.md` (next=sitemap), `plans/gd-plan-flows.md` (next=rules) §종료 재작성 + 마커
+- [x] Commit: `refactor(spec-x-gd-plan-auto-advance): add confirm-then-advance to linear steps`
 
 ---
 

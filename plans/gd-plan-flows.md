@@ -77,3 +77,9 @@ flow steps 가 **단일 원천(SoT)**, 페이지 `flows:` 는 **파생**이다 (
 
 - 각 flow step 의 `[PAGE-id]` 가 sitemap.md 로스터에 실재하는지, 페이지 `flows:` 재계산이 반영됐는지 자가 점검.
 - 출력: `docs/flows/ 작성 완료 (N flows). 다음 단계: /gd-plan-rules. 전체 진행률: 4/5`
+- **자동 진행 (confirm-then-advance)**: 위 출력 직후 "다음 단계 `/gd-plan-rules`(UI 규칙)로 바로 진행할까요?"라고 묻는다.
+  - 사용자가 **긍정**(응/네/그래/ㅇㅇ/yes/y/진행 등)하면 → `.claude/commands/gd-plan-rules.md` 를 읽어 같은 대화에서 즉시 이어 실행(슬래시 불필요).
+  - **부정/모호**하면 → 정지. 슬래시 커맨드만 남긴다.
+  - 직전 단계가 실제 done 일 때만 제안. `<!-- TODO -->` 등 미완 필드가 있으면 자동 진행 대신 보완을 먼저 안내.
+
+<!-- gd:advance next=rules -->
