@@ -8,7 +8,7 @@
 ## 📦 진행 중 Phase
 
 <!-- sdd:active:start -->
-- **phase-03** — critique-hardening — 비평 레이어 2티어 강화 — 2 spec — 다음: spec-03-02-critique-dispatch-test
+(active phase 없음. `bin/sdd phase new <slug>` 로 시작)
 <!-- sdd:active:end -->
 
 ## 📥 spec-x 대기
@@ -44,6 +44,7 @@
 - **phase-01** — gd-plan-vertical-slice — completed 2026-06-10
 - **phase-02** — distribution — completed 2026-06-11
 - [x] spec-x-gd-plan-auto-advance (완료)
+- **phase-03** — critique-hardening — 비평 레이어 2티어 강화 — completed 2026-06-18
 <!-- sdd:done:end -->
 
 ---
