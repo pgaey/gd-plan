@@ -115,11 +115,16 @@ while IFS= read -r abs; do
 done < "$TPL_LIST"
 rm -f "$TPL_LIST"
 
-# ③ design-md-collection/ 전체 동봉 → .gd/design-md-collection/
-for f in "$SRC_ROOT"/design-md-collection/*; do
-  [ -f "$f" ] || continue
-  place_file "$f" ".gd/design-md-collection/$(basename "$f")"
-done
+# ③ design-md-collection/ 전체 동봉 (하위 디렉토리 _swatches/ 포함) → .gd/design-md-collection/
+#    find -type f 로 _swatches/*.html 등 하위 파일까지 상대경로 보존 복사 (②와 동일 패턴)
+COL_LIST="$(mktemp)"
+find "$SRC_ROOT/design-md-collection" -type f > "$COL_LIST"
+while IFS= read -r abs; do
+  [ -n "$abs" ] || continue
+  rel="${abs#"$SRC_ROOT"/design-md-collection/}"
+  place_file "$abs" ".gd/design-md-collection/$rel"
+done < "$COL_LIST"
+rm -f "$COL_LIST"
 
 # ④ bin/gd (repo 에 존재 시)
 if [ -f "$SRC_ROOT/bin/gd" ]; then

@@ -58,9 +58,9 @@
 ## Task 6: 샌드박스 재설치 + 샘플 + 결정성 검증
 
 ### 6-1. E2E
-- [ ] `bash get.sh --yes --src "$PWD" <sandbox>` 재설치 → `_swatches/` 동봉 + 스킬 전파 grep
-- [ ] 후보 3개 결합 프리뷰 1회 생성 → 시스템별 팔레트·radius·shadow 차이 + 동일 후보 재생성 동일 출력(결정성) 확인
-- [ ] Commit: `test(spec-04-01): verify swatch distribution and deterministic assembly`
+- [x] 재설치 → `_swatches/` 66개 동봉 (install.sh 하위디렉토리 복사 수정) + 스킬 전파 ✓
+- [x] 3개 결합 프리뷰 생성 → 팔레트 차이(cal #242424 / stripe #533afd / linear #5e6ad2) + 빌드 2회 동일(결정적)
+- [x] Commit: `fix(spec-04-01): bundle _swatches subdir in consumer install + verify e2e`
 
 ---
 
