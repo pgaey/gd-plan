@@ -20,11 +20,11 @@
 ## Task 2: critique 2티어화 (gd-plan-critique.md 재작성)
 
 ### 2-1. 도입부 + §2 + §4 + §5 재작성
-- [ ] 도입부: self-bias 주석에 2티어 교차모델 완화(위계·둘다opus 잔존) + 모델 전환 가능 한 줄
-- [ ] §2: 단일 디스패치 → worker(sonnet)+director(opus) 2티어. director **2-페이즈 강제**(페이즈1 독립 commit → 페이즈2 병합). 병합 규약(매칭 키 prd:줄+렌즈 / 갭 표면화 / severity 재정 근거 강제 / director 직접 재검증 후 무근거 drop). 폴백 2→1(⚠️1차본 배너)→self-review. 대안 A(병렬 blind 3-디스패치) opt-in 단락
-- [ ] §4 스키마 확장: provenance(director단독/worker단독/공통) + director 단독발견 블록 + frontmatter prdVersion + severity 재정 근거 필드
-- [ ] §5: 메인이 받는 것은 *병합된* `_critique.md` 임을 명시 + "메인은 비평·검증·병합 직접 수행 안 함" 불변식. triage/반영/version bump 유지
-- [ ] Commit: `refactor(spec-03-01): rewrite critique dispatch as worker→director two-tier`
+- [x] 도입부: self-bias 주석에 2티어 교차모델 완화(위계·둘다opus 잔존) + 모델 전환 가능 한 줄 + frontmatter description 갱신
+- [x] §2: 단일 디스패치 → worker(sonnet)+director(opus) 2티어. director **2-페이즈 강제**(페이즈1 독립 commit → 페이즈2 병합). 병합 규약(매칭 키 prd:줄+렌즈 / 갭 표면화 / severity 재정 근거 강제 / director 직접 재검증 후 무근거 drop). 폴백 2→1(⚠️1차본 배너)→self-review. 대안 A(병렬 blind 3-디스패치) opt-in 단락
+- [x] §4 스키마 확장: provenance(director단독/worker단독/공통) + director 단독발견 블록 + frontmatter prdVersion/modelTiers + severity 재정 근거
+- [x] §5: 메인이 받는 것은 *병합된* `_critique.md` 임을 명시 + "메인은 비평·검증·병합 직접 수행 안 함" 불변식. triage/반영/version bump 유지
+- [x] Commit: `refactor(spec-03-01): rewrite critique dispatch as worker→director two-tier`
 
 ---
 
