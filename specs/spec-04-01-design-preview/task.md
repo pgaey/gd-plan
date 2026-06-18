@@ -28,11 +28,11 @@
 ## Task 3: build-swatches 구현 + fragment 생성 (TDD Green)
 
 ### 3-1. 구현
-- [ ] `src/build-swatches.ts`: .md → `_swatches/<name>.html` fragment(팔레트 칩 + 폰트명 라벨 specimen + 버튼[radius·shadow·CTA]). 부분 렌더·안전 규약 반영
-- [ ] `package.json`: `build-swatches` 스크립트 + `files` 에 `_swatches` 포함
-- [ ] `pnpm test` → PASS
-- [ ] `pnpm build-swatches` → `design-md-collection/_swatches/*.html` 66개 생성
-- [ ] Commit: `feat(spec-04-01): build-swatches generates 66 mood-swatch fragments`
+- [x] `src/build-swatches.ts`: .md → `_swatches/<name>.html` fragment(팔레트 칩 + 폰트명 라벨 specimen + 버튼[radius·shadow·CTA]). 부분 렌더·안전 규약 반영
+- [x] `package.json`: `build-swatches` 스크립트 + `files` 에 `_swatches` 포함
+- [x] `pnpm test` → PASS (76)
+- [x] `pnpm build-swatches` → 66개 생성
+- [x] Commit: `feat(spec-04-01): build-swatches generates 66 mood-swatch fragments`
 
 ---
 

@@ -18,8 +18,9 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "tsup src/cli.ts src/build-index.ts --format esm --target node20 --clean --shims",
+    "build": "tsup src/cli.ts src/build-index.ts src/build-swatches.ts --format esm --target node20 --clean --shims",
     "build-index": "node dist/build-index.js design-md-collection",
+    "build-swatches": "node dist/build-swatches.js design-md-collection",
     "test": "vitest run",
     "test:sh": "bash test/sh/run.sh",
     "typecheck": "tsc --noEmit"
