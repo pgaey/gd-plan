@@ -31,10 +31,10 @@
 ## Task 3: 샌드박스 재설치 + 전파 검증
 
 ### 3-1. 재설치 후 grep 검증
-- [ ] `bash get.sh --yes --src "$PWD" <sandbox>` 재설치
-- [ ] 설치본 `.claude/commands/gd-plan-critique.md` 가 worker+director 2티어·병합 규약·모델 기본값 포함 확인
-- [ ] `bash test/sh/run.sh` → 기존 회귀 PASS
-- [ ] Commit: `test(spec-03-01): verify two-tier dispatch propagates to install`
+- [x] `bash get.sh --yes --src "$PWD" <sandbox>` 재설치
+- [x] 설치본 `.claude/commands/gd-plan-critique.md` 전파 확인: 2-페이즈/worker=sonnet/director=opus/provenance/1차본 배너/대안 A/메인 비평금지 불변식 모두 ✓
+- [x] `bash test/sh/run.sh` → 기존 회귀 3 suites PASS
+- [x] Commit: `test(spec-03-01): verify two-tier dispatch propagates to install`
 
 ---
 
