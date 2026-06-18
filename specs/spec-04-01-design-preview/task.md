@@ -49,9 +49,9 @@
 ## Task 5: ADR-019
 
 ### 5-1. ADR 작성
-- [ ] `docs/decisions/ADR-019-design-preview-build-time.md`(type tradeoff): 빌드타임 fragment vs 런타임 LLM, node-free, 결정성/공정성↔단순성. Related: ADR-002, ADR-016(self-contained distribution)
-- [ ] `bash .harness-kit/bin/sdd status` → 신규 stale ADR 없음
-- [ ] Commit: `docs(spec-04-01): add ADR-019 design preview build-time`
+- [x] `docs/decisions/ADR-019-design-preview-build-time.md`(type tradeoff): 빌드타임 fragment vs 런타임 LLM, node-free, 결정성/공정성↔단순성. Related: ADR-002, ADR-016(self-contained distribution)
+- [x] sdd status → 신규 stale ADR 없음
+- [x] Commit: `docs(spec-04-01): add ADR-019 design preview build-time`
 
 ---
 
