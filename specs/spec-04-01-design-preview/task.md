@@ -19,9 +19,9 @@
 ## Task 2: build-swatches 단위 테스트 (TDD Red)
 
 ### 2-1. 테스트 작성
-- [ ] `src/build-swatches.test.ts`(vitest): §9 Quick Color Reference 팔레트 파싱 / 부분 렌더(hex 미발견 시 칩 생략) / 안전(추출값 CSS·텍스트로만) / 폰트명 라벨 출력
-- [ ] `pnpm test` → Fail 확인 (build-swatches 미구현)
-- [ ] Commit: `test(spec-04-01): add build-swatches unit tests (red)`
+- [x] `__tests__/build-swatches.test.ts`(vitest, `__tests__/**` 컨벤션): §9 Quick Color Reference 팔레트 파싱 / 부분 렌더(hex 미발견 시 칩 생략) / 안전(HTML 이스케이프) / 폰트명 라벨 출력
+- [x] `pnpm test` → Fail 확인 (build-swatches 미구현, 나머지 67 PASS)
+- [x] Commit: `test(spec-04-01): add build-swatches unit tests (red)`
 
 ---
 
