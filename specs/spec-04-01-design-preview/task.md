@@ -67,12 +67,12 @@
 ## Task 7: Ship (필수)
 
 ### 🚦 Pre-Push Quality Gate
-- [ ] `pnpm test` + `bash test/sh/run.sh` → 모두 PASS
+- [x] `pnpm test`(76) + `pnpm typecheck`(0) + `bash test/sh/run.sh`(5 suites) → 모두 PASS
 
 ### 📝 산출물 작성
-- [ ] **walkthrough.md 작성**
-- [ ] **pr_description.md 작성**
-- [ ] Commit: `docs(spec-04-01): ship walkthrough and pr description`
+- [x] **walkthrough.md 작성**
+- [x] **pr_description.md 작성**
+- [x] Commit: `docs(spec-04-01): ship walkthrough and pr description`
 
 ### 🚀 Push & PR
 - [ ] `git push -u origin spec-04-01-design-preview`
