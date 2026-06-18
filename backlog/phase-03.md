@@ -36,7 +36,7 @@ PRD 는 모든 하류 산출물의 전제다. 전제가 틀리면 그 위의 sit
 | ID | 슬러그 | 우선순위 | 상태 | 디렉토리 |
 |---|---|:---:|---|---|
 | `spec-03-01` | critique-two-tier | P? | Merged | `specs/spec-03-01-critique-two-tier/` |
-| `spec-03-02` | critique-dispatch-test | P? | Active | `specs/spec-03-02-critique-dispatch-test/` |
+| `spec-03-02` | critique-dispatch-test | P? | Merged | `specs/spec-03-02-critique-dispatch-test/` |
 <!-- sdd:specs:end -->
 
 > 상태 허용값: `Backlog` / `In Progress` / `Merged`
@@ -107,6 +107,18 @@ bash test/sh/run.sh   # 구조 테스트 + 샌드박스 설치 검증
 - [ ] 성공 기준 1~4 정량 측정 결과 기록
 - [ ] 사용자 최종 승인 (`/hk-phase-ship`)
 
-## 📊 검증 결과 (phase 완료 시 작성)
+## 📊 검증 결과 (phase 완료)
 
-<!-- 통합 테스트 로그, 성공 기준 측정값, 회귀 점검 결과 등을 여기 첨부 -->
+### 성공 기준
+1. ✅ PASS — 통합 테스트에서 worker(sonnet)+director(opus) 두 독립 에이전트 디스패치, 병합 `_critique.md` 산출. 메인 에이전트는 비평/검증/병합 직접 수행 안 함(오케스트레이션만).
+2. ✅ PASS — 병합 규약 작동 관찰: 갭 표면화(director단독 2건 보존), severity 재정(결과알림 높음→중간, 근거 인용), 무근거 drop 0건(환각 규제는 "확인 필요" 보류).
+3. ✅ PASS — `test/sh/test-critique-dispatch.sh` 존재 + PASS(9 불변식). 가드 작동 증명(깨뜨림→FAIL→복구→PASS).
+4. ✅ PASS — 통합 시나리오 1 문서화 + 실행 검증 완료(아래).
+
+### 통합 테스트 — 시나리오 1 (두 에이전트 디스패치 + 병합)
+- **방법**: 결함 PRD(`/tmp/phase03-itest/docs/prd.md` — 동네의원 예약, PIPA 동의 누락·노쇼 리마인더 누락·결과알림 Later·측정불가 성공기준 심음)로 worker→director 2티어 실제 디스패치.
+- **결과**: ✅ PASS
+  - worker(sonnet) 1차: 치명1·높음2·중간4·낮음2 포착(PIPA 동의 누락 등).
+  - director(opus): 페이즈1 독립 비평 commit 후 병합 → provenance(공통8/director단독2/worker단독1).
+  - **커버리지 갭 입증**: director가 worker 미포착 2건(Admin 가용슬롯 설정 부재, 예약 변경/취소 부재)을 단독 발견으로 표면화.
+  - severity 재정 1건(근거 인용), 무근거 drop 0(직접 재검증), 환각 규제 "확인 필요" 처리.
