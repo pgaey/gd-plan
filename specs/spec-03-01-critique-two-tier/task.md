@@ -41,12 +41,12 @@
 ## Task 4: Ship (필수)
 
 ### 🚦 Pre-Push Quality Gate
-- [ ] **전체 테스트 실행** → 모두 PASS (`bash test/sh/run.sh`)
+- [x] **전체 테스트 실행** → 모두 PASS (`bash test/sh/run.sh` — 3 suites)
 
 ### 📝 산출물 작성
-- [ ] **walkthrough.md 작성**
-- [ ] **pr_description.md 작성**
-- [ ] Commit: `docs(spec-03-01): ship walkthrough and pr description`
+- [x] **walkthrough.md 작성**
+- [x] **pr_description.md 작성**
+- [x] Commit: `docs(spec-03-01): ship walkthrough and pr description`
 
 ### 🚀 Push & PR
 - [ ] `git push -u origin spec-03-01-critique-two-tier`
