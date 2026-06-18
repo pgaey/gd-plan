@@ -66,5 +66,5 @@
 - [x] Commit: `docs(spec-x-gd-plan-auto-advance): ship walkthrough and pr description`
 
 ### 🚀 Push & PR
-- [ ] `git push -u origin spec-x-gd-plan-auto-advance`
-- [ ] PR 생성 (`/hk-pr-gh`)
+- [x] `git push -u origin spec-x-gd-plan-auto-advance`
+- [x] PR 생성 → https://github.com/pgaey/gd-plan/pull/12
