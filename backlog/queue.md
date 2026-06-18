@@ -16,7 +16,6 @@
 <!-- sdd:specx:start -->
 없음
 - [ ] spec-x-readme-overhaul — readme-overhaul
-- [ ] spec-x-gd-plan-auto-advance — gd-plan-auto-advance
 <!-- sdd:specx:end -->
 
 ## 🧊 Icebox
@@ -42,6 +41,7 @@
 없음
 - **phase-01** — gd-plan-vertical-slice — completed 2026-06-10
 - **phase-02** — distribution — completed 2026-06-11
+- [x] spec-x-gd-plan-auto-advance (완료)
 <!-- sdd:done:end -->
 
 ---
