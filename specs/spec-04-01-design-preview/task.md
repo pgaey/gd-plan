@@ -39,10 +39,10 @@
 ## Task 4: design 스킬 결합 규약 + 구조 가드
 
 ### 4-1. 스킬 + 테스트
-- [ ] `plans/gd-plan-design.md` §2.4: top-3 `_swatches` fragment 읽어 `docs/_design-preview.html` 결합(grid·정직 배너·수동 열람·git 권고) + §5 멱등
-- [ ] `test/sh/test-design-preview.sh`: 결합 규약 불변식 grep(`_swatches`/`_design-preview.html`/정직 배너/grid)
-- [ ] `bash test/sh/run.sh` → PASS
-- [ ] Commit: `feat(spec-04-01): assemble preview from swatch fragments in design step`
+- [x] `plans/gd-plan-design.md` §2.4: top-3 `_swatches` fragment 읽어 `docs/_design-preview.html` 결합(grid·정직 배너·수동 열람·git 권고) + §5 멱등
+- [x] `test/sh/test-design-preview.sh`: 결합 규약 불변식 grep(`_swatches`/`_design-preview.html`/정직 배너/grid)
+- [x] `bash test/sh/run.sh` → PASS (5 suites)
+- [x] Commit: `feat(spec-04-01): assemble preview from swatch fragments in design step`
 
 ---
 
