@@ -16,7 +16,6 @@
 <!-- sdd:specx:start -->
 없음
 - [ ] spec-x-readme-overhaul — readme-overhaul
-- [ ] spec-x-critique-adr-cleanup — critique-adr-cleanup
 <!-- sdd:specx:end -->
 
 ## 🧊 Icebox
@@ -46,6 +45,7 @@
 - **phase-02** — distribution — completed 2026-06-11
 - [x] spec-x-gd-plan-auto-advance (완료)
 - **phase-03** — critique-hardening — 비평 레이어 2티어 강화 — completed 2026-06-18
+- [x] spec-x-critique-adr-cleanup (완료)
 <!-- sdd:done:end -->
 
 ---
