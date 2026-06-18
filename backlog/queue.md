@@ -16,6 +16,7 @@
 <!-- sdd:specx:start -->
 없음
 - [ ] spec-x-readme-overhaul — readme-overhaul
+- [ ] spec-x-critique-adr-cleanup — critique-adr-cleanup
 <!-- sdd:specx:end -->
 
 ## 🧊 Icebox
