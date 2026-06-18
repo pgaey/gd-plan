@@ -20,9 +20,9 @@
 ## Task 2: ADR-017 작성 (critique 2티어, ADR-014 연장)
 
 ### 2-1. ADR 작성
-- [ ] `docs/decisions/ADR-017-critique-two-tier-dispatch.md` 작성 — type decision / status accepted / Context(014 의 단일 독립컨텍스트 한계) / Decision(worker→director 2티어 + 2-페이즈 + 교차모델 + 병합 규약) / Consequences / Alternatives(A·B채택·C) / Related(ADR-013, ADR-014 연장)
-- [ ] `bash .harness-kit/bin/sdd status` → 신규 stale ADR 없음 확인
-- [ ] Commit: `docs(spec-x-critique-adr-cleanup): add ADR-017 critique two-tier dispatch`
+- [x] `docs/decisions/ADR-017-critique-two-tier-dispatch.md` 작성 — type decision / status accepted / Context(014 의 단일 독립컨텍스트 한계) / Decision(worker→director 2티어 + 2-페이즈 + 교차모델 + 병합 규약) / Consequences / Alternatives(A·B채택·C) / Related(ADR-013, ADR-014 연장)
+- [x] `bash .harness-kit/bin/sdd status` → 신규 stale ADR 없음(9건 불변)
+- [x] Commit: `docs(spec-x-critique-adr-cleanup): add ADR-017 critique two-tier dispatch`
 
 ---
 
