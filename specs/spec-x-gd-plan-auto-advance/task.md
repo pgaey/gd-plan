@@ -37,8 +37,8 @@
 ## Task 4: 특수 전이 §종료 보강 (start·prd·sitemap·page·rules·review)
 
 ### 4-1. soft/loop/gate 전이 적용
-- [ ] `plans/gd-plan-start.md` (진입 확인), `plans/gd-plan-prd.md` (next=critique, 예/아니오+design 안내), `plans/gd-plan-sitemap.md` (next=page, 첫 slug 진입), `plans/gd-plan-page.md` (next=loop), `plans/gd-plan-rules.md` (next=review), `plans/gd-plan-review.md` (next=gate, 자동 진행 금지)
-- [ ] Commit: `refactor(spec-x-gd-plan-auto-advance): add branch/loop/gate transitions to special steps`
+- [x] `plans/gd-plan-start.md` (진입 확인, next=auto), `plans/gd-plan-prd.md` (next=critique, 예/아니오+design 안내), `plans/gd-plan-sitemap.md` (next=page, 첫 slug 진입), `plans/gd-plan-page.md` (next=loop), `plans/gd-plan-rules.md` (next=review), `plans/gd-plan-review.md` (next=gate, 자동 진행 금지)
+- [x] Commit: `refactor(spec-x-gd-plan-auto-advance): add branch/loop/gate transitions to special steps`
 
 ---
 

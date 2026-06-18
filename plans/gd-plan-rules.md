@@ -54,3 +54,9 @@ collection 파일은 시각 스타일만 주고 아래는 거의 안 준다 — 
 - Motion / Form / CTA / Header / a11y / 확정·오버라이드 섹션이 채워졌는지 점검.
 - 시각 토큰(radius/typo/spacing/색)을 재서술하지 않았는지 자가 점검 (경계 준수).
 - 출력: `docs/ui-rules.md 작성 완료. 다음 단계: /gd-plan-review. 전체 진행률: 5/5`
+- **자동 진행 (confirm-then-advance)**: 위 출력 직후 "이제 일관성 검증(`/gd-plan-review`)을 돌릴까요?"라고 묻는다.
+  - **긍정**(응/네/그래/ㅇㅇ/yes/y/진행 등) → `.claude/commands/gd-plan-review.md` 를 읽어 같은 대화에서 즉시 이어 실행(슬래시 불필요).
+  - **부정/모호** → 정지. 슬래시 커맨드만 남긴다.
+  - 5종 중 미완(`<!-- TODO -->`)이 남아 있으면 검증 대신 보완을 먼저 안내한다.
+
+<!-- gd:advance next=review -->

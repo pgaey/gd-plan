@@ -75,3 +75,9 @@ description: PRD 인터뷰. 구조화 16문항으로 docs/prd.md(상류 SSOT)를
 - 미완 필드가 있으면 `<!-- TODO: 필드명 -->` 마커를 남기고 보고 (재개 가능).
 - **version bump** (규칙 정본 = `templates/prd.md`): 신규 prd 는 `version: 1`(신설 — bump 아님). *기존* prd 를 인터뷰로 갱신했으면 +1. `/gd-plan-critique` 가 "어느 prd 버전을 비평했나" 대조에 쓴다.
 - 출력: `docs/prd.md 작성 완료. 다음 단계: /gd-plan-critique (전제 검증, 권장) → /gd-plan-design. 전체 진행률: 1/5`
+- **자동 진행 (confirm-then-advance, soft)**: 위 출력 직후 "전제 검증(`/gd-plan-critique`)은 권장 단계입니다. 바로 진행할까요?"라고 **예/아니오**로 묻는다.
+  - **예**(응/네/그래/ㅇㅇ/yes/y 등) → `.claude/commands/gd-plan-critique.md` 를 읽어 같은 대화에서 즉시 이어 실행.
+  - **아니오/모호** → 정지하고 안내: "전제 검증을 건너뛰려면 `/gd-plan-design` 으로 진행하세요." (critique 는 soft — 건너뛰어도 됨)
+  - 미완 필드(`<!-- TODO: 필드명 -->`)가 남아 있으면 자동 진행 대신 보완을 먼저 안내한다.
+
+<!-- gd:advance next=critique -->
