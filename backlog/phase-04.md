@@ -33,7 +33,7 @@
 <!-- sdd:specs:start -->
 | ID | 슬러그 | 우선순위 | 상태 | 디렉토리 |
 |---|---|:---:|---|---|
-| `spec-04-01` | design-preview | P? | Active | `specs/spec-04-01-design-preview/` |
+| `spec-04-01` | design-preview | P? | Merged | `specs/spec-04-01-design-preview/` |
 <!-- sdd:specs:end -->
 
 > 상태 허용값: `Backlog` / `In Progress` / `Merged`

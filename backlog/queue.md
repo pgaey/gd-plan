@@ -8,7 +8,7 @@
 ## 📦 진행 중 Phase
 
 <!-- sdd:active:start -->
-- **phase-04** — design-tangibility — 디자인 시스템을 보이게, 외부 레퍼런스를 안전하게 — 1 spec — 다음: spec-04-01-design-preview
+- **phase-04** — design-tangibility — 디자인 시스템을 보이게, 외부 레퍼런스를 안전하게 — 1 spec — 다음: (spec 없음)
 <!-- sdd:active:end -->
 
 ## 📥 spec-x 대기
