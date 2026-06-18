@@ -29,8 +29,8 @@
 ## Task 3: superpowers 잔재 제거
 
 ### 3-1. 문서 삭제
-- [ ] `git rm docs/superpowers/specs/2026-06-18-gd-plan-auto-advance-design.md` (빈 디렉토리면 정리)
-- [ ] Commit: `chore(spec-x-critique-adr-cleanup): remove out-of-convention superpowers design doc`
+- [x] `git rm docs/superpowers/specs/2026-06-18-gd-plan-auto-advance-design.md` + 빈 `docs/superpowers/` 정리
+- [x] Commit: `chore(spec-x-critique-adr-cleanup): remove out-of-convention superpowers design doc`
 
 ---
 
